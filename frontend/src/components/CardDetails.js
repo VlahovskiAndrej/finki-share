@@ -1,6 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import React from 'react';
+import re  from './CardComponent'
 
 function MyVerticallyCenteredModal(props) {
     return (
@@ -12,16 +13,14 @@ function MyVerticallyCenteredModal(props) {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Modal heading
+                    {props.subject['Наслов на наставниот предмет'].replace('\n', ' / ')}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h4>Centered Modal</h4>
-                <p>
-                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                    dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                    consectetur ac, vestibulum at eros.
-                </p>
+                {/*<h4>Centered Modal</h4>*/}
+                {}
+                <h4>{props.subject['Код']}</h4>
+                {/*<p>Студис програма: </p>*/}
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={props.onHide}>Close</Button>
@@ -40,8 +39,7 @@ function CardDetails(props) {
             </Button>
 
             <MyVerticallyCenteredModal
-                // title={props.title}
-
+                subject = {props.subject}
                 show={modalShow}
                 onHide={() => setModalShow(false)}
             />
