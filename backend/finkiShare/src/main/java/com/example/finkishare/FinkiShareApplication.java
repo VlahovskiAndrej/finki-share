@@ -8,6 +8,8 @@ public class FinkiShareApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FinkiShareApplication.class, args);
+
 	}
+
 
 }

@@ -18,15 +18,16 @@ public class Post {
     private String description;
     private LocalDateTime timeStamp;
 
-    @OneToMany
-    private List<Comment> commentList;
+    @ManyToOne
+    private SubjectDetails subjectDetails;
 
     public Post() {
     }
 
-    public Post(String title, String description, LocalDateTime timeStamp) {
+    public Post(String title, String description, LocalDateTime timeStamp, SubjectDetails subjectDetails) {
         this.title = title;
         this.description = description;
         this.timeStamp = timeStamp;
+        this.subjectDetails = subjectDetails;
     }
 }

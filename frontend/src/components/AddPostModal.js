@@ -1,7 +1,6 @@
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import React from 'react';
-import re  from './CardComponent'
 
 function MyVerticallyCenteredModal(props) {
     return (
@@ -13,16 +12,19 @@ function MyVerticallyCenteredModal(props) {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    {/*{props.subject['Наслов на наставниот предмет'].replace('\n', ' / ')}*/}
-                    {props.subject['subjectTitle'].replace('\n', ' / ')}
-
+                    Add new Post!
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {/*<h4>Centered Modal</h4>*/}
-                {}
-                <h4>{props.subject['code']}</h4>
-                {/*<p>Студис програма: </p>*/}
+                <form>
+                    <label htmlFor="title">Title:</label><br />
+                    <input type="text" id="title" name="title" style={{width: "100%", height:"40px"}} /><br /><br />
+
+                    <label htmlFor="text">Text:</label><br />
+                    <textarea id="text" name="text" rows="6" cols="50" style={{width: "100%"}}></textarea><br /><br />
+
+                    <Button variant={"outline-primary"} type="submit">Submit</Button>
+                </form>
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={props.onHide}>Close</Button>
@@ -31,17 +33,16 @@ function MyVerticallyCenteredModal(props) {
     );
 }
 
-function CardDetails(props) {
+function AddPostModal() {
     const [modalShow, setModalShow] = React.useState(false);
 
     return (
         <>
             <Button variant="primary" onClick={() => setModalShow(true)}>
-                Детали
+                New Post
             </Button>
 
             <MyVerticallyCenteredModal
-                subject = {props.subject}
                 show={modalShow}
                 onHide={() => setModalShow(false)}
             />
@@ -49,4 +50,4 @@ function CardDetails(props) {
     );
 }
 
-export default CardDetails;
+export default AddPostModal

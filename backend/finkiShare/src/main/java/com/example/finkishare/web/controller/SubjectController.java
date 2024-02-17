@@ -1,38 +1,36 @@
 package com.example.finkishare.web.controller;
 
-import com.example.finkishare.model.Subject;
+import com.example.finkishare.model.Comment;
+import com.example.finkishare.model.Post;
+import com.example.finkishare.model.SubjectDetails;
+import com.example.finkishare.service.CommentService;
+import com.example.finkishare.service.PostService;
+import com.example.finkishare.service.SubjectDetailsService;
 import com.example.finkishare.service.SubjectService;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin("http://localhost:3000/")
 public class SubjectController {
 
     final private SubjectService subjectService;
+    final private SubjectDetailsService subjectDetailsService;
+    final private PostService postService;
+    final private CommentService commentService;
 
-    public SubjectController(SubjectService subjectService) {
+    public SubjectController(SubjectService subjectService, SubjectDetailsService subjectDetailsService, PostService postService, CommentService commentService) {
         this.subjectService = subjectService;
+        this.subjectDetailsService = subjectDetailsService;
+        this.postService = postService;
+        this.commentService = commentService;
     }
 
-    @GetMapping("/subjects")
-    List<Subject> findSubjects(){
-        return subjectService.findAll();
-    }
+//    @GetMapping("/subjects")
+//    List<Subject> findSubjects(){
+//        return subjectService.findAll();
+//    }
 
 //    @GetMapping("/json")
 //    public ResponseEntity<JSONObject> getDataJson() {
@@ -60,23 +58,48 @@ public class SubjectController {
 //    }
 
 //    Returns as a String, not a true JSON
-    @GetMapping("/data")
-    public ResponseEntity<String> getDataJson() {
-        try {
-            // Load JSON file from resources
-            ClassPathResource resource = new ClassPathResource("data/subjects.json");
-            InputStream inputStream = resource.getInputStream();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+//    @GetMapping("/data")
+//    public ResponseEntity<String> getDataJson() {
+//        try {
+//            // Load JSON file from resources
+//            ClassPathResource resource = new ClassPathResource("data/subjects.json");
+//            InputStream inputStream = resource.getInputStream();
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+//
+//            // Read JSON file content into a string
+//            String jsonString = reader.lines().collect(Collectors.joining("\n"));
+//
+//            // Return JSON as response
+//            return ResponseEntity.ok(jsonString);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error reading JSON file");
+//        }
+//    }
 
-            // Read JSON file content into a string
-            String jsonString = reader.lines().collect(Collectors.joining("\n"));
+    @GetMapping("/subjects")
+    List<SubjectDetails> findSubjects(){
+        return subjectDetailsService.findAll();
+    }
 
-            // Return JSON as response
-            return ResponseEntity.ok(jsonString);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error reading JSON file");
-        }
+    @PostMapping("/subjects")
+    void saveSubject(@RequestBody String body){
+        subjectDetailsService.takeSubject(body);
+    }
+
+    @GetMapping("/subjects/taken")
+    List<SubjectDetails> findTakenSubjects(){
+        return subjectDetailsService.findAllTakenSubjects();
+    }
+
+    @GetMapping("/posts/{id}")
+    List<Post> getPostsById(@PathVariable String id){
+        return postService.findAllPostsById(Long.parseLong(id));
+    }
+
+    @GetMapping("/comments/{id}")
+    List<Comment> getCommentsByPostId(@PathVariable String id){
+        return commentService.findAllByPostId(Long.parseLong(id));
     }
 
 }

@@ -14,7 +14,7 @@ function SelectPage() {
     const [subjects, setSubjects] = useState([]);
 
     useEffect(() => {
-        const url = 'http://localhost:8080/data';
+        const url = 'http://localhost:8080/subjects';
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -44,6 +44,16 @@ function SelectPage() {
                     </Col>
                 ))}
             </Row>
+
+            {/*<Row>*/}
+            {/*    {subjects.forEach(item => (*/}
+            {/*        <Col key={item.url} xs={12} sm={6} md={4} lg={3}>*/}
+            {/*            <CardComponent*/}
+            {/*                subject={item}*/}
+            {/*            />*/}
+            {/*        </Col>*/}
+            {/*    ))}*/}
+            {/*</Row>*/}
 
         </div>
     );

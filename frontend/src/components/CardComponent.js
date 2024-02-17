@@ -1,10 +1,13 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import './CardComponent.module.css';
+import classes from './CardComponent.module.css';
 import {useState} from "react";
 import CardDetails from "./CardDetails";
+import popover from "bootstrap/js/src/popover";
 
 function replaceProgramNames(str) {
+    if (str === undefined)
+        return str
     str = str.replaceAll("Примена на информациски технологии", "ПИТ");
     str = str.replaceAll("Софтверско инженерство и информациски системи", "СИИС");
     str = str.replaceAll("Интернет, мрежи и безбедност", "ИМБ");
@@ -27,8 +30,9 @@ function replaceProgramNames(str) {
 }
 
 function CardComponent(props) {
-
-    const [clicked, setClicked] = useState(false);
+    console.log(props.subject)
+    const [clicked, setClicked] = useState(props.subject['isTaken']);
+    const [formData, setFormData] = useState(props.subject.name);
 
     const handleClick = () => {
         if (clicked)
@@ -37,9 +41,34 @@ function CardComponent(props) {
             setClicked(true);
     };
 
+        const handleSubmit = async (e) => {
+            e.preventDefault();
+
+            try {
+                const response = await fetch('http://localhost:8080/subjects', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    // Request successful, do something with the response
+                    console.log('POST request successful');
+                } else {
+                    // Request failed
+                    console.error('POST request failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+
     return (
-        <Card style={{ height: '200px', margin: "10px 0"} }>
-            <Card.Img variant="top" src="holder.js/100px180" />
+        // style={{ height: '200px', margin: "10px 0"}
+        <Card style={{ height: '180px', margin: "10px 0", backgroundColor: clicked ? '#c9f8c9' : '' }}>
+            {/*<Card.Img variant="top" src="holder.js/100px180" />*/}
             <Card.Body>
                 <Card.Title style={{
                     display: '-webkit-box',
@@ -49,11 +78,20 @@ function CardComponent(props) {
                     textOverflow: 'ellipsis'
                 }}>{props.subject['name']}</Card.Title>
                 <Card.Text>
-                    {props.subject['Код']}
-                    <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap'}}>{replaceProgramNames(props.subject['Студиска програма'])}</p>
+                    {props.subject['code']}
+                    <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap'}}>{replaceProgramNames(props.subject['studyProgram'])}</p>
                 </Card.Text>
-                <Button variant={clicked ? "success" : "secondary"} onClick={handleClick}>Земи предмет!</Button>
+                {/*<Button variant={clicked ? "success" : "secondary"} onClick={handleClick}>Земи предмет!</Button>*/}
                 <CardDetails subject={props.subject}></CardDetails>
+
+                <form onSubmit={handleSubmit} style={{display: "inline-block", marginLeft:"5px"}}>
+                        <input type="text" name="name" value={formData.name}  hidden={true}/>
+                    {/*<button type="submit" onClick={handleClick}>Земи предмет!</button>*/}
+                    <Button type="submit" variant={clicked ? 'danger' : 'secondary'}  onClick={handleClick}>{clicked ? 'Отстрани предмет!' : 'Земи предмет!'}</Button>
+                    {/*style={{ backgroundColor: clicked ? 'green' : '', color: clicked ? 'white' : '' }}*/}
+                </form>
+
+
             </Card.Body>
         </Card>
     );
