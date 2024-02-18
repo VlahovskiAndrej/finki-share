@@ -74,7 +74,7 @@ function Sidebar(props) {
 
     return (
         <>
-            <div style={{ display: 'flex' }}>
+            <div style={{ display: 'flex', minHeight:"100vh" }}>
                 <Navbar bg="dark" variant="dark" expand="md" className="flex-md-column">{/*style={{ width: "15%" }*/}
                     <Container>
                         <Navbar.Toggle aria-controls="sidebar-nav" />

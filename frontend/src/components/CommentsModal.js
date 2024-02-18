@@ -3,6 +3,10 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Post from "./Post";
 import AddPostModal from "./AddPostModal";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faComment } from '@fortawesome/free-solid-svg-icons';
+import { FaCommentDots } from "react-icons/fa";
+
 
 function MyVerticallyCenteredModal(props) {
     return (
@@ -22,14 +26,14 @@ function MyVerticallyCenteredModal(props) {
                 {Object.entries(props.comments).map(([commentId, comment]) => (
                     // <Post key={postId} post={post}></Post>
 
-                    <div key={commentId} className="card mb-3">
+                    <div key={commentId} className="card mb-3" style={{borderRadius:"25px"}}>
                         <div className="card-body">
                             <p className="card-title">{comment.text}</p>
                             {/*<p className="card-text">Post ID: {comment.post.id}</p>*/}
                         </div>
                     </div>
                 ))}
-                <textarea style={{width: "100%", height: "70px"}}/>
+                <textarea style={{width: "100%", height: "70px", borderRadius:"25px", padding:"0 15px"}}/>
                 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                     <Button variant="secondary" size="sm">Add </Button>
                 </div>
@@ -71,8 +75,23 @@ function CommentsModal(props) {
 
     return (
         <>
-            <Button variant="primary" onClick={() => setModalShow(true)}>
-                Comments
+            <Button
+                variant="primary"
+                onClick={() => setModalShow(true)}
+                style={{
+                    backgroundColor: "white",  // White background
+                    color: "black",            // Black icon
+                    border: "none",            // No border
+                    display: "flex",           // Flex display to center the icon
+                    justifyContent: "center", // Center the icon horizontally
+                    alignItems: "center"      // Center the icon vertically
+                }}>
+                {/*<FontAwesomeIcon icon={faComment} style={{ fontSize: "20px" }} /> /!* Use the FontAwesome icon *!/*/}
+                <FaCommentDots style={{ fontSize: "20px" }} />
+                <div style={{ display: "flex", flexDirection: "column", height: "100%", marginLeft:"5px" }}>
+                    <p style={{ margin: 0 }}>{comments.length} Answers</p>
+                </div>
+
             </Button>
 
             <MyVerticallyCenteredModal
