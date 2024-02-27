@@ -1,10 +1,11 @@
 package com.example.finkishare.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
 
 @Entity(name = "finkishare_users")
 @Data
@@ -21,12 +22,17 @@ public class User {
 
     private String avatarUrl;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     public User() {}
 
-    public User(String username, String email, String password, String avatarUrl) {
+    public User(String username, String email, String password, Role role) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.avatarUrl = avatarUrl;
+        this.avatarUrl = "";
+        this.role = role;
     }
+
 }

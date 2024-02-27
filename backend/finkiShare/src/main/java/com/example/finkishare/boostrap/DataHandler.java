@@ -1,16 +1,15 @@
 package com.example.finkishare.boostrap;
 
-import com.example.finkishare.model.Comment;
-import com.example.finkishare.model.Post;
-import com.example.finkishare.model.Subject;
-import com.example.finkishare.model.SubjectDetails;
+import com.example.finkishare.model.*;
+//import com.example.finkishare.model.Subject;
 import com.example.finkishare.repository.CommentRepository;
 import com.example.finkishare.repository.PostRepository;
 import com.example.finkishare.repository.SubjectDetailsRepository;
-import com.example.finkishare.repository.SubjectRepository;
+import com.example.finkishare.repository.UserRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -22,39 +21,47 @@ import java.util.Random;
 
 @Component
 public class DataHandler {
-    private final SubjectRepository subjectRepository;
     private final JsonReader jsonReader;
     private final SubjectDetailsRepository subjectDetailsRepository;
     private final PostRepository postRepository;
     private final CommentRepository commentRepository;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public DataHandler(SubjectRepository subjectRepository, JsonReader jsonReader, SubjectDetailsRepository subjectDetailsRepository, PostRepository postRepository, CommentRepository commentRepository) {
-        this.subjectRepository = subjectRepository;
+    public DataHandler(JsonReader jsonReader, SubjectDetailsRepository subjectDetailsRepository, PostRepository postRepository, CommentRepository commentRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.jsonReader = jsonReader;
         this.subjectDetailsRepository = subjectDetailsRepository;
         this.postRepository = postRepository;
         this.commentRepository = commentRepository;
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
 
     @PostConstruct
     public void init() {
 
-        List<Subject> subjectList = new ArrayList<>();
+//        List<User> users = new ArrayList<>();
+//        if (userRepository.count() == 0) {
+//            users.add(
+//                    new User(
+//                            "andrej",
+//                            passwordEncoder.encode("1907"),
+//                            "andrej@gmail.com",
+//                            Role.ROLE_USER
+//                    ));
+//            users.add(
+//                    new User(
+//                            "admin",
+//                            passwordEncoder.encode("admin"),
+//                            "admin@gmail.com",
+//                            Role.ROLE_ADMIN
+//                    )
+//            );
+//            userRepository.saveAll(users);
+//        }
 
-        subjectList.add(new Subject("Оперативни системи", "opiss.....", 1));
-        subjectList.add(new Subject("Компјутерски мрежи", "opiss.....", 2));
-        subjectList.add(new Subject("Бизнис и менаџмент", "opiss.....", 3));
-        subjectList.add(new Subject("Вовед во компјутерските науки", "opiss.....", 4));
-        subjectList.add(new Subject("Професионални вештини", "opiss.....", 5));
-        subjectList.add(new Subject("Структурно програмирање", "opiss.....", 5));
-        subjectList.add(new Subject("Математика 1", "opiss.....", 5));
-        subjectList.add(new Subject("Архитектура и организација на компјутери", "opiss.....", 5));
-        subjectList.add(new Subject("Објектно-ориентирано програмирање", "opiss.....", 5));
-        subjectList.add(new Subject("Математика 2", "opiss.....", 5));
-        subjectList.add(new Subject("Објектно ориентирана анализа и дизајн", "opiss.....", 5));
-        subjectList.add(new Subject("Алгоритми и податочни структури", "opiss.....", 5));
-        subjectRepository.saveAll(subjectList);
+
 
         List<SubjectDetails> subjectDetailsList = jsonReader.readAndSaveJson("data/subjects.json");
         subjectDetailsRepository.saveAll(subjectDetailsList);
@@ -83,5 +90,8 @@ public class DataHandler {
         }
 
         postRepository.saveAll(posts);
+
+
+
     }
 }

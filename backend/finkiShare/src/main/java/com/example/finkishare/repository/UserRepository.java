@@ -1,9 +1,9 @@
 package com.example.finkishare.repository;
 
-import com.example.finkishare.model.Subject;
+import com.example.finkishare.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SubjectRepository extends JpaRepository<Subject, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 }

@@ -30,7 +30,7 @@ function replaceProgramNames(str) {
 }
 
 function CardComponent(props) {
-    console.log(props.subject)
+    // console.log(props.subject)
     const [clicked, setClicked] = useState(props.subject['isTaken']);
     const [formData, setFormData] = useState(props.subject.name);
 

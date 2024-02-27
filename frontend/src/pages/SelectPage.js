@@ -15,7 +15,9 @@ function SelectPage() {
 
     useEffect(() => {
         const url = 'http://localhost:8080/subjects';
-        fetch(url)
+        fetch(url, {
+            credentials: 'include'
+        })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -24,7 +26,7 @@ function SelectPage() {
             })
             .then(data => {
                 setSubjects(data);
-                console.log(data);
+                console.log("Data successfully fetched");
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
@@ -44,16 +46,6 @@ function SelectPage() {
                     </Col>
                 ))}
             </Row>
-
-            {/*<Row>*/}
-            {/*    {subjects.forEach(item => (*/}
-            {/*        <Col key={item.url} xs={12} sm={6} md={4} lg={3}>*/}
-            {/*            <CardComponent*/}
-            {/*                subject={item}*/}
-            {/*            />*/}
-            {/*        </Col>*/}
-            {/*    ))}*/}
-            {/*</Row>*/}
 
         </div>
     );

@@ -6,7 +6,8 @@ import com.example.finkishare.model.SubjectDetails;
 import com.example.finkishare.service.CommentService;
 import com.example.finkishare.service.PostService;
 import com.example.finkishare.service.SubjectDetailsService;
-import com.example.finkishare.service.SubjectService;
+//import com.example.finkishare.service.SubjectService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,13 +16,13 @@ import java.util.List;
 @CrossOrigin("http://localhost:3000/")
 public class SubjectController {
 
-    final private SubjectService subjectService;
+//    final private SubjectService subjectService;
     final private SubjectDetailsService subjectDetailsService;
     final private PostService postService;
     final private CommentService commentService;
 
-    public SubjectController(SubjectService subjectService, SubjectDetailsService subjectDetailsService, PostService postService, CommentService commentService) {
-        this.subjectService = subjectService;
+    public SubjectController( SubjectDetailsService subjectDetailsService, PostService postService, CommentService commentService) {
+//        this.subjectService = subjectService;
         this.subjectDetailsService = subjectDetailsService;
         this.postService = postService;
         this.commentService = commentService;
@@ -78,7 +79,8 @@ public class SubjectController {
 //    }
 
     @GetMapping("/subjects")
-    List<SubjectDetails> findSubjects(){
+    List<SubjectDetails> findSubjects(HttpSession session){
+        session.setAttribute("loggedin", true);
         return subjectDetailsService.findAll();
     }
 
