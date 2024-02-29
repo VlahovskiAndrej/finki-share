@@ -21,13 +21,17 @@ public class Post {
     @ManyToOne
     private SubjectDetails subjectDetails;
 
+    @ManyToOne
+    private User author;
+
     public Post() {
     }
 
-    public Post(String title, String description, LocalDateTime timeStamp, SubjectDetails subjectDetails) {
+    public Post(String title, String description, LocalDateTime timeStamp, SubjectDetails subjectDetails, User author) {
         this.title = title;
         this.description = description;
         this.timeStamp = timeStamp;
         this.subjectDetails = subjectDetails;
+        this.author = author;
     }
 }

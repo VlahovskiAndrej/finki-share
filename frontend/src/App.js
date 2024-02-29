@@ -10,6 +10,7 @@ import {Col, Row} from "react-bootstrap";
 import SelectPage from "./pages/SelectPage";
 import MaterialsPage from "./pages/MaterialsPage";
 import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
                 <Route path="/select" element={<SelectPage />} />
                 <Route path="/materials" element={<MaterialsPage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
                 {/* Other routes */}
             </Routes>
         </Router>

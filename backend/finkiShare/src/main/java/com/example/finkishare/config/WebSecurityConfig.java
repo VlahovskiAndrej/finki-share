@@ -2,6 +2,8 @@ package com.example.finkishare.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -18,9 +20,11 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig {
 
     private final PasswordEncoder passwordEncoder;
+    private final UserDetailsService userDetailsService;
 
-    public WebSecurityConfig(PasswordEncoder passwordEncoder) {
+    public WebSecurityConfig(PasswordEncoder passwordEncoder, UserDetailsService userDetailsService) {
         this.passwordEncoder = passwordEncoder;
+        this.userDetailsService = userDetailsService;
     }
 
     @Bean
@@ -29,9 +33,10 @@ public class WebSecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests( (requests) -> requests
-                        .requestMatchers("/", "/subjects/taken", "/comments/*", "/posts/*", "/subjects", "/auth", "/check-login")
+                        .requestMatchers("/", "/subjects/taken", "/comments/*", "/posts/*", "/subjects", "/auth", "/check-login", "/register")
                         .permitAll()
-//                        .requestMatchers("/subjects")
+                                .requestMatchers("/**").permitAll()
+//                        .requestMatchers("/subjects/taken")
 //                        .authenticated()
                 )
                 .formLogin((form) -> form
@@ -54,7 +59,7 @@ public class WebSecurityConfig {
         return http.build();
     }
 
-    @Bean
+//    @Bean
     public UserDetailsService userDetailsService() {
         UserDetails user1 = User.builder()
                 .username("andrej")
@@ -70,5 +75,15 @@ public class WebSecurityConfig {
 
         return new InMemoryUserDetailsManager(user1, admin);
     }
+
+    @Bean
+    public AuthenticationManager authManager(HttpSecurity http) throws Exception {
+        AuthenticationManagerBuilder authenticationManagerBuilder =
+                http.getSharedObject(AuthenticationManagerBuilder.class);
+        authenticationManagerBuilder.userDetailsService(userDetailsService);
+        return authenticationManagerBuilder.build();
+    }
+
+
 }
 

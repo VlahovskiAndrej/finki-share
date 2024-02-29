@@ -1,5 +1,10 @@
 package com.example.finkishare.service;
 
-public interface UserService {
+import com.example.finkishare.model.Role;
+import com.example.finkishare.model.User;
 
+public interface UserService {
+    User create(String username, String email, String password, Role role);
+
+    User findByUsername(String username);
 }

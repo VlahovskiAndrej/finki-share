@@ -9,6 +9,7 @@ import com.example.finkishare.repository.UserRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
+import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +21,9 @@ import java.util.List;
 import java.util.Random;
 
 @Component
+@AllArgsConstructor
 public class DataHandler {
+
     private final JsonReader jsonReader;
     private final SubjectDetailsRepository subjectDetailsRepository;
     private final PostRepository postRepository;
@@ -28,70 +31,59 @@ public class DataHandler {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public DataHandler(JsonReader jsonReader, SubjectDetailsRepository subjectDetailsRepository, PostRepository postRepository, CommentRepository commentRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.jsonReader = jsonReader;
-        this.subjectDetailsRepository = subjectDetailsRepository;
-        this.postRepository = postRepository;
-        this.commentRepository = commentRepository;
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
-
-
     @PostConstruct
     public void init() {
 
-//        List<User> users = new ArrayList<>();
-//        if (userRepository.count() == 0) {
-//            users.add(
-//                    new User(
-//                            "andrej",
-//                            passwordEncoder.encode("1907"),
-//                            "andrej@gmail.com",
-//                            Role.ROLE_USER
-//                    ));
-//            users.add(
-//                    new User(
-//                            "admin",
-//                            passwordEncoder.encode("admin"),
-//                            "admin@gmail.com",
-//                            Role.ROLE_ADMIN
-//                    )
-//            );
-//            userRepository.saveAll(users);
-//        }
-
-
-
-        List<SubjectDetails> subjectDetailsList = jsonReader.readAndSaveJson("data/subjects.json");
-        subjectDetailsRepository.saveAll(subjectDetailsList);
-
+        Random random = new Random();
+        List<User> users = new ArrayList<>();
         List<Post> posts = new ArrayList<>();
         List<Comment> comments;
 
-        Random random = new Random();
+        //Adding USERS
+        if (userRepository.count() == 0) {
+            users.add(
+                    new User(
+                            "andrej",
+                            "andrej@gmail.com",
+                            passwordEncoder.encode("1907"),
+                            Role.ROLE_USER
+                    ));
+
+            users.add(
+                    new User(
+                            "admin",
+                            "admin@gmail.com",
+                            passwordEncoder.encode("admin"),
+                            Role.ROLE_ADMIN
+                    ));
+            userRepository.saveAll(users);
+        }
+
+        //Adding every SUBJECT from 'data/subjects.json'
+        List<SubjectDetails> subjectDetailsList = jsonReader.readAndSaveJson("data/subjects.json");
+        subjectDetailsRepository.saveAll(subjectDetailsList);
+
+        //FOR EVERY SUBJECT
         for (int i=0; i<subjectDetailsList.size()-1; i++){
             comments = new ArrayList<>();
+
+            //adding sample POSTS for subject i
             for (int j = 0; j < random.nextInt(7); j++) {
                 String title = "Title " + (j + 1);
                 String description = "Description for Post " + (j + 1);
                 LocalDateTime timeStamp = LocalDateTime.now().minusDays(j);
-
-                Post post = new Post(title, description, timeStamp, subjectDetailsRepository.findById((long) i).orElse(null));
+                Post post = new Post(title, description, timeStamp, subjectDetailsRepository.findById((long) i).orElse(null), users.get(0));
                 posts.add(post);
 
+                //Adding sample COMMENTS for post j
                 for (int c = 0; c < random.nextInt(7); c++){
                     String text = "Comment " + (c + 1);
-                    Comment comment = new Comment(text, timeStamp, post);
+                    Comment comment = new Comment(text, timeStamp, post, users.get(0));
                     comments.add(comment);
                 }
             }
             commentRepository.saveAll(comments);
         }
-
         postRepository.saveAll(posts);
-
-
-
     }
 }

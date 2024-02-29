@@ -18,11 +18,14 @@ public class Comment {
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Post post;
 
+    @ManyToOne
+    private User author;
     public Comment() {}
 
-    public Comment(String text, LocalDateTime timeStamp, Post post) {
+    public Comment(String text, LocalDateTime timeStamp, Post post, User author) {
         this.text = text;
         this.timeStamp = timeStamp;
         this.post = post;
+        this.author = author;
     }
 }
