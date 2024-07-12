@@ -1,21 +1,20 @@
 import Card from 'react-bootstrap/Card';
 
-export default function StudentOrganization({imgPath, organizationName}) {
-
+const DescriptionCard = ({description, redirectLink}) => {
     return (
         <Card
             style={{width: '18rem', borderRadius: '2em', height: '18rem'}}
             className="mb-2"
         >
-            <Card.Img variant="top" src={imgPath} style={{width: '50%', alignSelf: 'center'}}/>
             <Card.Body className="text-center">
                 <Card.Title
-                >{organizationName}</Card.Title>
-
+                >{description.slice(0,180)}...</Card.Title>
             </Card.Body>
             <Card.Footer>
-                <small className="text-muted"> Tap to see more details</small>
+                {/*<small className="text-muted">Full Program: </small>*/}
+                <a href={redirectLink}>Click to see the full Program</a>
             </Card.Footer>
         </Card>
     );
 }
+export default DescriptionCard
