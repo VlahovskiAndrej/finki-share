@@ -3,7 +3,7 @@ import React from "react";
 import {Col, Container, Row} from "react-bootstrap";
 import useSubjects from "../../hooks/useSubjects";
 
-export default function AllCoursesCard({period, term}) {
+const AllCoursesCard = ({period, term}) => {
     const subjects = useSubjects();
     console.log("PERIOD ", period)
     //TODO: filter by term
@@ -23,3 +23,5 @@ export default function AllCoursesCard({period, term}) {
         </Container>
     );
 }
+
+export default AllCoursesCard;

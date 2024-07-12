@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Navigation from "../components/navigation/Navigation";
 import useSetUser from "../hooks/useSetUser";
 
-function LoginPage() {
+const LoginPage = () => {
 
     const {username, setUsername, password, setPassword, isLoggedIn, handleSubmit} = useSetUser();
 

@@ -5,7 +5,7 @@ import ImagePicker from "../components/ImagePicker";
 import Navigation from "../components/navigation/Navigation";
 import useRegisterUser from "../hooks/useRegisterUser";
 
-function RegisterPage() {
+const RegisterPage = () => {
 
     const {
         username, setUsername, email, setEmail, password, setPassword, successMessage,

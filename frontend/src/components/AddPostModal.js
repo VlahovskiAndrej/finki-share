@@ -5,7 +5,7 @@ import useAuthStatus from "../hooks/useAuthStatus";
 import useSetPosts from "../hooks/useSetPosts";
 
 
-function MyVerticallyCenteredModal(props) {
+const MyVerticallyCenteredModal = (props) => {
 
     const { username } = useAuthStatus();
     const {setTitle, setText, handleSubmit} = useSetPosts();
@@ -39,9 +39,8 @@ function MyVerticallyCenteredModal(props) {
     );
 }
 
-function AddPostModal(props) {
+const AddPostModal = (props) => {
     const [modalShow, setModalShow] = React.useState(false);
-
     return (
         <>
             <Button variant="primary" onClick={() => setModalShow(true)}>

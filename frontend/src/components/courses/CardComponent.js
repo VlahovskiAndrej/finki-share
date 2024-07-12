@@ -5,7 +5,7 @@ import CardDetails from "../CardDetails";
 import useSetSubject from "../../hooks/useSetSubject";
 
 
-function replaceProgramNames(str) {
+const replaceProgramNames = (str) => {
     if (str === undefined)
         return str
     str = str.replaceAll("Примена на информациски технологии", "ПИТ");
@@ -29,7 +29,7 @@ function replaceProgramNames(str) {
     return Array.from(uniqueCharacters).join(', ');
 }
 
-function CardComponent(props) {
+const CardComponent = (props) =>  {
     console.log(props.subject)
     const [clicked, setClicked] = useState(props.subject['isTaken']);
     const formData = props.subject.name;

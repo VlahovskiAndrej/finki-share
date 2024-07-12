@@ -5,7 +5,7 @@ import './Sidebar.module.css';
 import Forum from "./Forum"; // Import CSS file for custom styling
 import usePostsAndLink from "../hooks/usePostsAndLink"
 
-function Sidebar(props) {
+const Sidebar = (props) => {
     const {activeLink, posts, fetchData} = usePostsAndLink();
 
     return (

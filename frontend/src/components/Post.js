@@ -23,11 +23,10 @@
 //
 // export default Post
 
-import React, { useState } from "react";
+import React from "react";
 import CommentsModal from "./CommentsModal";
-import Button from "react-bootstrap/Button";
 
-function Post({ post }) {
+const Post = ({ post }) => {
     // Define a variable to hold the image URL
     const imageUrl = "https://cdn3d.iconscout.com/3d/premium/thumb/man-5692600-4743369.png?f=webp"; // Assuming imageUrl is a property of the post object
 

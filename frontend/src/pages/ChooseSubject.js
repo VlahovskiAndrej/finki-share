@@ -3,7 +3,7 @@ import Navigation from "../components/navigation/Navigation"
 import React, {useState} from "react";
 import Top4Courses from "../components/top-four-courses-per-category/Top4Courses";
 
-export default function ChooseSubject() {
+const ChooseSubject = () => {
 
     const [category, setCategory] = useState(["programming"]);
 
@@ -14,7 +14,7 @@ export default function ChooseSubject() {
         { description: "Math", selected: false, id: 3 },
     ]);
 
-    function handleActiveCategory(category) {
+    const handleActiveCategory = (category) => {
 
         const updatedSubjectObject = subjectObject.map((subject) => {
             return {
@@ -29,7 +29,6 @@ export default function ChooseSubject() {
     }
 
 return (
-
     <>
         <div style={{ backgroundColor: '#DBD2CB' }}>
             <div style={{ backgroundColor: '#DBD2CB' }}>
@@ -88,9 +87,8 @@ return (
                     <a href="/select/subjectsAll" className="btn w-25">Види повеќе</a>
                 </Row>
             </Container>
-
         </div>
-
     </>
 );
 }
+export default ChooseSubject;

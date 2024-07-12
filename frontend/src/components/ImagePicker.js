@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classes from './ImagePicker.module.css'; // Import CSS module
 
-function ImagePicker({ setSelectedImage, imageUrls }) {
+const ImagePicker = ({ setSelectedImage, imageUrls }) => {
     const [selectedImage, setSelectedImageLocal] = useState('');
 
     const handleImageChange = (imageUrl) => {

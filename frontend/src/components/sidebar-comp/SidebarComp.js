@@ -1,31 +1,36 @@
 import {Menu, MenuItem, Sidebar, SubMenu} from 'react-pro-sidebar';
 
-export default function SidebarComp({onPeriodClick, onTermClick}) {
+const SidebarComp = ({onPeriodClick, onTermClick}) => {
 
-  const semesters = [1, 2, 3, 4, 5, 6, 7, 8];
-  
-  function handlePeriod (periodType){
-   onPeriodClick(periodType);
-  }
+    const semesters = [1, 2, 3, 4, 5, 6, 7, 8];
 
-  function handleTerm(termType){
-    onTermClick(termType);
-  }
+    const handlePeriod = (periodType) => {
+        onPeriodClick(periodType);
+    }
 
-  return (
-    <Sidebar  >
-      <Menu  style={{backgroundColor: '#CDC1B6', minHeight: '630px'}}> 
-        <SubMenu label="Период"  >
-          <MenuItem onClick={() => handlePeriod("зимски")}  style={{backgroundColor: '#CDC1B6'}}> Зимски </MenuItem>
-          <MenuItem onClick={() => handlePeriod("летен")}  style={{backgroundColor: '#CDC1B6'}}> Летен </MenuItem>
-        </SubMenu>
-        <SubMenu label="Семестар">
-          {semesters.map((semester => (
-            <MenuItem style={{backgroundColor: '#CDC1B6'}} key={semester} onClick={() => handleTerm(semester)}>{semester}  Семестар</MenuItem>
-          )))}
+    const handleTerm = (termType) => {
+        onTermClick(termType);
+    }
 
-        </SubMenu>
-      </Menu>
-    </Sidebar>
-  );
+    return (
+        <Sidebar>
+            <Menu style={{backgroundColor: '#CDC1B6', minHeight: '630px'}}>
+                <SubMenu label="Период">
+                    <MenuItem onClick={() => handlePeriod("зимски")}
+                              style={{backgroundColor: '#CDC1B6'}}> Зимски </MenuItem>
+                    <MenuItem onClick={() => handlePeriod("летен")}
+                              style={{backgroundColor: '#CDC1B6'}}> Летен </MenuItem>
+                </SubMenu>
+                <SubMenu label="Семестар">
+                    {semesters.map((semester => (
+                        <MenuItem style={{backgroundColor: '#CDC1B6'}} key={semester}
+                                  onClick={() => handleTerm(semester)}>{semester} Семестар</MenuItem>
+                    )))}
+
+                </SubMenu>
+            </Menu>
+        </Sidebar>
+    );
 }
+
+export default SidebarComp;

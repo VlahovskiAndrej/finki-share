@@ -5,20 +5,16 @@ import {AiFillTwitterCircle} from "react-icons/ai";
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-export default function Footer() {
-    function handleHover(event) {
-
+const Footer = () => {
+    const handleHover = (event) => {
         event.target.style.transition = 'all .35s ease';
         event.target.style.transform = 'scale(.9)';
         event.target.style.filter = 'grayscale(100%) contrast(120%)';
     }
 
-    function handleHoverEnd(event) {
-
+    const handleHoverEnd = (event) => {
         event.target.style.transform = 'scale(1)';
-
     }
-
 
     return (
         <>
@@ -37,13 +33,16 @@ export default function Footer() {
                 <Col className="col-auto">
                     <Row className="mx-auto">
                         <Col className="col-auto">
-                            <FaFacebook onMouseOver={handleHover} onMouseOut={handleHoverEnd} color="white" size="3.5em" onClick={() => window.location = "https://www.facebook.com/"} />
+                            <FaFacebook onMouseOver={handleHover} onMouseOut={handleHoverEnd} color="white" size="3.5em"
+                                        onClick={() => window.location = "https://www.facebook.com/"}/>
                         </Col>
                         <Col className="col-auto">
-                            <FaInstagram onMouseOver={handleHover} onMouseOut={handleHoverEnd} color="white" size="3.5em" />
+                            <FaInstagram onMouseOver={handleHover} onMouseOut={handleHoverEnd} color="white"
+                                         size="3.5em"/>
                         </Col>
                         <Col className="col-auto">
-                            <AiFillTwitterCircle onMouseOver={handleHover} onMouseOut={handleHoverEnd} color="white" size="3.5em" />
+                            <AiFillTwitterCircle onMouseOver={handleHover} onMouseOut={handleHoverEnd} color="white"
+                                                 size="3.5em"/>
                         </Col>
                     </Row>
                 </Col>
@@ -91,18 +90,19 @@ export default function Footer() {
                         Links
                     </h1>
                     <br></br>
-                    <Container className="mx-auto w-50" style={{ color: "white" }}>
-                    <h5 className="text-center" style={{fontFamily: 'sans-serif' }}>LeetCode</h5>
-                    <h5 className="text-center" style={{fontFamily: 'sans-serif' }}>GitHub</h5>
-                    <h5 className="text-center" style={{fontFamily: 'sans-serif' }}>FINKI</h5>
-                    <h5 className="text-center" style={{fontFamily: 'sans-serif' }}>Discord</h5>
+                    <Container className="mx-auto w-50" style={{color: "white"}}>
+                        <h5 className="text-center" style={{fontFamily: 'sans-serif'}}>LeetCode</h5>
+                        <h5 className="text-center" style={{fontFamily: 'sans-serif'}}>GitHub</h5>
+                        <h5 className="text-center" style={{fontFamily: 'sans-serif'}}>FINKI</h5>
+                        <h5 className="text-center" style={{fontFamily: 'sans-serif'}}>Discord</h5>
                     </Container>
                 </Col>
 
                 <Col>
-                    <Container className="mx-auto w-50" style={{ color: "white" }}>
-                        <h5 className="text-start" style={{ textAlign: "center", fontFamily: 'sans-serif' }}>ABOUT US</h5>
-                        <h5 className="text-start" style={{ textAlign: "center", fontFamily: 'sans-serif' }}>REPORT A BUG</h5>
+                    <Container className="mx-auto w-50" style={{color: "white"}}>
+                        <h5 className="text-start" style={{textAlign: "center", fontFamily: 'sans-serif'}}>ABOUT US</h5>
+                        <h5 className="text-start" style={{textAlign: "center", fontFamily: 'sans-serif'}}>REPORT A
+                            BUG</h5>
 
                     </Container>
                 </Col>
@@ -110,3 +110,5 @@ export default function Footer() {
         </>
     );
 };
+
+export default Footer;

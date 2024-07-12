@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 
-export default function HomePageCard({ imgUrl, mainText, subText }) {
+const HomePageCard = ({ imgUrl, mainText, subText }) => {
     return (
         <>
             <Card
@@ -23,3 +23,5 @@ export default function HomePageCard({ imgUrl, mainText, subText }) {
         </>
     );
 }
+
+export default HomePageCard;

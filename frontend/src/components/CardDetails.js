@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import React from 'react';
 
-function MyVerticallyCenteredModal(props) {
+const MyVerticallyCenteredModal = (props) => {
     return (
         <Modal
             {...props}
@@ -30,7 +30,7 @@ function MyVerticallyCenteredModal(props) {
     );
 }
 
-function CardDetails(props) {
+const CardDetails = (props) => {
     const [modalShow, setModalShow] = React.useState(false);
 
     return (

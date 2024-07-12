@@ -5,7 +5,7 @@ import {FaCommentDots} from "react-icons/fa";
 import useComments from "../hooks/useComments";
 
 
-function MyVerticallyCenteredModal(props) {
+const MyVerticallyCenteredModal = (props) => {
     return (
         <Modal
             {...props}
@@ -43,7 +43,7 @@ function MyVerticallyCenteredModal(props) {
     );
 }
 
-function CommentsModal(props) {
+const CommentsModal = (props) => {
     const [modalShow, setModalShow] = React.useState(false);
     const {comments, fetchData} = useComments();
 

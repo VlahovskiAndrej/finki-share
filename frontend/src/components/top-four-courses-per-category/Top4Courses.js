@@ -4,7 +4,7 @@ import {Col, Container, Row} from "react-bootstrap";
 import useSubjects from "../../hooks/useSubjects";
 
 
-export default function Top4Courses({category}){
+const Top4Courses = ({category}) => {
     const subjects = useSubjects();
 
     return (
@@ -25,3 +25,4 @@ export default function Top4Courses({category}){
                 </Container>
     );
 }
+export default Top4Courses;

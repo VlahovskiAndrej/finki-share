@@ -4,7 +4,7 @@ import React from "react";
 import useTakenSubjects from "../hooks/useTakenSubjects"
 import Navigation from "../components/navigation/Navigation";
 
-function MaterialsPage() {
+const MaterialsPage = () => {
 
     const subjects = useTakenSubjects();
 
