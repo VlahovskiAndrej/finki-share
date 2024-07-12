@@ -1,49 +1,18 @@
-import {useEffect, useState} from 'react';
 import '../App.css';
-import NavigationBar from "../components/NavigationBar";
-import Home from "../components/Home";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Navigation from "../componentsNew/Navigation/Navigation";
+import Navigation from "../components/navigation/Navigation";
+import useSetUser from "../hooks/useSetUser";
 
 function LoginPage() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            const response = await fetch('http://localhost:8080/auth', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username,
-                    password
-                })
-            });
-
-            console.log(response.text())
-            if (response.ok){
-                console.log('Login successful');
-                setIsLoggedIn(true)
-            }
-             else
-                console.error('Login failed');
-
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    };
-
+    const {username, setUsername, password, setPassword, isLoggedIn, handleSubmit} = useSetUser();
 
     return (
         <div className="App">
             <Navigation></Navigation>
 
-            <Form style={{padding:"35px"}} onSubmit={handleSubmit}>
+            <Form style={{padding: "35px"}} onSubmit={handleSubmit}>
                 <h2>Login</h2>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -66,7 +35,7 @@ function LoginPage() {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
+                    <Form.Check type="checkbox" label="Check me out"/>
                 </Form.Group>
 
                 <Button variant="primary" type="submit">

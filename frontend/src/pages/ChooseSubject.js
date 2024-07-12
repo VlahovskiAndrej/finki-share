@@ -1,8 +1,7 @@
-import { Container, Row, Col } from "react-bootstrap";
-import Navigation from "../componentsNew/Navigation/Navigation"
-import CardComponent from "../componentsNew/Courses/CardComponent";
-import React, { useEffect, useState } from "react";
-import Top4Courses from "../componentsNew/Top4CoursesPerCat/Top4Courses";
+import {Col, Container, Row} from "react-bootstrap";
+import Navigation from "../components/navigation/Navigation"
+import React, {useState} from "react";
+import Top4Courses from "../components/top-four-courses-per-category/Top4Courses";
 
 export default function ChooseSubject() {
 
@@ -15,7 +14,7 @@ export default function ChooseSubject() {
         { description: "Math", selected: false, id: 3 },
     ]);
 
-    function handleActiceCategory(category) {
+    function handleActiveCategory(category) {
 
         const updatedSubjectObject = subjectObject.map((subject) => {
             return {
@@ -24,10 +23,6 @@ export default function ChooseSubject() {
             };
         })
 
-        // subjectObject.find(el => el.description.includes(category[0])).selected = true;
-        // setSubjectObject(prevObj => ({
-        //     ... prevObj,
-        // }));
         setSubjectObject(updatedSubjectObject);
         setCategory(category);
     
@@ -50,28 +45,28 @@ return (
             <Container className="mt-5">
                 <Row className="text-center">
                     <Col >
-                        <p onClick={() => handleActiceCategory(["Advanced", "Databases", "Web Programming", "Advanced Web Design"])} className="btn"
+                        <p onClick={() => handleActiveCategory(["Advanced", "Databases", "Web Programming", "Advanced Web Design"])} className="btn"
                             style={{
                                 borderBottom: subjectObject[0].selected ? '10px solid #814A35' : ''
                             }}
                         >Популарни курсеви</p>
                     </Col>
                     <Col >
-                        <p onClick={() => handleActiceCategory(["Artificial", "Machine", "Agent"])} className="btn"
+                        <p onClick={() => handleActiveCategory(["Artificial", "Machine", "Agent"])} className="btn"
                             style={{
                                 borderBottom: subjectObject[1].selected ? '10px solid #814A35' : ''
                             }}
                         >AI</p>
                     </Col>
                     <Col >
-                        <p onClick={() => handleActiceCategory(["Web"])} className="btn"
+                        <p onClick={() => handleActiveCategory(["Web"])} className="btn"
                             style={{
                                 borderBottom: subjectObject[2].selected ? '10px solid #814A35' : ''
                             }}
                         >Web Development</p>
                     </Col>
                     <Col >
-                        <p onClick={() => handleActiceCategory(["Math"])} className="btn"
+                        <p onClick={() => handleActiveCategory(["Math"])} className="btn"
                             style={{
                                 borderBottom: subjectObject[3].selected ? '10px solid #814A35' : ''
                             }}
@@ -94,8 +89,6 @@ return (
                 </Row>
             </Container>
 
-           {/* {Object.values(subjectObject)} */}
-          
         </div>
 
     </>

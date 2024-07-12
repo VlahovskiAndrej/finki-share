@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import {Menu, MenuItem, Sidebar, SubMenu} from 'react-pro-sidebar';
 
 export default function SidebarComp({onPeriodClick, onTermClick}) {
 

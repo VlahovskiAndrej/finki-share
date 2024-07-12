@@ -1,12 +1,11 @@
 import React from "react";
-import { Col, Container, Image, Row } from "react-bootstrap";
-import { FaFacebook } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { AiFillTwitterCircle } from "react-icons/ai";
+import {Col, Container, Row} from "react-bootstrap";
+import {FaFacebook, FaInstagram} from "react-icons/fa";
+import {AiFillTwitterCircle} from "react-icons/ai";
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-export default function FooterNew() {
+export default function Footer() {
     function handleHover(event) {
 
         event.target.style.transition = 'all .35s ease';

@@ -1,10 +1,7 @@
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import {useNavigate} from 'react-router-dom';
 import React from 'react'
-import {Navbar, Nav} from 'react-bootstrap';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import {Nav, Navbar} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import styles from './Navigation.module.css'
 import useAuthStatus from "../../hooks/useAuthStatus";
@@ -36,7 +33,7 @@ export default function Navigation() {
         <Navbar expand="lg">
             <Container>
 
-                <img src='/images/finkilogo.png ' style={{width: '5%', height: '5%'}} onClick={routeChange}/>
+                <img alt='/' src='/images/finkilogo.png ' style={{width: '5%', height: '5%'}} onClick={routeChange}/>
                 <Navbar.Brand href="/" style={{color: 'white'}}>
 
                 </Navbar.Brand>
