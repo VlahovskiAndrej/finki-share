@@ -1,33 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Nav, Navbar, Container, Col, Row} from 'react-bootstrap';
+import {Container, Nav, Navbar} from 'react-bootstrap';
 import './Sidebar.module.css';
-import CardComponent from "./CardComponent";
 import Forum from "./Forum"; // Import CSS file for custom styling
+import usePostsAndLink from "../hooks/usePostsAndLink"
 
 function Sidebar(props) {
-    const [activeLink, setActiveLink] = useState(null);
-    const [posts, setPosts] = useState([]);
-
-    const fetchData = (id) => {
-        const url = 'http://localhost:8080/posts/' + id;
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                setPosts(data);
-                console.log(data);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
-
-        setActiveLink(id); // Update active link
-    };
+    const {activeLink, posts, fetchData} = usePostsAndLink();
 
     return (
         <>

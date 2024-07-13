@@ -1,44 +1,14 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Post from "./Post";
-import { useState } from 'react';
 import useAuthStatus from "../hooks/useAuthStatus";
+import useSetPosts from "../hooks/useSetPosts";
+
 
 function MyVerticallyCenteredModal(props) {
 
-    const [title, setTitle] = useState("")
-    const [text, setText] = useState("")
-    const { isLoggedIn, username } = useAuthStatus();
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            const response = await fetch('http://localhost:8080/posts/add', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    title,
-                    text,
-                    username,
-                    subjectId: props.subjectId
-                })
-            });
-
-            console.log(response.text())
-            if (response.ok){
-                console.log('Created post successfully');
-                props.onHide()
-            }
-            else
-                console.error('Creating post failed');
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    };
-
+    const { username } = useAuthStatus();
+    const {setTitle, setText, handleSubmit} = useSetPosts();
 
     return (
         <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
@@ -57,7 +27,7 @@ function MyVerticallyCenteredModal(props) {
                     <label htmlFor="text">Text:</label><br />
                     <textarea id="text" name="text" rows="6" cols="50" onChange={(e) => setText(e.target.value)} style={{width: "100%"}}></textarea><br /><br />
 
-                    <button onClick={handleSubmit}>Submit</button>
+                    <button onClick={(event) => handleSubmit(event, username, props)}>Submit</button>
                 </form>
             </Modal.Body>
 

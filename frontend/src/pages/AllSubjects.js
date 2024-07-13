@@ -1,9 +1,8 @@
-import { Col, Container, Row } from "react-bootstrap";
-import Navigation from "../componentsNew/Navigation/Navigation";
-import SidebarComp from "../componentsNew/SidebarComp/SidebarComp";
-import CardComponent from "../components/CardComponent";
-import AllCoursesCard from "../componentsNew/AllCourses/AllCoursesCard";
-import { useState } from "react";
+import {Col, Row} from "react-bootstrap";
+import Navigation from "../components/navigation/Navigation";
+import SidebarComp from "../components/sidebar-comp/SidebarComp";
+import AllCoursesCard from "../components/all-courses/AllCoursesCard";
+import {useState} from "react";
 
 export default function AllSubjects() {
 

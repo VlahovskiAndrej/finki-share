@@ -1,7 +1,7 @@
-import Card from 'react-bootstrap/Card';
 import ReactCardFlip from 'react-card-flip';
-import StudentOrganization from '../StudentsOrganization/StudentOrganization';
-import { useState } from 'react';
+import StudentOrganization from '../students-organization/StudentOrganization';
+import {useState} from 'react';
+
 export default function Companies(imgPath, organizationName, content) {
 
     const [isFlipped, setIsFlipped] = useState(false);

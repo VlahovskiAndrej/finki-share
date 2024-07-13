@@ -1,10 +1,8 @@
 import '../App.css';
-import NavigationBar from "../components/NavigationBar";
 import Sidebar from "../components/Sidebar";
-import React, {useEffect, useState} from "react";
-import "./SelectPage.module.css";
+import React from "react";
 import useTakenSubjects from "../hooks/useTakenSubjects"
-import Navigation from "../componentsNew/Navigation/Navigation";
+import Navigation from "../components/navigation/Navigation";
 
 function MaterialsPage() {
 
