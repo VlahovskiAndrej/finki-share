@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function useAuthStatus() {
+const useAuthStatus = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [username, setUsername] = useState("");
 

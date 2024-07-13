@@ -4,16 +4,16 @@ import SidebarComp from "../components/sidebar-comp/SidebarComp";
 import AllCoursesCard from "../components/all-courses/AllCoursesCard";
 import {useState} from "react";
 
-export default function AllSubjects() {
+const AllSubjects = () => {
 
     const [period, setPeriod] = useState(null);
     const [term, setTerm] = useState(null);
 
-    function handlePeriodChange(periodType) {
+    const handlePeriodChange = (periodType) => {
         setPeriod(periodType);
     }
 
-    function handleTermChange(termType) {
+    const handleTermChange = (termType) => {
         setTerm(termType);
     }
 
@@ -60,3 +60,4 @@ export default function AllSubjects() {
         </>
     );
 }
+export default AllSubjects;

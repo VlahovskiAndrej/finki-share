@@ -12,7 +12,7 @@ import ReactCardFlip from 'react-card-flip';
 import companies from '../data/companies.json'
 import DescriptionCard from "../components/students-organization/DescriptionCard";
 
-export default function HomePage() {
+const HomePage = () => {
 
     const settings = {
         className: "center",
@@ -26,19 +26,17 @@ export default function HomePage() {
 
     const [companiesState, setCompaniesState] = useState(companies);
 
-    function flipCard(id) {
+    const flipCard = (id) => {
         const updatedCompanies = companiesState.map((company) =>
             company.id === id ? {...company, isFlipped: !company.isFlipped} : company
         );
         setCompaniesState(updatedCompanies);
     }
 
-    function MouseOver(event) {
+    const MouseOver = (event) => {
         event.target.style.transform = 'scaleY(1.1)';
-
     }
-
-    function MouseOut(event) {
+    const MouseOut = (event) => {
         event.target.style.transform = 'scaleY(1)';
     }
 
@@ -226,4 +224,5 @@ export default function HomePage() {
         </>
     );
 }
+export default HomePage;
 

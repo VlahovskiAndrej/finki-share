@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function useTakenSubjects() {
+const useTakenSubjects = () => {
     const [subjects, setSubjects] = useState([]);
 
     useEffect(() => {
