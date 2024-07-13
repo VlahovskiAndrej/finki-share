@@ -4,6 +4,7 @@ import NavigationBar from "../components/NavigationBar";
 import Home from "../components/Home";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Navigation from "../componentsNew/Navigation/Navigation";
 
 function LoginPage() {
     const [username, setUsername] = useState('');
@@ -40,7 +41,7 @@ function LoginPage() {
 
     return (
         <div className="App">
-            <NavigationBar></NavigationBar>
+            <Navigation></Navigation>
 
             <Form style={{padding:"35px"}} onSubmit={handleSubmit}>
                 <h2>Login</h2>

@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { brows } from 'react-router-dom';
 import ImagePicker from "../components/ImagePicker";
+import Navigation from "../componentsNew/Navigation/Navigation";
 
 function RegisterPage() {
     const [username, setUsername] = useState('');
@@ -50,7 +51,7 @@ function RegisterPage() {
 
     return (
         <div className="App">
-            <NavigationBar></NavigationBar>
+            <Navigation></Navigation>
 
             <Form style={{padding:"35px"}} onSubmit={handleSubmit}>
                 <h2>Create new account!</h2>

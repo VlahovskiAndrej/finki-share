@@ -4,6 +4,7 @@ import Sidebar from "../components/Sidebar";
 import React, {useEffect, useState} from "react";
 import "./SelectPage.module.css";
 import useTakenSubjects from "../hooks/useTakenSubjects"
+import Navigation from "../componentsNew/Navigation/Navigation";
 
 function MaterialsPage() {
 
@@ -11,7 +12,7 @@ function MaterialsPage() {
 
     return (
         <div className="App">
-            <NavigationBar></NavigationBar>
+            <Navigation></Navigation>
             <Sidebar subjects={subjects}></Sidebar>
         </div>
     );
