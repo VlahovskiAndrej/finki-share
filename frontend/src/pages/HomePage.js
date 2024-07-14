@@ -2,7 +2,7 @@ import {Col, Container, Image, Row} from "react-bootstrap";
 import Navigation from "../components/navigation/Navigation";
 import {ReactTyped} from "react-typed";
 import HomePageCard from "../components/home-page-card/HomePageCard";
-import StudentOrganization from "../components/students-organization/StudentOrganization";
+import InformationCard from "../components/students-organization/InformationCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import React, {useState} from "react";
@@ -162,10 +162,10 @@ const HomePage = () => {
                         {students_organizations.map((organization) => {
                             return (
                                 <Col>
-                                    <StudentOrganization
+                                    <InformationCard
                                         imgPath={organization.imgPath}
                                         organizationName={organization.organizationName}
-                                    ></StudentOrganization>
+                                    ></InformationCard>
                                 </Col>
                             );
                         })}
@@ -184,11 +184,11 @@ const HomePage = () => {
                                 return (
                                     <ReactCardFlip flipDirection='horizontal' isFlipped={company.isFlipped}>
                                         <div onClick={() => flipCard(company.id)}>
-                                            <StudentOrganization
+                                            <InformationCard
                                                 imgPath={company.imgPath}
                                                 organizationName={company.organizationName}
                                             >
-                                            </StudentOrganization>
+                                            </InformationCard>
                                         </div>
                                         <div onClick={() => flipCard(company.id)}>
                                             <DescriptionCard

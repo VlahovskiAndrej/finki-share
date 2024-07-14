@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 
-const StudentOrganization = ({imgPath, organizationName}) => {
+const InformationCard = ({imgPath, organizationName}) => {
 
     return (
         <Card
@@ -22,4 +22,4 @@ const StudentOrganization = ({imgPath, organizationName}) => {
         </Card>
     );
 }
-export default StudentOrganization;
+export default InformationCard;
