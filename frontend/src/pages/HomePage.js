@@ -10,6 +10,7 @@ import Slider from "react-slick";
 import Footer from "../components/footer/footer";
 import ReactCardFlip from 'react-card-flip';
 import companies from '../data/companies.json'
+import students_organizations from '../data/student_organizations.json'
 import DescriptionCard from "../components/students-organization/DescriptionCard";
 
 const HomePage = () => {
@@ -171,20 +172,17 @@ const HomePage = () => {
                     </Row>
                     <br></br>
                     <Row>
-                        <Col>
-                            <StudentOrganization
-                                imgPath='/images/studentorg/st_org_best_logo.png'
-                                organizationName='BEST'
-                            ></StudentOrganization>
-                        </Col>
-                        <Col>
-                            <StudentOrganization
-                                imgPath='/images/studentorg/st_org_iaeste_logo.png'
-                                organizationName='IAESTE'></StudentOrganization>
-                        </Col>
-                        <StudentOrganization
-                            imgPath='/images/studentorg/eestec-removebg-preview.png'
-                            organizationName='EESTEC'></StudentOrganization>
+                        //TODO: ReactCardFlip might be added
+                        {students_organizations.map((organization) => {
+                            return (
+                                <Col>
+                                    <StudentOrganization
+                                        imgPath={organization.imgPath}
+                                        organizationName={organization.organizationName}
+                                    ></StudentOrganization>
+                                </Col>
+                            );
+                        })}
                     </Row>
                     <br></br>
                 </Container>
