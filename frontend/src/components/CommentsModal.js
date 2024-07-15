@@ -3,9 +3,14 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {FaCommentDots} from "react-icons/fa";
 import useComments from "../hooks/useComments";
+import useAuthStatus from "../hooks/useAuthStatus";
+import useSetComments from "../hooks/useSetComments";
 
 
 const MyVerticallyCenteredModal = (props) => {
+    const {username} = useAuthStatus();
+    const {setComment, handleSubmit} = useSetComments();
+
     return (
         <Modal
             {...props}
@@ -30,9 +35,12 @@ const MyVerticallyCenteredModal = (props) => {
                         </div>
                     </div>
                 ))}
-                <textarea style={{width: "100%", height: "70px", borderRadius: "25px", padding: "0 15px"}}/>
+                <textarea
+                    onChange={(e) => setComment(e.target.value)}
+                    style={{width: "100%", height: "70px", borderRadius: "25px", padding: "0 15px"}}/>
                 <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-                    <Button variant="secondary" size="sm">Add </Button>
+                    <Button variant="secondary" size="sm"
+                            onClick={(event) => handleSubmit(event, username, props)}>Add </Button>
                 </div>
 
             </Modal.Body>
@@ -73,6 +81,7 @@ const CommentsModal = (props) => {
             </Button>
 
             <MyVerticallyCenteredModal
+                postId={props.postId}
                 comments={comments}
                 show={modalShow}
                 onHide={() => setModalShow(false)}

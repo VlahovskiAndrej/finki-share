@@ -1,11 +1,9 @@
 package com.example.finkishare.web.controller;
 
 import com.example.finkishare.model.Comment;
+import com.example.finkishare.model.dto.CommentDto;
 import com.example.finkishare.service.CommentService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +20,15 @@ public class CommentController {
     @GetMapping("/comments/{id}")
     List<Comment> getCommentsByPostId(@PathVariable String id){
         return commentService.findAllByPostId(Long.parseLong(id));
+    }
+
+    @PostMapping("/comments/add")
+    void addNewPost(@RequestBody CommentDto commentDto) {
+        System.out.println(commentDto);
+        commentService.createNewComment(
+                commentDto.getComment(),
+                commentDto.getPostId(),
+                commentDto.getUsername()
+        );
     }
 }
