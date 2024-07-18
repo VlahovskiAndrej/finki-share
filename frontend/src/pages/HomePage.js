@@ -44,7 +44,9 @@ const HomePage = () => {
 
     return (
         <>
-            <Navigation/>
+            <Navigation
+                isNavigationWhite = {true}
+            />
             <Container>
                 <Row className="d-flex align-items-center justify-content-center">
                     <Col>

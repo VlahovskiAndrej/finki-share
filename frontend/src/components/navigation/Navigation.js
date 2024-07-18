@@ -7,7 +7,7 @@ import styles from './Navigation.module.css'
 import useAuthStatus from "../../hooks/useAuthStatus";
 
 
-const Navigation = () =>  {
+const Navigation = ({isNavigationWhite}) =>  {
     const {isLoggedIn, username} = useAuthStatus();
     let navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const Navigation = () =>  {
 
     const MouseOut = (event) => {
         event.target.style.color = 'black';
-        event.target.style.backgroundColor = 'white';
+        event.target.style.backgroundColor = isNavigationWhite ? 'white' : '#DBD2CB'
     }
 
     return (

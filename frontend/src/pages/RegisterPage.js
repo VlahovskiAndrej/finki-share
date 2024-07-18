@@ -14,7 +14,9 @@ const RegisterPage = () => {
     } = useRegisterUser();
     return (
         <div className="App">
-            <Navigation></Navigation>
+            <Navigation
+                isNavigationWhite={true}
+            />
             <Form style={{padding: "35px"}} onSubmit={handleSubmit}>
                 <h2>Create new account!</h2>
                 <Form.Group className="mb-3" controlId="formBasicUsername">
