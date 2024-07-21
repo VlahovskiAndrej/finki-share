@@ -13,6 +13,7 @@ import companies from '../data/companies.json'
 import students_organizations from '../data/student_organizations.json'
 import home_page_data from "../data/home_page.json"
 import DescriptionCard from "../components/students-organization/DescriptionCard";
+import ComputerAnimation from "../animationTest/computer/ComputerAnimation";
 
 const HomePage = () => {
 
@@ -85,9 +86,10 @@ const HomePage = () => {
                         </Row>
                     </Col>
                     <Col>
-                        <Image
-                            className="mr-3"
-                            src="/images/homepage/3d-illustration-smiling-happy-man-600nw-1740135179.webp"/>
+                        <ComputerAnimation/>
+                        {/*<Image*/}
+                        {/*    className="mr-3"*/}
+                        {/*    src="/images/homepage/3d-illustration-smiling-happy-man-600nw-1740135179.webp"/>*/}
                     </Col>
                 </Row>
             </Container>

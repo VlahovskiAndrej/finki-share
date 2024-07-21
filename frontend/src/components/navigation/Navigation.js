@@ -24,7 +24,7 @@ const Navigation = ({isNavigationWhite}) =>  {
 
     const MouseOut = (event) => {
         event.target.style.color = 'black';
-        event.target.style.backgroundColor = isNavigationWhite ? 'white' : '#DBD2CB'
+        event.target.style.backgroundColor = isNavigationWhite ? '#FFFFFF' : '#DBD2CB'
     }
 
     return (
