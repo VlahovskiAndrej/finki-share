@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import MyVerticallyCenteredModal from "./CenteredModalPost";
 
 
 const AddPostModal = (props) => {
-    const [modalShow, setModalShow] = React.useState(false);
+    const [modalShow, setModalShow] = useState(false);
     return (
         <>
             <Button variant="primary" onClick={() => setModalShow(true)}>

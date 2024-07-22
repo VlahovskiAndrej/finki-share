@@ -22,6 +22,7 @@ const useSetComments = () => {
             if (response.ok){
                 console.log('Created post successfully');
                 props.onHide()
+                window.location.href = '/materials';
             }
             else
                 console.error('Creating post failed');
