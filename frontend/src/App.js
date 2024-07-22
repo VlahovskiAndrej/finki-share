@@ -10,10 +10,11 @@ import RegisterPageMaterialUI from "./pages/RegisterPageMaterialUI";
 import EarthAnimation from "./animationTest/earth/EarthAnimation";
 import ComputerAnimation from "./animationTest/computer/ComputerAnimation";
 import DeskAnimation from "./animationTest/desk/DeskAnimation"
+import ForumPage from "./pages/ForumPage";
 
 function App() {
-    return (
 
+    return (
         <div className="Main">
             <Router>
                 <Routes>
@@ -29,6 +30,7 @@ function App() {
                     <Route path="/animationEarth" element={<EarthAnimation/>}/>
                     <Route path="/animationComputer" element={<ComputerAnimation/>}/>
                     <Route path="/animationDesk" element={<DeskAnimation/>}/>
+                    <Route path={"/materials/forum/:id"} element={<ForumPage/>}/>
                 </Routes>
             </Router>
         </div>

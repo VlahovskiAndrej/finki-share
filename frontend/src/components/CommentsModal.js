@@ -10,6 +10,7 @@ import useSetComments from "../hooks/useSetComments";
 const MyVerticallyCenteredModal = (props) => {
     const {username} = useAuthStatus();
     const {setComment, handleSubmit} = useSetComments();
+    const subjectId =  window.location.pathname.substring(1).split("/").at(2)
 
     return (
         <Modal
@@ -40,7 +41,7 @@ const MyVerticallyCenteredModal = (props) => {
                     style={{width: "100%", height: "70px", borderRadius: "25px", padding: "0 15px"}}/>
                 <div style={{display: 'flex', justifyContent: 'flex-end'}}>
                     <Button variant="secondary" size="sm"
-                            onClick={(event) => handleSubmit(event, username, props)}>Add </Button>
+                            onClick={(event) => handleSubmit(event, username, props, subjectId)}>Add </Button>
                 </div>
 
             </Modal.Body>

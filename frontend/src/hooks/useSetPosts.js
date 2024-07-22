@@ -24,7 +24,7 @@ const useSetPosts = () => {
             if (response.ok){
                 console.log('Created post successfully');
                 props.onHide()
-                window.location.href = '/materials';
+                window.location.href = `/materials/forum/${props.subjectId}`;
             }
             else
                 console.error('Creating post failed');
