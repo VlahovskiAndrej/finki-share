@@ -4,7 +4,7 @@ import classes from './Description.module.css'
 const DescriptionCard = ({description, redirectLink}) => {
     return (
         <Card
-            style={{width: '18rem', borderRadius: '2em', height: '18rem'}}
+            style={{width: '18rem', borderRadius: '2em', height: '20rem'}}
             className={classes.descriptionCard}
         >
             <Card.Body className="text-center">

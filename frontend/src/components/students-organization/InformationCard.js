@@ -4,7 +4,7 @@ const InformationCard = ({imgPath, organizationName}) => {
 
     return (
         <Card
-            style={{width: '18rem', borderRadius: '2em', height: '18rem'}}
+            style={{width: '18rem', borderRadius: '2em', height: '20rem'}}
             className={classes.informationCard}
         >
             <Card.Header>

@@ -23,7 +23,7 @@ const HomePage = () => {
         className: "center",
         centerMode: true,
         infinite: true,
-        centerPadding: "60px",
+        centerPadding: "70px",
         slidesToShow: 4,
         swipeToSlide: true,
         speed: 500
@@ -73,9 +73,6 @@ const HomePage = () => {
                     </Col>
                     <Col>
                         <ComputerAnimation/>
-                        {/*<Image*/}
-                        {/*    className="mr-3"*/}
-                        {/*    src="/images/homepage/3d-illustration-smiling-happy-man-600nw-1740135179.webp"/>*/}
                     </Col>
                 </Row>
             </Container>
@@ -84,8 +81,6 @@ const HomePage = () => {
 
                     <Col>
                         <DeskAnimation/>
-                        {/*<Image*/}
-                        {/*    src="/images/homepage/retro-computer-desk-arrangement-removebg-preview.png"/>*/}
                     </Col>
                     <Col style={{marginBottom: "330px"}}>
                         <Row className="h-25 d-inline-block py-5">
@@ -102,7 +97,7 @@ const HomePage = () => {
                             </p>
                         </Row>
                         <Row className="w-25 mt-3">
-                            <Button variant="outline-dark"  href="select/subjectsAll">Започни</Button>
+                            <Button variant="outline-dark" href="select/subjectsAll">Започни</Button>
                         </Row>
                     </Col>
                 </Row>
