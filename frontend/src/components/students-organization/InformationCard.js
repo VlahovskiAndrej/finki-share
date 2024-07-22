@@ -1,11 +1,11 @@
 import Card from 'react-bootstrap/Card';
-
+import classes from './Description.module.css'
 const InformationCard = ({imgPath, organizationName}) => {
 
     return (
         <Card
             style={{width: '18rem', borderRadius: '2em', height: '18rem'}}
-            className="mb-2"
+            className={classes.informationCard}
         >
             <Card.Header>
 

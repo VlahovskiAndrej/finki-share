@@ -1,17 +1,17 @@
 import Card from 'react-bootstrap/Card';
+import classes from './Description.module.css'
 
 const DescriptionCard = ({description, redirectLink}) => {
     return (
         <Card
             style={{width: '18rem', borderRadius: '2em', height: '18rem'}}
-            className="mb-2"
+            className={classes.descriptionCard}
         >
             <Card.Body className="text-center">
                 <Card.Title
                 >{description.slice(0,180)}...</Card.Title>
             </Card.Body>
             <Card.Footer>
-                {/*<small className="text-muted">Full Program: </small>*/}
                 <a href={redirectLink}>Click to see the full Program</a>
             </Card.Footer>
         </Card>

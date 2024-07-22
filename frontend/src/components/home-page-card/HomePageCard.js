@@ -1,4 +1,5 @@
 import Card from 'react-bootstrap/Card';
+import classes from "./HomePageCard.module.css"
 
 const HomePageCard = ({ imgUrl, mainText, subText }) => {
     return (
@@ -7,7 +8,7 @@ const HomePageCard = ({ imgUrl, mainText, subText }) => {
                 bg='light'
                 text='dark'
                 style={{ width: '18rem', borderRadius: '2em' }}
-                className="mb-2"
+                className={classes.informationCard}
             >
                 <img alt='/' src={imgUrl} style={{ width: '30%', position: 'absolute', right: '85%', top: '-20%' }}></img>
                 <Card.Body style={{ minHeight: '200px' }}>

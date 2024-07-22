@@ -14,6 +14,8 @@ import students_organizations from '../data/student_organizations.json'
 import home_page_data from "../data/home_page.json"
 import DescriptionCard from "../components/students-organization/DescriptionCard";
 import ComputerAnimation from "../animationTest/computer/ComputerAnimation";
+import Button from "react-bootstrap/Button";
+import DeskAnimation from "../animationTest/desk/DeskAnimation";
 
 const HomePage = () => {
 
@@ -34,13 +36,6 @@ const HomePage = () => {
             company.id === id ? {...company, isFlipped: !company.isFlipped} : company
         );
         setCompaniesState(updatedCompanies);
-    }
-
-    const MouseOver = (event) => {
-        event.target.style.transform = 'scaleY(1.1)';
-    }
-    const MouseOut = (event) => {
-        event.target.style.transform = 'scaleY(1)';
     }
 
     return (
@@ -73,16 +68,7 @@ const HomePage = () => {
                             </p>
                         </Row>
                         <Row className="w-25 d-inline-block mt-3">
-                            <button
-                                onMouseOver={MouseOver}
-                                onMouseOut={MouseOut}
-                                style={{
-                                    backgroundColor: '#814A35',
-                                    border: 'none',
-                                    borderRadius: '40em',
-                                    color: 'white'
-                                }}>Види повеќе
-                            </button>
+                            <Button variant="outline-dark"  href="/register">Види повеќе</Button>
                         </Row>
                     </Col>
                     <Col>
@@ -94,14 +80,14 @@ const HomePage = () => {
                 </Row>
             </Container>
 
-            <Container>
                 <Row className="d-flex align-items-center justify-content-center">
 
                     <Col>
-                        <Image
-                            src="/images/homepage/retro-computer-desk-arrangement-removebg-preview.png"/>
+                        <DeskAnimation/>
+                        {/*<Image*/}
+                        {/*    src="/images/homepage/retro-computer-desk-arrangement-removebg-preview.png"/>*/}
                     </Col>
-                    <Col>
+                    <Col style={{marginBottom: "330px"}}>
                         <Row className="h-25 d-inline-block py-5">
                             <h1>
                                 <b>
@@ -116,20 +102,10 @@ const HomePage = () => {
                             </p>
                         </Row>
                         <Row className="w-25 mt-3">
-                            <button
-                                onMouseOver={MouseOver}
-                                onMouseOut={MouseOut}
-                                style={{
-                                    backgroundColor: '#814A35',
-                                    border: 'none',
-                                    borderRadius: '40em',
-                                    color: 'white'
-                                }}>Започни
-                            </button>
+                            <Button variant="outline-dark"  href="select/subjectsAll">Започни</Button>
                         </Row>
                     </Col>
                 </Row>
-            </Container>
             <Container style={{minWidth: '100%', backgroundColor: '#DBD2CB'}}>
                 <Container>
                     <Row className="justify-content-md-center">

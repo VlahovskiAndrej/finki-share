@@ -10,7 +10,7 @@ const MaterialsPage = () => {
 
     return (
         <div className="App">
-            <Navigation></Navigation>
+            <Navigation isNavigationWhite={true}/>
             <SidebarMaterials subjects={subjects}></SidebarMaterials>
         </div>
     );

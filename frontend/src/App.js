@@ -9,6 +9,7 @@ import AllSubjects from "./pages/AllSubjects";
 import RegisterPageMaterialUI from "./pages/RegisterPageMaterialUI";
 import EarthAnimation from "./animationTest/earth/EarthAnimation";
 import ComputerAnimation from "./animationTest/computer/ComputerAnimation";
+import DeskAnimation from "./animationTest/desk/DeskAnimation"
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
                     <Route path="/registerUI" element={<RegisterPageMaterialUI/>}/>
                     <Route path="/animationEarth" element={<EarthAnimation/>}/>
                     <Route path="/animationComputer" element={<ComputerAnimation/>}/>
+                    <Route path="/animationDesk" element={<DeskAnimation/>}/>
                 </Routes>
             </Router>
         </div>
