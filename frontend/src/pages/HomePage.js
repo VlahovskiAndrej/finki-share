@@ -5,7 +5,7 @@ import HomePageCard from "../components/home-page-card/HomePageCard";
 import InformationCard from "../components/students-organization/InformationCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Slider from "react-slick";
 import Footer from "../components/footer/Footer";
 import ReactCardFlip from 'react-card-flip';
@@ -16,6 +16,7 @@ import DescriptionCard from "../components/students-organization/DescriptionCard
 import ComputerAnimation from "../animationTest/computer/ComputerAnimation";
 import Button from "react-bootstrap/Button";
 import DeskAnimation from "../animationTest/desk/DeskAnimation";
+import Spinner from "react-bootstrap/Spinner";
 
 const HomePage = () => {
 
@@ -30,6 +31,31 @@ const HomePage = () => {
     };
 
     const [companiesState, setCompaniesState] = useState(companies);
+    const [isLoading, setIsLoading] = useState(true);
+
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 300);
+
+        return () => clearTimeout(timer);
+    })
+
+    if (isLoading) {
+        return (
+            <div style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100vh"
+            }}>
+                <Spinner animation="border" />
+            </div>
+
+        );
+    }
+
 
     const flipCard = (id) => {
         const updatedCompanies = companiesState.map((company) =>

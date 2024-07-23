@@ -41,11 +41,6 @@ const AllSubjects = () => {
                 <Row className="text-center mt-4">
                     {context}
                 </Row>
-
-                <Row>
-                    
-                </Row>
-               
                 <Row>
                     <SidebarSubjects
                         onPeriodClick={handlePeriodChange}

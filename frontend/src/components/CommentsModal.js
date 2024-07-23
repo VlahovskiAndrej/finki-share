@@ -66,12 +66,16 @@ const CommentsModal = (props) => {
                 variant="primary"
                 onClick={() => setModalShow(true)}
                 style={{
-                    backgroundColor: "white",  // White background
+                    backgroundColor: "transparent",  // White background
                     color: "black",            // Black icon
                     border: "none",            // No border
                     display: "flex",           // Flex display to center the icon
                     justifyContent: "center", // Center the icon horizontally
-                    alignItems: "center"      // Center the icon vertically
+                    alignItems: "center",    // Center the icon vertically
+                    outline: "none",                // No outline
+                    boxShadow: "5px 5px 15px rgba(0, 0, 0, 0.2)", // Add shadow effect
+                    padding: "10px",                // Optional: add padding for better appearance
+                    borderRadius: "30px"             // Optional: add border radius for rounded corners
                 }}>
                 {/*<FontAwesomeIcon icon={faComment} style={{ fontSize: "20px" }} /> /!* Use the FontAwesome icon *!/*/}
                 <FaCommentDots style={{fontSize: "20px"}}/>

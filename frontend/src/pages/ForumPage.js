@@ -1,42 +1,44 @@
-import React, {useEffect} from "react";
-import useTakenSubjects from "../hooks/useTakenSubjects"
+import React, {useEffect, useState} from "react";
 import Navigation from "../components/navigation/Navigation";
-import {Menu, MenuItem, Sidebar, SubMenu} from "react-pro-sidebar";
 import Forum from "../components/Forum";
 import usePostsAndLink from "../hooks/usePostsAndLink";
+import Spinner from "react-bootstrap/Spinner";
+import SidebarMaterials from "../components/sidebar-comp/SidebarMaterials";
 
-const ForumPage = (effect, deps) => {
+const ForumPage = () => {
 
-    const subjects = useTakenSubjects();
     const {activeLink, posts, fetchData} = usePostsAndLink();
-    const redirectLink = `/materials/forum/`;
     const subjectId =  window.location.pathname.substring(1).split("/").at(2);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetchData(subjectId)
+        if (posts) {
+            setIsLoading(false);
+        }
     }, [])
 
-    const handleClick = (subject) => {
-        window.location.href = `${redirectLink}${subject.id}`;
+    if(isLoading) {
+        return (
+            <div style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100vh"
+            }}>
+                <Spinner animation="border" />
+            </div>
+        );
     }
     return (
         <>
-            <Navigation isNavigationWhite={true}/>
+            <div style={{ backgroundColor: '#DBD2CB' }}>
+                <Navigation
+                    isNavigationWhite={false}
+                />
+            </div>
             <div style={{display: 'flex', minHeight: "100vh"}}>
-                <Sidebar>
-                    <Menu style={{backgroundColor: '#CDC1B6', minHeight: "100vh"}}>
-                        {Object.values(subjects).map((subject) => {
-                            return (
-                                <SubMenu label={subject.name}>
-                                    <MenuItem style={{backgroundColor: '#DBD2CB'}}>Материјали</MenuItem>
-                                    <MenuItem style={{backgroundColor: '#DBD2CB'}} onClick={() => handleClick(subject)}>
-                                        Форум
-                                    </MenuItem>
-                                </SubMenu>
-                            );
-                        })}
-                    </Menu>
-                </Sidebar>
+               <SidebarMaterials/>
                 <Forum
                     subjectUrl = {subjectId}
                     posts={posts} subjectId={activeLink}></Forum>

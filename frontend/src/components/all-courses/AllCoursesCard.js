@@ -11,7 +11,7 @@ const AllCoursesCard = ({period, term}) => {
         <Container className="mt-5">
         <Row>
         {Object.values(subjects)
-        .filter(item => item.code.includes(period))
+        // .filter(item => item.code.includes(period))
         .map(item => (
             <Col key={item.url} xs={12} sm={6} md={4} lg={3}>
                 <CardComponent

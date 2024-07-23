@@ -7,7 +7,7 @@ const AddPostModal = (props) => {
     const [modalShow, setModalShow] = useState(false);
     return (
         <>
-            <Button variant="primary" onClick={() => setModalShow(true)}>
+            <Button className="mb-2" variant="link" onClick={() => setModalShow(true)}>
                 New Post
             </Button>
             <MyVerticallyCenteredModal
