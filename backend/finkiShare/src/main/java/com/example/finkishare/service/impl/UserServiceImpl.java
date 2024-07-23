@@ -2,7 +2,6 @@ package com.example.finkishare.service.impl;
 
 import com.example.finkishare.model.Role;
 import com.example.finkishare.model.User;
-import com.example.finkishare.model.exceptions.InvalidUsernameException;
 import com.example.finkishare.repository.UserRepository;
 import com.example.finkishare.service.UserService;
 import lombok.AllArgsConstructor;
@@ -22,9 +21,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public User create(String username, String email, String password, Role role) {
+    public User create(String username, String email, String password, String avatarUrl, Role role) {
         String encodedPassword = passwordEncoder.encode(password);
-        User user = new User(username, email, encodedPassword, role);
+        User user = new User(username, email, encodedPassword, avatarUrl, role);
         return userRepository.save(user);
     }
 

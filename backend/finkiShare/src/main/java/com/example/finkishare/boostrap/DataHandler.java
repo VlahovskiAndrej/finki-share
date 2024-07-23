@@ -1,20 +1,15 @@
 package com.example.finkishare.boostrap;
 
 import com.example.finkishare.model.*;
-//import com.example.finkishare.model.Subject;
 import com.example.finkishare.repository.CommentRepository;
 import com.example.finkishare.repository.PostRepository;
 import com.example.finkishare.repository.SubjectDetailsRepository;
 import com.example.finkishare.repository.UserRepository;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +41,7 @@ public class DataHandler {
                             "andrej",
                             "andrej@gmail.com",
                             passwordEncoder.encode("1907"),
+                            "",
                             Role.ROLE_USER
                     ));
 
@@ -54,6 +50,7 @@ public class DataHandler {
                             "admin",
                             "admin@gmail.com",
                             passwordEncoder.encode("admin"),
+                            "",
                             Role.ROLE_ADMIN
                     ));
             userRepository.saveAll(users);

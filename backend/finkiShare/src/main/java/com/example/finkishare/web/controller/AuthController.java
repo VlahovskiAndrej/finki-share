@@ -5,7 +5,6 @@ import com.example.finkishare.model.User;
 import com.example.finkishare.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.springframework.http.HttpRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
@@ -55,6 +54,7 @@ public class AuthController {
                 userRequest.getUsername(),
                 userRequest.getEmail(),
                 userRequest.getPassword(),
+                userRequest.getImage(),
                 Role.ROLE_USER
         );
         return "";
