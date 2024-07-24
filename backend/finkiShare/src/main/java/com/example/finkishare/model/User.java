@@ -2,10 +2,7 @@ package com.example.finkishare.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
 import java.util.List;
 
 @Entity(name = "finkishare_user")
@@ -29,11 +26,11 @@ public class User {
 
     public User() {}
 
-    public User(String username, String email, String password, Role role) {
+    public User(String username, String email, String password, String avatarUrl, Role role) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.avatarUrl = "";
+        this.avatarUrl = avatarUrl;
         this.role = role;
     }
 

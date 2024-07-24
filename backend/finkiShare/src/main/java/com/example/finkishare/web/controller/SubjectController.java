@@ -1,12 +1,9 @@
 package com.example.finkishare.web.controller;
 
-import com.example.finkishare.model.Comment;
-import com.example.finkishare.model.Post;
 import com.example.finkishare.model.SubjectDetails;
 import com.example.finkishare.service.CommentService;
 import com.example.finkishare.service.PostService;
 import com.example.finkishare.service.SubjectDetailsService;
-//import com.example.finkishare.service.SubjectService;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +35,10 @@ public class SubjectController {
         return subjectDetailsService.findAllTakenSubjects();
     }
 
-
+    @GetMapping("/subject/get/{id}")
+    SubjectDetails getSubject(@PathVariable Long id) {
+        return subjectDetailsService.getSubject(id);
+    }
 
     
 
