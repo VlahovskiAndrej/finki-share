@@ -84,7 +84,7 @@ public class SubjectDetails {
 
         this.organizer = node.get("Организатор на студиската програма (единица, односно институт, катедра, оддел)").asText();
         this.degree = node.get("Степен (прв, втор, трет циклус)").asText();
-//        this.academicYearAndSemester = node.get("Академска година / семестар\n1 / Зимски").asText();
+        this.academicYearAndSemester = node.get("Академска година/семестар").asText();
         this.teacher = node.get("Наставник").asText();
         this.prerequisites = node.get("Предуслови за запишување на предметот").asText();
         this.content = node.get("Содржина на предметната програма:").asText();
