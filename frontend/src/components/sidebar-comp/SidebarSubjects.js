@@ -7,7 +7,7 @@ const SidebarSubjects = ({onSemesterClick, onAcademicYearClick}) => {
 
     return (
         <Sidebar>
-            <Menu style={{backgroundColor: '#CDC1B6', minHeight:"100vh"}}>
+            <Menu style={{backgroundColor: '#CDC1B6', height:"100%"}}>
                 <SubMenu label="Семестар">
                     {semesters.map((semester => (
                         <MenuItem style={{backgroundColor: '#CDC1B6'}} key={semester}

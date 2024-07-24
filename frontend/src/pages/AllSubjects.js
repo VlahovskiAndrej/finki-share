@@ -29,11 +29,9 @@ const AllSubjects = () => {
     return (
         <>
             <div style={{backgroundColor: '#DBD2CB'}}>
-                <div style={{backgroundColor: '#DBD2CB'}}>
-                    <Navigation
-                        isNavigationWhite={false}
-                    />
-                </div>
+                <Navigation
+                    isNavigationWhite={false}
+                />
                 <div style={{display: 'flex', minHeight: "100vh"}}>
                     <SidebarSubjects
                         onSemesterClick={handleSemesterChange}
