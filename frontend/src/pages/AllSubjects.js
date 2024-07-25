@@ -1,63 +1,52 @@
-import {Col, Row} from "react-bootstrap";
+import {Container, Row} from "react-bootstrap";
 import Navigation from "../components/navigation/Navigation";
 import SidebarSubjects from "../components/sidebar-comp/SidebarSubjects";
 import AllCoursesCard from "../components/all-courses/AllCoursesCard";
-import {useState} from "react";
+import React, {useState} from "react";
 
 const AllSubjects = () => {
 
-    const [period, setPeriod] = useState(null);
-    const [term, setTerm] = useState(null);
+    const [semester, setSemester] = useState(null);
+    const [academicYear, setAcademicYear] = useState(null);
 
-    const handlePeriodChange = (periodType) => {
-        setPeriod(periodType);
+    const handleSemesterChange = (periodType) => {
+        setSemester(periodType);
     }
 
-    const handleTermChange = (termType) => {
-        setTerm(termType);
+    const handleAcademicYearChange = (termType) => {
+        setAcademicYear(termType);
     }
 
-    let context = (<h1>Сите предмети</h1>);
-
-    if (period == null && term != null) {
-        context = (<h1>Предмети од {term} семестар</h1>);
+    const checkTermAndPeriod = (semester, academicYear) => {
+        if (semester == null && academicYear != null) {
+            return <h1>Предмети од {academicYear} година</h1>;
+        } else if (semester != null && academicYear == null) {
+            return <h1>Предмети од {semester} семестар</h1>;
+        } else if (semester != null && academicYear != null) {
+            return <h1>Предмети од {academicYear} година/ {semester}</h1>
+        }
     }
-    else if (period != null && term == null) {
-        context = (<h1>Предмети од {period} семестар</h1>);
-    }
-    else if (period != null && term != null) {
-        context = (<h1>Предмети од {term} семестар/ {period}</h1>);
-    }
-
-
     return (
         <>
-            <div style={{ backgroundColor: '#DBD2CB' }}>
-                <div style={{ backgroundColor: '#DBD2CB' }}>
-                    <Navigation
-                        isNavigationWhite={false}
-                    />
-                </div>
-                <Row className="text-center mt-4">
-                    {context}
-                </Row>
-
-                <Row>
-                    
-                </Row>
-               
-                <Row>
+            <div style={{backgroundColor: '#DBD2CB'}}>
+                <Navigation
+                    isNavigationWhite={false}
+                />
+                <div style={{display: 'flex', minHeight: "100vh"}}>
                     <SidebarSubjects
-                        onPeriodClick={handlePeriodChange}
-                        onTermClick={handleTermChange}
+                        onSemesterClick={handleSemesterChange}
+                        onAcademicYearClick={handleAcademicYearChange}
                     />
-                    <Col>
-                        <AllCoursesCard 
-                        period = {period === "зимски" ? "W" : "S"} 
-                        term = {term}
+                    <Container className="mt-3">
+                        <Row className="text-center mt-4">
+                            <h1>{(semester == null && academicYear == null) ? `Сите предмети` : checkTermAndPeriod(semester, academicYear)}</h1>
+                        </Row>
+                        <AllCoursesCard
+                            semester={semester}
+                            academicYear={academicYear}
                         />
-                    </Col>
-                </Row>
+                    </Container>
+                </div>
             </div>
         </>
     );

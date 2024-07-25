@@ -10,6 +10,7 @@ import useSetComments from "../hooks/useSetComments";
 const MyVerticallyCenteredModal = (props) => {
     const {username} = useAuthStatus();
     const {setComment, handleSubmit} = useSetComments();
+    const subjectId =  window.location.pathname.substring(1).split("/").at(2)
 
     return (
         <Modal
@@ -40,7 +41,7 @@ const MyVerticallyCenteredModal = (props) => {
                     style={{width: "100%", height: "70px", borderRadius: "25px", padding: "0 15px"}}/>
                 <div style={{display: 'flex', justifyContent: 'flex-end'}}>
                     <Button variant="secondary" size="sm"
-                            onClick={(event) => handleSubmit(event, username, props)}>Add </Button>
+                            onClick={(event) => handleSubmit(event, username, props, subjectId)}>Add </Button>
                 </div>
 
             </Modal.Body>
@@ -65,12 +66,16 @@ const CommentsModal = (props) => {
                 variant="primary"
                 onClick={() => setModalShow(true)}
                 style={{
-                    backgroundColor: "white",  // White background
+                    backgroundColor: "transparent",  // White background
                     color: "black",            // Black icon
                     border: "none",            // No border
                     display: "flex",           // Flex display to center the icon
                     justifyContent: "center", // Center the icon horizontally
-                    alignItems: "center"      // Center the icon vertically
+                    alignItems: "center",    // Center the icon vertically
+                    outline: "none",                // No outline
+                    boxShadow: "5px 5px 15px rgba(0, 0, 0, 0.2)", // Add shadow effect
+                    padding: "10px",                // Optional: add padding for better appearance
+                    borderRadius: "30px"             // Optional: add border radius for rounded corners
                 }}>
                 {/*<FontAwesomeIcon icon={faComment} style={{ fontSize: "20px" }} /> /!* Use the FontAwesome icon *!/*/}
                 <FaCommentDots style={{fontSize: "20px"}}/>

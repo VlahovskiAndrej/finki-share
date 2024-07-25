@@ -1,8 +1,9 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import {useState} from "react";
+import React, {useState} from "react";
 import CardDetails from "../CardDetails";
 import useSetSubject from "../../hooks/useSetSubject";
+import Swal from "sweetalert2"
 
 
 const replaceProgramNames = (str) => {
@@ -29,50 +30,75 @@ const replaceProgramNames = (str) => {
     return Array.from(uniqueCharacters).join(', ');
 }
 
-const CardComponent = (props) =>  {
+const CardComponent = (props) => {
     console.log(props.subject)
     const [clicked, setClicked] = useState(props.subject['isTaken']);
+    const [hover, setHover] = useState(false);
     const formData = props.subject.name;
 
     const handleClick = () => {
-        setClicked(!clicked);
+        const nextClicked = !clicked;
+        setClicked(nextClicked);
+
+        Swal.fire(
+            nextClicked ? "Успешно додаден предмет во материјали" : "Успешно тргнат предмет од материјали",
+            nextClicked ? "Со лесно :)" : "Редно беше",
+            nextClicked ? "success" : "error"
+        ).then(r => r.isConfirmed);
+
     };
 
     const handleSubmit = useSetSubject();
 
     return (
-        // style={{ height: '200px', margin: "10px 0"}
-        <Card style={{height: '180px', margin: "10px 0", backgroundColor: clicked ? '#c9f8c9' : ''}}>
-            {/*<Card.Img variant="top" src="holder.js/100px180" />*/}
-            <Card.Body>
-                <Card.Title style={{
-                    display: '-webkit-box',
-                    WebkitLineClamp: 1,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis'
-                }}>{props.subject['name']}</Card.Title>
-                <Card.Text>
-                    {props.subject['code']}
-                    <p style={{
+        <Card
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+            style={{
+                height: '180px',
+                margin: '10px 0',
+                backgroundColor: hover ? '#814A35' : '#CDC1B6',
+                color: hover ? '#FFFADA' : '#28231D',
+                borderRadius: '10px',
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                transition: 'transform 0.3s ease-in-out, background-color 0.3s ease-in-out',
+                transform: clicked ? 'scale(1.02)' : 'scale(1)'
+            }}
+        >
+            <Card.Body style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+                <div>
+                    <Card.Title style={{
+                        display: '-webkit-box',
+                        WebkitLineClamp: 1,
+                        WebkitBoxOrient: 'vertical',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
-                        whiteSpace: 'nowrap'
-                    }}>{replaceProgramNames(props.subject['studyProgram'])}</p>
-                </Card.Text>
-                {/*<Button variant={clicked ? "success" : "secondary"} onClick={handleClick}>Земи предмет!</Button>*/}
-                <CardDetails subject={props.subject}></CardDetails>
-
-                <form onSubmit={(event) => handleSubmit(event, formData)} style={{display: "inline-block", marginLeft: "5px"}}>
-                    <input type="text" name="name" value={formData.name} hidden={true}/>
-                    {/*<button type="submit" onClick={handleClick}>Земи предмет!</button>*/}
-                    <Button type="submit" variant={clicked ? 'danger' : 'secondary'}
-                            onClick={handleClick}>{clicked ? 'Отстрани предмет!' : 'Земи предмет!'}</Button>
-                    {/*style={{ backgroundColor: clicked ? 'green' : '', color: clicked ? 'white' : '' }}*/}
-                </form>
+                        color: hover ? '#FFFADA' : '#28231D' // Ensure title text is readable
+                    }}>{props.subject['name']}</Card.Title>
+                    <Card.Text style={{color: hover ? '#FFFADA' : '#28231D'}}>
+                        {props.subject['code']}
+                        <p style={{
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap'
+                        }}>{replaceProgramNames(props.subject['studyProgram'])}</p>
+                    </Card.Text>
+                </div>
+                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                    <CardDetails subject={props.subject} setHover={setHover}/>
+                    <form onSubmit={(event) => handleSubmit(event, formData)} style={{marginTop: '10px'}}>
+                        <input type="text" name="name" value={formData.name} hidden/>
+                        <div>
+                            <Button type="submit"
+                                    variant={clicked ? 'danger' : 'secondary'}
+                                    onClick={handleClick}>
+                                {clicked ? 'Отстрани го!' : 'Земи предмет!'}
+                            </Button>
+                        </div>
+                    </form>
+                </div>
             </Card.Body>
         </Card>
-
     );
 }
 

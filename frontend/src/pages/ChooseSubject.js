@@ -2,95 +2,68 @@ import {Col, Container, Row} from "react-bootstrap";
 import Navigation from "../components/navigation/Navigation"
 import React, {useState} from "react";
 import Top4Courses from "../components/top-four-courses-per-category/Top4Courses";
+import subjects from "../data/filtering_subjects.json"
 
 const ChooseSubject = () => {
 
-    const [category, setCategory] = useState(["programming"]);
-
-    const [subjectObject, setSubjectObject] = useState([
-        { description: "Advanced", selected: false, id: 0 },
-        { description: "Artificial", selected: false, id: 1 },
-        { description: "Web", selected: false, id: 2 },
-        { description: "Math", selected: false, id: 3 },
-    ]);
+    const [category, setCategory] = useState([subjects[0].description]);
+    const [subjectObject, setSubjectObject] = useState(subjects);
 
     const handleActiveCategory = (category) => {
-
         const updatedSubjectObject = subjectObject.map((subject) => {
             return {
-                ...subject, 
+                ...subject,
                 selected: subject.description.includes(category[0])
             };
         })
 
         setSubjectObject(updatedSubjectObject);
         setCategory(category);
-    
     }
 
-return (
-    <>
-        <div style={{ backgroundColor: '#DBD2CB' }}>
-            <div style={{ backgroundColor: '#DBD2CB' }}>
-                <Navigation
-                    isNavigationWhite={false}
-                />
-            </div>
-            <Container>
-                <Row className="text-center mt-5">
-                    <h1>Start Learning</h1>
-                    <h5>Популарни курсеви од одредени области</h5>
-                </Row>
-            </Container>
-
-            <Container className="mt-5">
-                <Row className="text-center">
-                    <Col >
-                        <p onClick={() => handleActiveCategory(["Advanced", "Databases", "Web Programming", "Advanced Web Design"])} className="btn"
-                            style={{
-                                borderBottom: subjectObject[0].selected ? '10px solid #814A35' : ''
-                            }}
-                        >Популарни курсеви</p>
-                    </Col>
-                    <Col >
-                        <p onClick={() => handleActiveCategory(["Artificial", "Machine", "Agent"])} className="btn"
-                            style={{
-                                borderBottom: subjectObject[1].selected ? '10px solid #814A35' : ''
-                            }}
-                        >AI</p>
-                    </Col>
-                    <Col >
-                        <p onClick={() => handleActiveCategory(["Web"])} className="btn"
-                            style={{
-                                borderBottom: subjectObject[2].selected ? '10px solid #814A35' : ''
-                            }}
-                        >Web Development</p>
-                    </Col>
-                    <Col >
-                        <p onClick={() => handleActiveCategory(["Math"])} className="btn"
-                            style={{
-                                borderBottom: subjectObject[3].selected ? '10px solid #814A35' : ''
-                            }}
-                        >Останати</p>
-                    </Col>
-                </Row>
-                <hr style={{ border: '1px solid black' }}></hr>
-            </Container>
-            <Container className="mt-4">
-                <Row>
-
-                    <Top4Courses
-                        category={category}
+    return (
+        <>
+            <div style={{backgroundColor: '#DBD2CB'}}>
+                <div style={{backgroundColor: '#DBD2CB'}}>
+                    <Navigation
+                        isNavigationWhite={false}
                     />
-
-                </Row>
-
-                <Row className="mt-5 pb-5 text-center" style={{ placeContent: 'center' }}>
-                    <a href="/select/subjectsAll" className="btn w-25">Види повеќе</a>
-                </Row>
-            </Container>
-        </div>
-    </>
-);
+                </div>
+                <Container>
+                    <Row className="text-center mt-5">
+                        <h1>Start Learning</h1>
+                        <h5>Популарни курсеви од одредени области</h5>
+                    </Row>
+                </Container>
+                <Container className="mt-5">
+                    <Row className="text-center">
+                        {subjectObject.map((subject) => {
+                            return (
+                                <Col>
+                                    <p key={subject.id}
+                                       onClick={() => handleActiveCategory(subject.category)} className="btn"
+                                       style={{
+                                           borderBottom: subject.selected ? '10px solid #814A35' : ''
+                                       }}
+                                    >{subject.title}</p>
+                                </Col>
+                            );
+                        })}
+                    </Row>
+                    <hr style={{border: '1px solid black'}}></hr>
+                </Container>
+                <Container>
+                    <Row>
+                        <Top4Courses
+                            category={category}
+                        />
+                    </Row>
+                    <Row className="mt-5 pb-5 text-center" style={{placeContent: 'center'}}>
+                        <a href="/select/subjectsAll" className="btn w-25">Види повеќе</a>
+                    </Row>
+                </Container>
+            </div>
+        </>
+    );
 }
 export default ChooseSubject;

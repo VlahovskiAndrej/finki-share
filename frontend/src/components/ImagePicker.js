@@ -1,7 +1,21 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import classes from './ImagePicker.module.css'; // Import CSS module
+import Slider from "react-slick";
+import {Container} from "react-bootstrap";
+import imageList from "../data/avatars/images"
 
-const ImagePicker = ({ setSelectedImage, imageUrls }) => {
+const ImagePicker = ({setSelectedImage}) => {
+    const settings = {
+        className: "center",
+        centerMode: true,
+        infinite: true,
+        centerPadding: "0px",
+        slidesToShow: 4,
+        swipeToSlide: true,
+        speed: 500,
+        afterChange: (current) => handleImageChange(imageList[current].src)
+    };
+
     const [selectedImage, setSelectedImageLocal] = useState('');
 
     const handleImageChange = (imageUrl) => {
@@ -10,32 +24,30 @@ const ImagePicker = ({ setSelectedImage, imageUrls }) => {
     };
 
     return (
-        <div className={classes.imagePicker}>
-            {imageUrls.map((imageUrl, index) => (
-                <div className={classes.circle} key={index}>
-                    <input
-                        type="radio"
-                        id={`image${index + 1}`}
-                        name="image"
-                        value={imageUrl}
-                        checked={selectedImage === imageUrl}
-                        onChange={() => handleImageChange(imageUrl)}
-                    />
-                    <label htmlFor={`image${index + 1}`}>
-                        <img src={imageUrl} alt={`Image ${index + 1}`} />
-                    </label>
+        <Container style={{minWidth: '95%'}}>
+            <div className={classes.imagePicker}>
+                <div className="slider-container">
+                    <Slider {...settings}>
+                        {imageList.map((image) => (
+                            <div className={classes.circle} key={image.id}>
+                                <input
+                                    type="radio"
+                                    id={image.id}
+                                    name="image"
+                                    value={image.src}
+                                    checked={selectedImage === image.src}
+                                    onChange={() => handleImageChange(image.src)}
+                                />
+                                <label htmlFor={image.id}>
+                                    <img src={image.src} alt={image.alt}/>
+                                </label>
+                            </div>
+                        ))}
+                    </Slider>
                 </div>
-            ))}
-        </div>
+            </div>
+        </Container>
     );
 }
 
 export default ImagePicker;
-
-
-
-
-// <img src="https://cdn3d.iconscout.com/3d/premium/thumb/man-5692600-4743369.png" alt="Image 1" />
-// <img src="https://cdn3d.iconscout.com/3d/premium/preview/boy-avatar-6299533-5187865.png?f=webp&h=700" alt="Image 2" />
-// <img src="https://png.pngtree.com/png-clipart/20221207/ourmid/pngtree-fashion-boy-avatar-png-image_6514592.png" alt="Image 3" />
-

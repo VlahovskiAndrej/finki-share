@@ -17,14 +17,14 @@ const Navigation = ({isNavigationWhite}) =>  {
     }
 
     const MouseOver = (event) => {
-        event.target.style.color = 'white';
+        event.target.style.color = '#FFFFFF';
         event.target.style.backgroundColor = '#814A35';
         event.target.style.borderRadius = '40em';
     }
 
     const MouseOut = (event) => {
-        event.target.style.color = 'black';
-        event.target.style.backgroundColor = isNavigationWhite ? 'white' : '#DBD2CB'
+        event.target.style.color = '#818181';
+        event.target.style.backgroundColor = isNavigationWhite ? '#FFFFFF' : '#DBD2CB'
     }
 
     return (
@@ -59,17 +59,21 @@ const Navigation = ({isNavigationWhite}) =>  {
                             Регистрирај се
                         </Nav.Link>
 
-                        {/*/!*<Nav.Link href="/login"*!/*/}
-                        {/*/!*          className={styles.custombutton}*!/*/}
-                        {/*/!*          onMouseOver={MouseOver}*!/*/}
-                        {/*/!*          onMouseOut={MouseOut}*!/*/}
-                        {/*/!*>*!/*/}
-                        {/*/!*    Најави се*!/*/}
+                        {/*<Nav.Link href="/login"*/}
+                        {/*          className={styles.custombutton}*/}
+                        {/*          onMouseOver={MouseOver}*/}
+                        {/*          onMouseOut={MouseOut}*/}
+                        {/*>*/}
+                        {/*    Најави се*/}
                         {/*</Nav.Link>*/}
 
                         {isLoggedIn ?
-                            (<Nav.Link href="http://localhost:8080/logout" style={{color: 'red'}}>{username} - Logout</Nav.Link>) :
-                            (<Nav.Link href="http://localhost:8080/login" style={{color: 'black'}}>Најави се</Nav.Link>)
+                            (<Nav.Link href="http://localhost:8080/logout" style={{color: 'red'}}>{username} - Logout</Nav.Link>)
+                            :
+                            (<Nav.Link href="http://localhost:8080/login"
+                                       className={styles.custombutton}
+                                       onMouseOver={MouseOver}
+                                       onMouseOut={MouseOut}>Најави се</Nav.Link>)
                         }
                     </Nav>
                 </Navbar.Collapse>

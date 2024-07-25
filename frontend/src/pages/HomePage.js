@@ -5,7 +5,7 @@ import HomePageCard from "../components/home-page-card/HomePageCard";
 import InformationCard from "../components/students-organization/InformationCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Slider from "react-slick";
 import Footer from "../components/footer/Footer";
 import ReactCardFlip from 'react-card-flip';
@@ -13,6 +13,10 @@ import companies from '../data/companies.json'
 import students_organizations from '../data/student_organizations.json'
 import home_page_data from "../data/home_page.json"
 import DescriptionCard from "../components/students-organization/DescriptionCard";
+import ComputerAnimation from "../animationTest/computer/ComputerAnimation";
+import Button from "react-bootstrap/Button";
+import DeskAnimation from "../animationTest/desk/DeskAnimation";
+import Spinner from "react-bootstrap/Spinner";
 
 const HomePage = () => {
 
@@ -20,26 +24,44 @@ const HomePage = () => {
         className: "center",
         centerMode: true,
         infinite: true,
-        centerPadding: "60px",
+        centerPadding: "70px",
         slidesToShow: 4,
         swipeToSlide: true,
         speed: 500
     };
 
     const [companiesState, setCompaniesState] = useState(companies);
+    const [isLoading, setIsLoading] = useState(true);
+
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 300);
+
+        return () => clearTimeout(timer);
+    })
+
+    if (isLoading) {
+        return (
+            <div style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100vh"
+            }}>
+                <Spinner animation="border" />
+            </div>
+
+        );
+    }
+
 
     const flipCard = (id) => {
         const updatedCompanies = companiesState.map((company) =>
             company.id === id ? {...company, isFlipped: !company.isFlipped} : company
         );
         setCompaniesState(updatedCompanies);
-    }
-
-    const MouseOver = (event) => {
-        event.target.style.transform = 'scaleY(1.1)';
-    }
-    const MouseOut = (event) => {
-        event.target.style.transform = 'scaleY(1)';
     }
 
     return (
@@ -72,34 +94,21 @@ const HomePage = () => {
                             </p>
                         </Row>
                         <Row className="w-25 d-inline-block mt-3">
-                            <button
-                                onMouseOver={MouseOver}
-                                onMouseOut={MouseOut}
-                                style={{
-                                    backgroundColor: '#814A35',
-                                    border: 'none',
-                                    borderRadius: '40em',
-                                    color: 'white'
-                                }}>Види повеќе
-                            </button>
+                            <Button variant="outline-dark"  href="/register">Види повеќе</Button>
                         </Row>
                     </Col>
                     <Col>
-                        <Image
-                            className="mr-3"
-                            src="/images/homepage/3d-illustration-smiling-happy-man-600nw-1740135179.webp"/>
+                        <ComputerAnimation/>
                     </Col>
                 </Row>
             </Container>
 
-            <Container>
                 <Row className="d-flex align-items-center justify-content-center">
 
                     <Col>
-                        <Image
-                            src="/images/homepage/retro-computer-desk-arrangement-removebg-preview.png"/>
+                        <DeskAnimation/>
                     </Col>
-                    <Col>
+                    <Col style={{marginBottom: "330px"}}>
                         <Row className="h-25 d-inline-block py-5">
                             <h1>
                                 <b>
@@ -114,20 +123,10 @@ const HomePage = () => {
                             </p>
                         </Row>
                         <Row className="w-25 mt-3">
-                            <button
-                                onMouseOver={MouseOver}
-                                onMouseOut={MouseOut}
-                                style={{
-                                    backgroundColor: '#814A35',
-                                    border: 'none',
-                                    borderRadius: '40em',
-                                    color: 'white'
-                                }}>Започни
-                            </button>
+                            <Button variant="outline-dark" href="select/subjectsAll">Започни</Button>
                         </Row>
                     </Col>
                 </Row>
-            </Container>
             <Container style={{minWidth: '100%', backgroundColor: '#DBD2CB'}}>
                 <Container>
                     <Row className="justify-content-md-center">
