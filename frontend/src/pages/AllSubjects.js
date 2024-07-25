@@ -1,6 +1,6 @@
 import {Col, Row} from "react-bootstrap";
 import Navigation from "../components/navigation/Navigation";
-import SidebarComp from "../components/sidebar-comp/SidebarComp";
+import SidebarSubjects from "../components/sidebar-comp/SidebarSubjects";
 import AllCoursesCard from "../components/all-courses/AllCoursesCard";
 import {useState} from "react";
 
@@ -45,7 +45,7 @@ const AllSubjects = () => {
                 </Row>
                
                 <Row>
-                    <SidebarComp
+                    <SidebarSubjects
                         onPeriodClick={handlePeriodChange}
                         onTermClick={handleTermChange}
                     />

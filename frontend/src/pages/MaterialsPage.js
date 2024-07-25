@@ -1,5 +1,5 @@
 import '../App.css';
-import Sidebar from "../components/Sidebar";
+import SidebarMaterials from "../components/sidebar-comp/SidebarMaterials";
 import React from "react";
 import useTakenSubjects from "../hooks/useTakenSubjects"
 import Navigation from "../components/navigation/Navigation";
@@ -11,7 +11,7 @@ const MaterialsPage = () => {
     return (
         <div className="App">
             <Navigation></Navigation>
-            <Sidebar subjects={subjects}></Sidebar>
+            <SidebarMaterials subjects={subjects}></SidebarMaterials>
         </div>
     );
 }

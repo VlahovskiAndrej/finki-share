@@ -2,7 +2,7 @@ import {Col, Container, Image, Row} from "react-bootstrap";
 import Navigation from "../components/navigation/Navigation";
 import {ReactTyped} from "react-typed";
 import HomePageCard from "../components/home-page-card/HomePageCard";
-import StudentOrganization from "../components/students-organization/StudentOrganization";
+import InformationCard from "../components/students-organization/InformationCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import React, {useState} from "react";
@@ -10,6 +10,8 @@ import Slider from "react-slick";
 import Footer from "../components/footer/footer";
 import ReactCardFlip from 'react-card-flip';
 import companies from '../data/companies.json'
+import students_organizations from '../data/student_organizations.json'
+import home_page_data from "../data/home_page.json"
 import DescriptionCard from "../components/students-organization/DescriptionCard";
 
 const HomePage = () => {
@@ -107,7 +109,6 @@ const HomePage = () => {
                         <Row className="h-25 d-inline-block mt-3">
                             <p>
                                 Избери предмети, види ја магијата
-
                             </p>
                         </Row>
                         <Row className="w-25 mt-3">
@@ -137,54 +138,37 @@ const HomePage = () => {
                         <h2>Дел од нашите услуги</h2>
                     </Container>
                     <Row className="justify-content-md-center">
-                        <Col style={{textAlign: '-webkit-center', position: 'relative', bottom: '140px'}}>
-
-                            <HomePageCard
-                                imgUrl='/images/homepage/chat-message-notification-icon-isolated-3d-render-illustration_47987-9678-removebg-preview.png'
-                                mainText='Форум'
-                                subText='изразување на различни ставови и мислења за даден предмет, 
-                       поттикнувајќи интеракција и дијалог.'
-                            ></HomePageCard>
-                        </Col>
-                        <Col style={{textAlign: '-webkit-center', position: 'relative', bottom: '140px'}}>
-                            <HomePageCard
-                                imgUrl='/images/homepage/infographic-elements-three-dimensional-icon_23-2149740214-removebg-preview.png'
-                                mainText='Одговор на ваше прашање'
-                                subText='На секое ваше прашање следува релевантен одговор од самите студенти'
-                            ></HomePageCard>
-                        </Col>
-                        <Col style={{textAlign: '-webkit-center', position: 'relative', bottom: '140px'}}>
-                            <HomePageCard
-                                imgUrl='/images/homepage/cropped.png'
-                                mainText='Точност на информација'
-                                subText='Со помош на upvote ќе може да видите колку е релевантна информацијата'
-                            ></HomePageCard>
-                        </Col>
+                        {home_page_data.map((data) => {
+                            return (
+                                <Col style={{textAlign: '-webkit-center', position: 'relative', bottom: '140px'}}>
+                                    <HomePageCard
+                                        imgUrl = {data.imgPath}
+                                        mainText = {data.mainText}
+                                        subText = {data.subText}
+                                    >
+                                    </HomePageCard>
+                                </Col>
+                            );
+                        })}
                     </Row>
                 </Container>
-
-                <br></br>
                 <Container>
-                    <br></br>
                     <Row className="text-center">
                         <h2>Запознајте се со нашите студентски организации</h2>
                     </Row>
                     <br></br>
                     <Row>
-                        <Col>
-                            <StudentOrganization
-                                imgPath='/images/studentorg/st_org_best_logo.png'
-                                organizationName='BEST'
-                            ></StudentOrganization>
-                        </Col>
-                        <Col>
-                            <StudentOrganization
-                                imgPath='/images/studentorg/st_org_iaeste_logo.png'
-                                organizationName='IAESTE'></StudentOrganization>
-                        </Col>
-                        <StudentOrganization
-                            imgPath='/images/studentorg/eestec-removebg-preview.png'
-                            organizationName='EESTEC'></StudentOrganization>
+                        {/*//TODO: ReactCardFlip might be added*/}
+                        {students_organizations.map((organization) => {
+                            return (
+                                <Col>
+                                    <InformationCard
+                                        imgPath={organization.imgPath}
+                                        organizationName={organization.organizationName}
+                                    ></InformationCard>
+                                </Col>
+                            );
+                        })}
                     </Row>
                     <br></br>
                 </Container>
@@ -200,11 +184,11 @@ const HomePage = () => {
                                 return (
                                     <ReactCardFlip flipDirection='horizontal' isFlipped={company.isFlipped}>
                                         <div onClick={() => flipCard(company.id)}>
-                                            <StudentOrganization
+                                            <InformationCard
                                                 imgPath={company.imgPath}
                                                 organizationName={company.organizationName}
                                             >
-                                            </StudentOrganization>
+                                            </InformationCard>
                                         </div>
                                         <div onClick={() => flipCard(company.id)}>
                                             <DescriptionCard

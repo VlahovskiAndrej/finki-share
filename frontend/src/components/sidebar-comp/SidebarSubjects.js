@@ -1,6 +1,6 @@
 import {Menu, MenuItem, Sidebar, SubMenu} from 'react-pro-sidebar';
 
-const SidebarComp = ({onPeriodClick, onTermClick}) => {
+const SidebarSubjects = ({onPeriodClick, onTermClick}) => {
 
     const semesters = [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -14,7 +14,7 @@ const SidebarComp = ({onPeriodClick, onTermClick}) => {
 
     return (
         <Sidebar>
-            <Menu style={{backgroundColor: '#CDC1B6', minHeight: '630px'}}>
+            <Menu style={{backgroundColor: '#CDC1B6', minHeight:"100vh"}}>
                 <SubMenu label="Период">
                     <MenuItem onClick={() => handlePeriod("зимски")}
                               style={{backgroundColor: '#CDC1B6'}}> Зимски </MenuItem>
@@ -33,4 +33,4 @@ const SidebarComp = ({onPeriodClick, onTermClick}) => {
     );
 }
 
-export default SidebarComp;
+export default SidebarSubjects;
