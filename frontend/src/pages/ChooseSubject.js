@@ -32,7 +32,9 @@ return (
     <>
         <div style={{ backgroundColor: '#DBD2CB' }}>
             <div style={{ backgroundColor: '#DBD2CB' }}>
-                <Navigation />
+                <Navigation
+                    isNavigationWhite={false}
+                />
             </div>
             <Container>
                 <Row className="text-center mt-5">

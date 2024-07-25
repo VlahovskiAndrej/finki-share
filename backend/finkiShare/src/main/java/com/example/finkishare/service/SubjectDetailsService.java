@@ -6,11 +6,12 @@ import com.example.finkishare.model.User;
 import java.util.List;
 
 public interface SubjectDetailsService {
-    public List<SubjectDetails> findAll();
+    List<SubjectDetails> findAll();
 
-    public SubjectDetails takeSubject(String name);
+    SubjectDetails takeSubject(String name);
 
-    public SubjectDetails takeSubject(String name, User user);
+    SubjectDetails takeSubject(String name, User user);
 
-    public List<SubjectDetails> findAllTakenSubjects();
+    List<SubjectDetails> findAllTakenSubjects();
+    SubjectDetails getSubject(Long subjectId);
 }

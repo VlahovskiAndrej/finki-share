@@ -41,4 +41,9 @@ public class SubjectDetailsServiceImpl implements SubjectDetailsService {
     public List<SubjectDetails> findAllTakenSubjects() {
         return subjectDetailsRepository.findAllByIsTakenTrue();
     }
+
+    @Override
+    public SubjectDetails getSubject(Long subjectId) {
+        return subjectDetailsRepository.findById(subjectId).orElse(null);
+    }
 }

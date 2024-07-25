@@ -10,7 +10,9 @@ const LoginPage = () => {
 
     return (
         <div className="App">
-            <Navigation></Navigation>
+            <Navigation
+                isNavigationWhite={false}
+            />
 
             <Form style={{padding: "35px"}} onSubmit={handleSubmit}>
                 <h2>Login</h2>

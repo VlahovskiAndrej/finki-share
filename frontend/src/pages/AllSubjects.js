@@ -34,7 +34,9 @@ const AllSubjects = () => {
         <>
             <div style={{ backgroundColor: '#DBD2CB' }}>
                 <div style={{ backgroundColor: '#DBD2CB' }}>
-                    <Navigation />
+                    <Navigation
+                        isNavigationWhite={false}
+                    />
                 </div>
                 <Row className="text-center mt-4">
                     {context}
