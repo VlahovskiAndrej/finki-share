@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import React, {useState} from "react";
 import CardDetails from "../CardDetails";
 import useSetSubject from "../../hooks/useSetSubject";
+import Swal from "sweetalert2"
 
 
 const replaceProgramNames = (str) => {
@@ -36,7 +37,15 @@ const CardComponent = (props) => {
     const formData = props.subject.name;
 
     const handleClick = () => {
-        setClicked(!clicked);
+        const nextClicked = !clicked;
+        setClicked(nextClicked);
+
+        Swal.fire(
+            nextClicked ? "Успешно додаден предмет во материјали" : "Успешно тргнат предмет од материјали",
+            nextClicked ? "Со лесно :)" : "Редно беше",
+            nextClicked ? "success" : "error"
+        ).then(r => r.isConfirmed);
+
     };
 
     const handleSubmit = useSetSubject();

@@ -1,9 +1,10 @@
 import React from "react";
 import CommentsModal from "./CommentsModal";
 import {BiUpvote} from "react-icons/bi";
-import {IoEyeSharp} from "react-icons/io5";
+import { BiDownvote } from "react-icons/bi";
 import Button from "react-bootstrap/Button";
 
+// TODO: REFACTORING
 const Post = ({post}) => {
     // Define a variable to hold the image URL
     const imageUrl = "https://cdn3d.iconscout.com/3d/premium/thumb/man-5692600-4743369.png?f=webp"; // Assuming imageUrl is a property of the post object
@@ -87,14 +88,14 @@ const Post = ({post}) => {
                                     padding: "10px",                // Optional: add padding for better appearance
                                     borderRadius: "30px"                // Optional: add border radius for rounded corners
                                 }}>
-                                <IoEyeSharp style={{fontSize: "20px"}}/>
+                                <BiDownvote style={{fontSize: "20px"}}/>
                                 <div style={{
                                     display: "flex",
                                     flexDirection: "column",
                                     height: "100%",
                                     marginLeft: "5px"
                                 }}>
-                                    <p style={{margin: 0}}>0 Views</p>
+                                    <p style={{margin: 0}}>0 Votes</p>
                                 </div>
                             </Button>
                         </div>

@@ -39,7 +39,11 @@ const MaterialsPage = () => {
 
     return (
         <>
-            <Navigation isNavigationWhite={true}/>
+            <div style={{ backgroundColor: '#DBD2CB' }}>
+                <Navigation
+                    isNavigationWhite={false}
+                />
+            </div>
             <div className={classes.materialsPageContainer}>
                 <SidebarMaterials/>
                 <div className={classes.introContainer}>
