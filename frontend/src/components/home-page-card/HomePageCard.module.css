@@ -16,3 +16,22 @@
 }
 
 
+.cardImage {
+    width: 30%;
+    position: absolute;
+    right: 85%;
+    top: -20%;
+}
+
+.cardBody {
+    min-height: 200px;
+}
+
+.cardTitle {
+    text-align: center;
+}
+
+.cardText {
+    text-align: center;
+}
+

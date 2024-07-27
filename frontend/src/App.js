@@ -7,10 +7,11 @@ import RegisterPage from "./pages/RegisterPage";
 import ChooseSubject from "./pages/ChooseSubject";
 import AllSubjects from "./pages/AllSubjects";
 import RegisterPageMaterialUI from "./pages/RegisterPageMaterialUI";
-import EarthAnimation from "./animationTest/earth/EarthAnimation";
-import ComputerAnimation from "./animationTest/computer/ComputerAnimation";
-import DeskAnimation from "./animationTest/desk/DeskAnimation"
+import EarthAnimation from "./components/animation/earth/EarthAnimation";
+import ComputerAnimation from "./components/animation/computer/ComputerAnimation";
+import DeskAnimation from "./components/animation/desk/DeskAnimation"
 import ForumPage from "./pages/ForumPage";
+import LoginPageMaterialUI from "./pages/LoginPageMaterialUI";
 
 function App() {
 
@@ -22,11 +23,12 @@ function App() {
                     <Route path="/homepage" element={< HomePage/>}/>
                     <Route path="/materials" element={<MaterialsPage/>}/>
                     <Route path="/select" element={<ChooseSubject/>}/>
-                    <Route path="/select/subjectsAll" element={<AllSubjects/>}/>
+                    <Route path="/subjects" element={<AllSubjects/>}/>
                     <Route path="/login" element={<LoginPage/>}/>
                     <Route path="/register" element={<RegisterPage/>}/>
                     {/*TESTING PURPOSES*/}
                     <Route path="/registerUI" element={<RegisterPageMaterialUI/>}/>
+                    <Route path="/loginUI" element={<LoginPageMaterialUI/>}></Route>
                     <Route path="/animationEarth" element={<EarthAnimation/>}/>
                     <Route path="/animationComputer" element={<ComputerAnimation/>}/>
                     <Route path="/animationDesk" element={<DeskAnimation/>}/>

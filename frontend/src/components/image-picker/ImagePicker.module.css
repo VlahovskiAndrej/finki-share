@@ -1,22 +1,22 @@
 .image-picker {
     display: flex;
-    justify-content: center; /* Center the slider container horizontally */
-    align-items: center; /* Center the slider container vertically */
-    height: 100vh; /* Full viewport height */
-    overflow: hidden; /* Hide any overflow */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .slider-container {
     display: flex;
-    justify-content: center; /* Center the slider items horizontally */
+    justify-content: center;
     align-items: center;
-    width: 80%; /* Adjust width as necessary */
-    max-width: 1200px; /* Adjust to fit your layout */
+    width: 80%;
+    max-width: 1200px;
 }
 
 .circle {
     display: inline-block;
-    margin: 0 20px; /* Adjust margin as necessary */
+    margin: 0 20px;
 }
 
 .circle input[type='radio'] {

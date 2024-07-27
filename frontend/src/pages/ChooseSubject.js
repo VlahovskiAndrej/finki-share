@@ -1,7 +1,6 @@
 import {Col, Container, Row} from "react-bootstrap";
-import Navigation from "../components/navigation/Navigation"
 import React, {useState} from "react";
-import Top4Courses from "../components/top-four-courses-per-category/Top4Courses";
+import Top4Courses from "../components/courses/Top4Courses";
 import subjects from "../data/filtering_subjects.json"
 
 const ChooseSubject = () => {
@@ -24,11 +23,6 @@ const ChooseSubject = () => {
     return (
         <>
             <div style={{backgroundColor: '#DBD2CB'}}>
-                <div style={{backgroundColor: '#DBD2CB'}}>
-                    <Navigation
-                        isNavigationWhite={false}
-                    />
-                </div>
                 <Container>
                     <Row className="text-center mt-5">
                         <h1>Start Learning</h1>
@@ -58,8 +52,8 @@ const ChooseSubject = () => {
                             category={category}
                         />
                     </Row>
-                    <Row className="mt-5 pb-5 text-center" style={{placeContent: 'center'}}>
-                        <a href="/select/subjectsAll" className="btn w-25">Види повеќе</a>
+                    <Row className="mt-5 text-center" style={{placeContent: 'center'}}>
+                        <a href="/subjects" className="btn w-25">Види повеќе</a>
                     </Row>
                 </Container>
             </div>

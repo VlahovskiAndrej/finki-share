@@ -9,11 +9,9 @@ import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
 import Typography from '@mui/material/Typography';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import ImagePicker from "../components/image-picker/ImagePicker";
-import useRegisterUser from "../hooks/useRegisterUser";
 import Navigation from "../components/navigation/Navigation";
 
 const Copyright = (props) => {
@@ -31,13 +29,7 @@ const Copyright = (props) => {
 
 const defaultTheme = createTheme();
 
-const RegisterPageMaterialUI = () => {
-    const {
-        username, setUsername, email, setEmail, password, setPassword, successMessage,
-        setSelectedImage,
-        handleSubmit
-    } = useRegisterUser();
-
+const LoginPageMaterialUI = () => {
     return (
 
         <>
@@ -45,10 +37,25 @@ const RegisterPageMaterialUI = () => {
             <ThemeProvider theme={defaultTheme}>
                 <Grid container component="main"
                       sx={{
-                          height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center',
-                          backgroundColor: '#DBD2CB',
-                          backdropFilter: 'blur(13939px)',
-                          opacity: 1,
+                          height: '100%',
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          position: 'relative',
+                          '&::before': {
+                              content: '""',
+                              position: 'absolute',
+                              top: 0,
+                              left: 0,
+                              width: '100%',
+                              height: '100%',
+                              backgroundImage: 'url(https://www.up.pt/portal/media/images/estudar-espacos-de-e.325d2f2a.fill-1020x330.format-webp.webp)',
+                              backgroundSize: 'cover',
+                              backgroundPosition: 'center',
+                              opacity: 0.9,
+                              zIndex: -1,
+                              filter: 'blur(6px)',
+                          }
                       }}>
                     <CssBaseline/>
                     <Grid
@@ -58,10 +65,23 @@ const RegisterPageMaterialUI = () => {
                         md={7}
                         sx={{textAlign: 'center'}}
                     >
-                        <Typography variant="h4" component="div" gutterBottom>
-                            Ве молиме изберете го вашиот карактер
+                    </Grid>
+                    <Grid item
+                          xs={12}
+                          sm={4}
+                          md={7}
+                          sx={{
+                              textAlign: 'center',
+                              position: 'absolute',
+                              top: '50%',
+                              right: '35%',
+                              transform: 'translate(-50%, -50%)',
+                              color: '#FFFFFF',
+                              zIndex: 1, //
+                          }}>
+                        <Typography variant="h3">
+                            Welcome to FINKI Share.
                         </Typography>
-                        <ImagePicker setSelectedImage={setSelectedImage}/>
                     </Grid>
                     <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
                         <Box
@@ -74,12 +94,12 @@ const RegisterPageMaterialUI = () => {
                             }}
                         >
                             <Avatar sx={{m: 1}}>
-                                <LockOutlinedIcon/>
+                                <LockOpenIcon/>
                             </Avatar>
                             <Typography component="h1" variant="h5">
-                                Sign up
+                                Sign in
                             </Typography>
-                            <Box component="form" noValidate onSubmit={handleSubmit} sx={{mt: 1}}>
+                            <Box component="form" noValidate sx={{mt: 1}}>
                                 <TextField
                                     margin="normal"
                                     required
@@ -88,20 +108,8 @@ const RegisterPageMaterialUI = () => {
                                     label="Username"
                                     name="username"
                                     autoComplete="username"
-                                    value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
-                                    autoFocus
-                                />
-                                <TextField
-                                    margin="normal"
-                                    required
-                                    fullWidth
-                                    id="email"
-                                    label="Email Address"
-                                    name="email"
-                                    autoComplete="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    // value={username}
+                                    // onChange={(e) => setUsername(e.target.value)}
                                     autoFocus
                                 />
                                 <TextField
@@ -112,8 +120,8 @@ const RegisterPageMaterialUI = () => {
                                     label="Password"
                                     type="password"
                                     id="password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    // value={password}
+                                    // onChange={(e) => setPassword(e.target.value)}
                                     autoComplete="current-password"
                                 />
                                 <FormControlLabel
@@ -126,7 +134,7 @@ const RegisterPageMaterialUI = () => {
                                     variant="contained"
                                     sx={{mt: 3, mb: 2}}
                                 >
-                                    Sign Up
+                                    Sign In
                                 </Button>
                                 <Grid container>
                                     <Grid item xs>
@@ -135,11 +143,11 @@ const RegisterPageMaterialUI = () => {
                                         </Link>
                                     </Grid>
                                     <Grid item>
-                                        <Link href="/login" variant="body2">
-                                            {"Already have an account? Sign In"}
+                                        <Link href="/registerUI" variant="body2">
+                                            {"Don't have an account? Sign Up"}
                                         </Link>
                                     </Grid>
-                                    {successMessage && <p style={{color: "darkgreen"}}>{successMessage}</p>}
+                                    {/*{successMessage && <p style={{color: "darkgreen"}}>{successMessage}</p>}*/}
                                 </Grid>
                                 <Copyright sx={{mt: 5}}/>
                             </Box>
@@ -151,4 +159,4 @@ const RegisterPageMaterialUI = () => {
     );
 }
 
-export default RegisterPageMaterialUI;
+export default LoginPageMaterialUI;

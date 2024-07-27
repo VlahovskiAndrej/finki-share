@@ -2,7 +2,7 @@ import {Col, Container, Image, Row} from "react-bootstrap";
 import Navigation from "../components/navigation/Navigation";
 import {ReactTyped} from "react-typed";
 import HomePageCard from "../components/home-page-card/HomePageCard";
-import InformationCard from "../components/students-organization/InformationCard";
+import InformationCard from "../components/home-page-card/InformationCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import React, {useEffect, useState} from "react";
@@ -12,11 +12,12 @@ import ReactCardFlip from 'react-card-flip';
 import companies from '../data/companies.json'
 import students_organizations from '../data/student_organizations.json'
 import home_page_data from "../data/home_page.json"
-import DescriptionCard from "../components/students-organization/DescriptionCard";
-import ComputerAnimation from "../animationTest/computer/ComputerAnimation";
+import DescriptionCard from "../components/home-page-card/DescriptionCard";
+import ComputerAnimation from "../components/animation/computer/ComputerAnimation";
 import Button from "react-bootstrap/Button";
-import DeskAnimation from "../animationTest/desk/DeskAnimation";
+import DeskAnimation from "../components/animation/desk/DeskAnimation";
 import Spinner from "react-bootstrap/Spinner";
+import ChooseSubject from "./ChooseSubject";
 
 const HomePage = () => {
 
@@ -50,7 +51,7 @@ const HomePage = () => {
                 alignItems: "center",
                 height: "100vh"
             }}>
-                <Spinner animation="border" />
+                <Spinner animation="border"/>
             </div>
 
         );
@@ -67,7 +68,7 @@ const HomePage = () => {
     return (
         <>
             <Navigation
-                isNavigationWhite = {true}
+                isNavigationWhite={true}
             />
             <Container>
                 <Row className="d-flex align-items-center justify-content-center">
@@ -94,7 +95,7 @@ const HomePage = () => {
                             </p>
                         </Row>
                         <Row className="w-25 d-inline-block mt-3">
-                            <Button variant="outline-dark"  href="/register">Види повеќе</Button>
+                            <Button variant="outline-dark" href="/register">Види повеќе</Button>
                         </Row>
                     </Col>
                     <Col>
@@ -103,30 +104,31 @@ const HomePage = () => {
                 </Row>
             </Container>
 
-                <Row className="d-flex align-items-center justify-content-center">
+            <Row className="d-flex align-items-center justify-content-center">
 
-                    <Col>
-                        <DeskAnimation/>
-                    </Col>
-                    <Col style={{marginBottom: "330px"}}>
-                        <Row className="h-25 d-inline-block py-5">
-                            <h1>
-                                <b>
-                                    Креирај си го сам
-                                    својот работен простор!
-                                </b>
-                            </h1>
-                        </Row>
-                        <Row className="h-25 d-inline-block mt-3">
-                            <p>
-                                Избери предмети, види ја магијата
-                            </p>
-                        </Row>
-                        <Row className="w-25 mt-3">
-                            <Button variant="outline-dark" href="select/subjectsAll">Започни</Button>
-                        </Row>
-                    </Col>
-                </Row>
+                <Col>
+                    <DeskAnimation/>
+                </Col>
+                <Col style={{marginBottom: "330px"}}>
+                    <Row className="h-25 d-inline-block py-5">
+                        <h1>
+                            <b>
+                                Креирај си го сам
+                                својот работен простор!
+                            </b>
+                        </h1>
+                    </Row>
+                    <Row className="h-25 d-inline-block mt-3">
+                        <p>
+                            Избери предмети, види ја магијата
+                        </p>
+                    </Row>
+                    <Row className="w-25 mt-3">
+                        <Button variant="outline-dark" href="/subjects">Започни</Button>
+                    </Row>
+                </Col>
+            </Row>
+            <ChooseSubject/>
             <Container style={{minWidth: '100%', backgroundColor: '#DBD2CB'}}>
                 <Container>
                     <Row className="justify-content-md-center">
@@ -143,9 +145,9 @@ const HomePage = () => {
                             return (
                                 <Col style={{textAlign: '-webkit-center', position: 'relative', bottom: '140px'}}>
                                     <HomePageCard
-                                        imgUrl = {data.imgPath}
-                                        mainText = {data.mainText}
-                                        subText = {data.subText}
+                                        imgUrl={data.imgPath}
+                                        mainText={data.mainText}
+                                        subText={data.subText}
                                     >
                                     </HomePageCard>
                                 </Col>
@@ -159,13 +161,14 @@ const HomePage = () => {
                     </Row>
                     <br></br>
                     <Row>
-                        {/*//TODO: ReactCardFlip might be added*/}
                         {students_organizations.map((organization) => {
                             return (
                                 <Col>
                                     <InformationCard
+                                        isStudentOrganization={true}
                                         imgPath={organization.imgPath}
                                         organizationName={organization.organizationName}
+                                        redirectLink={organization.link}
                                     ></InformationCard>
                                 </Col>
                             );
@@ -186,6 +189,7 @@ const HomePage = () => {
                                     <ReactCardFlip flipDirection='horizontal' isFlipped={company.isFlipped}>
                                         <div onClick={() => flipCard(company.id)}>
                                             <InformationCard
+                                                isStudentOrganization={false}
                                                 imgPath={company.imgPath}
                                                 organizationName={company.organizationName}
                                             >
