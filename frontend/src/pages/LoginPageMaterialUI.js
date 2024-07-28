@@ -79,7 +79,13 @@ const LoginPageMaterialUI = () => {
                               color: '#FFFFFF',
                               zIndex: 1, //
                           }}>
-                        <Typography variant="h3">
+                        <Typography variant="h3" style={{
+                            fontFamily: 'Geologica, sans-serif',
+                            fontOpticalSizing: 'auto',
+                            fontWeight: 600,
+                            fontStyle: 'normal',
+                            fontVariationSettings: '"slnt" 0, "CRSV" 0.5, "SHRP" 19'
+                        }}>
                             Welcome to FINKI Share.
                         </Typography>
                     </Grid>

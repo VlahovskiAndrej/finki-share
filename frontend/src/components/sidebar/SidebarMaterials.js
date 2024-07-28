@@ -1,5 +1,5 @@
 import {Menu, MenuItem, Sidebar, SubMenu} from "react-pro-sidebar";
-import React from "react";
+import React, {useEffect} from "react";
 import useTakenSubjects from "../../hooks/useTakenSubjects";
 import classes from "./Sidebar.module.css"
 
@@ -10,6 +10,16 @@ const SidebarMaterials = () => {
     const handleClick = (subject) => {
         window.location.href = `${redirectLink}${subject.id}`;
     }
+
+    const groupSubjectsByAcademicYearAndSemester = () => {
+        const groupedSubjects = Object.groupBy(subjects, ({academicYearAndSemester}) => academicYearAndSemester);
+       console.log(Object.values(groupedSubjects))
+        return groupedSubjects;
+    }
+
+    useEffect(() => {
+        groupSubjectsByAcademicYearAndSemester();
+    })
 
     return (
         <Sidebar>

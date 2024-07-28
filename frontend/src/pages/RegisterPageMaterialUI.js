@@ -58,7 +58,15 @@ const RegisterPageMaterialUI = () => {
                         md={7}
                         sx={{textAlign: 'center'}}
                     >
-                        <Typography variant="h4" component="div" gutterBottom>
+                        <Typography variant="h4" component="div" gutterBottom
+                                    className="mb-5"
+                                    style={{
+                            fontFamily: 'Geologica, sans-serif',
+                            fontOpticalSizing: 'auto',
+                            fontWeight: 600,
+                            fontStyle: 'normal',
+                            fontVariationSettings: '"slnt" 0, "CRSV" 0.5, "SHRP" 19'
+                        }}>
                             Ве молиме изберете го вашиот карактер
                         </Typography>
                         <ImagePicker setSelectedImage={setSelectedImage}/>
@@ -102,7 +110,6 @@ const RegisterPageMaterialUI = () => {
                                     autoComplete="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    autoFocus
                                 />
                                 <TextField
                                     margin="normal"

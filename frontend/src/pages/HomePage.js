@@ -15,7 +15,6 @@ import home_page_data from "../data/home_page.json"
 import DescriptionCard from "../components/home-page-card/DescriptionCard";
 import ComputerAnimation from "../components/animation/computer/ComputerAnimation";
 import Button from "react-bootstrap/Button";
-import DeskAnimation from "../components/animation/desk/DeskAnimation";
 import Spinner from "react-bootstrap/Spinner";
 import ChooseSubject from "./ChooseSubject";
 
@@ -103,31 +102,6 @@ const HomePage = () => {
                     </Col>
                 </Row>
             </Container>
-
-            <Row className="d-flex align-items-center justify-content-center">
-
-                <Col>
-                    <DeskAnimation/>
-                </Col>
-                <Col style={{marginBottom: "330px"}}>
-                    <Row className="h-25 d-inline-block py-5">
-                        <h1>
-                            <b>
-                                Креирај си го сам
-                                својот работен простор!
-                            </b>
-                        </h1>
-                    </Row>
-                    <Row className="h-25 d-inline-block mt-3">
-                        <p>
-                            Избери предмети, види ја магијата
-                        </p>
-                    </Row>
-                    <Row className="w-25 mt-3">
-                        <Button variant="outline-dark" href="/subjects">Започни</Button>
-                    </Row>
-                </Col>
-            </Row>
             <ChooseSubject/>
             <Container style={{minWidth: '100%', backgroundColor: '#DBD2CB'}}>
                 <Container>

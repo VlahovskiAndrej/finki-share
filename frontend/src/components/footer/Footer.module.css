@@ -17,9 +17,6 @@
 
 .footerTitle {
     color: white;
-    font-weight: 400;
-    font-family: sans-serif !important;
-    font-size: 3.5rem;
     line-height: 3rem;
     text-align: center;
 }
@@ -29,6 +26,5 @@
 }
 
 .footerLinks h5, .footerAbout h5 {
-    font-family: sans-serif;
     text-align: center;
 }

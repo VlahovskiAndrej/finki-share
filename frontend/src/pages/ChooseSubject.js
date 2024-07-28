@@ -9,24 +9,23 @@ const ChooseSubject = () => {
     const [subjectObject, setSubjectObject] = useState(subjects);
 
     const handleActiveCategory = (category) => {
-        const updatedSubjectObject = subjectObject.map((subject) => {
+        const updatedSubjects = subjectObject.map((subject) => {
             return {
                 ...subject,
                 selected: subject.description.includes(category[0])
             };
         })
 
-        setSubjectObject(updatedSubjectObject);
+        setSubjectObject(updatedSubjects);
         setCategory(category);
     }
 
     return (
         <>
             <div style={{backgroundColor: '#DBD2CB'}}>
-                <Container>
-                    <Row className="text-center mt-5">
-                        <h1>Start Learning</h1>
-                        <h5>Популарни курсеви од одредени области</h5>
+                <Container className="text-center mt-5">
+                    <Row>
+                        <h1>Популарни курсеви од одредени области</h1>
                     </Row>
                 </Container>
                 <Container className="mt-5">
