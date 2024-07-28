@@ -1,7 +1,7 @@
 import '../App.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import ImagePicker from "../components/ImagePicker";
+import ImagePicker from "../components/image-picker/ImagePicker";
 import Navigation from "../components/navigation/Navigation";
 import useRegisterUser from "../hooks/useRegisterUser";
 

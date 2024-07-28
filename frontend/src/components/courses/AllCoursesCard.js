@@ -1,4 +1,4 @@
-import CardComponent from "../courses/CardComponent"
+import CardComponent from "./CardComponent"
 import React from "react";
 import {Col, Row} from "react-bootstrap";
 import useSubjects from "../../hooks/useSubjects";
@@ -17,13 +17,13 @@ const filterByAcademicYearAndSemester = (subject, semester, academicYear) => {
     return true;
 };
 
-const AllCoursesCard = ({semester, academicYear}) => {
+const AllCoursesCard = ({semester, academicYear, activeSubject}) => {
     const subjects = useSubjects();
 
     return (
         <Row>
             {Object.values(subjects)
-                .filter(subject => filterByAcademicYearAndSemester(subject, semester, academicYear))
+                .filter(!activeSubject ? subject => filterByAcademicYearAndSemester(subject, semester, academicYear) : subject => subject.id === activeSubject.id)
                 .map(subject => (
                     <Col key={subject.url} xs={12} sm={6} md={4} lg={3}>
                         <CardComponent

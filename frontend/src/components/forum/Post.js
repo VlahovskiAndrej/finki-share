@@ -1,5 +1,5 @@
 import React from "react";
-import CommentsModal from "./CommentsModal";
+import CommentsModal from "./modals/comments/CommentsModal";
 import {BiUpvote} from "react-icons/bi";
 import { BiDownvote } from "react-icons/bi";
 import Button from "react-bootstrap/Button";

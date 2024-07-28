@@ -2,7 +2,7 @@ import '../App.css';
 import React, {useEffect, useState} from "react";
 import useTakenSubjects from "../hooks/useTakenSubjects";
 import Navigation from "../components/navigation/Navigation";
-import SidebarMaterials from "../components/sidebar-comp/SidebarMaterials";
+import SidebarMaterials from "../components/sidebar/SidebarMaterials";
 import {FaBookOpen} from 'react-icons/fa';
 import classes from './MaterialsPage.module.css';
 import Spinner from "react-bootstrap/Spinner";
@@ -44,7 +44,8 @@ const MaterialsPage = () => {
                     isNavigationWhite={false}
                 />
             </div>
-            <div className={classes.materialsPageContainer}>
+            <div
+                className={classes.materialsPageContainer}>
                 <SidebarMaterials/>
                 <div className={classes.introContainer}>
                     <FaBookOpen size={50} color="#814A35"/>

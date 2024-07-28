@@ -1,5 +1,5 @@
-import useAuthStatus from "../hooks/useAuthStatus";
-import useSetPosts from "../hooks/useSetPosts";
+import useAuthStatus from "../../../../hooks/useAuthStatus";
+import useSetPosts from "../../../../hooks/useSetPosts";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import React from "react";

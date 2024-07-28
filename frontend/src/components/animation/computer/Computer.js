@@ -15,8 +15,8 @@ export default function Model(props) {
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
-        <mesh geometry={nodes.Object_2.geometry} material={materials.None} scale={4}/>
-        <mesh geometry={nodes.Object_3.geometry} material={materials.None} scale={4}/>
+        <mesh geometry={nodes.Object_2.geometry} material={materials.None} scale={5}/>
+        <mesh geometry={nodes.Object_3.geometry} material={materials.None} scale={5}/>
       </group>
     </group>
   )

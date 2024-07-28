@@ -1,9 +1,10 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import React, {useState} from "react";
-import CardDetails from "../CardDetails";
+import CardDetails from "./CardDetails";
 import useSetSubject from "../../hooks/useSetSubject";
 import Swal from "sweetalert2"
+import classes from "./CardComponent.module.css"
 
 
 const replaceProgramNames = (str) => {
@@ -31,7 +32,6 @@ const replaceProgramNames = (str) => {
 }
 
 const CardComponent = (props) => {
-    console.log(props.subject)
     const [clicked, setClicked] = useState(props.subject['isTaken']);
     const [hover, setHover] = useState(false);
     const formData = props.subject.name;
@@ -54,39 +54,19 @@ const CardComponent = (props) => {
         <Card
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
-            style={{
-                height: '180px',
-                margin: '10px 0',
-                backgroundColor: hover ? '#814A35' : '#CDC1B6',
-                color: hover ? '#FFFADA' : '#28231D',
-                borderRadius: '10px',
-                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-                transition: 'transform 0.3s ease-in-out, background-color 0.3s ease-in-out',
-                transform: clicked ? 'scale(1.02)' : 'scale(1)'
-            }}
+            className={`${classes.card} ${hover ? classes.cardHover : classes.cardDefault} ${clicked ? classes.cardScale : ''}`}
         >
-            <Card.Body style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+            <Card.Body className={classes.cardBody}>
                 <div>
-                    <Card.Title style={{
-                        display: '-webkit-box',
-                        WebkitLineClamp: 1,
-                        WebkitBoxOrient: 'vertical',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        color: hover ? '#FFFADA' : '#28231D' // Ensure title text is readable
-                    }}>{props.subject['name']}</Card.Title>
-                    <Card.Text style={{color: hover ? '#FFFADA' : '#28231D'}}>
+                    <Card.Title className={classes.cardTitle}>{props.subject['name']}</Card.Title>
+                    <Card.Text className={classes.cardText}>
                         {props.subject['code']}
-                        <p style={{
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            whiteSpace: 'nowrap'
-                        }}>{replaceProgramNames(props.subject['studyProgram'])}</p>
+                        <p>{replaceProgramNames(props.subject['studyProgram'])}</p>
                     </Card.Text>
                 </div>
-                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                <div className={classes.cardFooter}>
                     <CardDetails subject={props.subject} setHover={setHover}/>
-                    <form onSubmit={(event) => handleSubmit(event, formData)} style={{marginTop: '10px'}}>
+                    <form onSubmit={(event) => handleSubmit(event, formData)} className={classes.form}>
                         <input type="text" name="name" value={formData.name} hidden/>
                         <div>
                             <Button type="submit"
