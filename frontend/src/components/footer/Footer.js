@@ -4,16 +4,15 @@ import {FaFacebook, FaInstagram} from "react-icons/fa";
 import {AiFillTwitterCircle} from "react-icons/ai";
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import classes from "./Footer.module.css"
 
 const Footer = () => {
     const handleHover = (event) => {
-        event.target.style.transition = 'all .35s ease';
-        event.target.style.transform = 'scale(.9)';
-        event.target.style.filter = 'grayscale(100%) contrast(120%)';
+        event.target.classList.add("icon-hover")
     }
 
     const handleHoverEnd = (event) => {
-        event.target.style.transform = 'scale(1)';
+        event.target.classList.remove("icon-hover")
     }
 
     return (
@@ -21,40 +20,38 @@ const Footer = () => {
             <Row className="gx-0 mt-5">
                 <Col className="">
                     <hr
-                        className="ms-7"
-                        style={{
-                            maxWidth: "100%",
-                            marginTop: "5%",
-                            border: "1px solid white",
-                            opacity: "1",
-                        }}
+                        className={`${classes.hrCustom} ms-7`}
                     />
                 </Col>
                 <Col className="col-auto">
                     <Row className="mx-auto">
                         <Col className="col-auto">
-                            <FaFacebook onMouseOver={handleHover} onMouseOut={handleHoverEnd} color="white" size="3.5em"
+                            <FaFacebook onMouseOver={handleHover}
+                                        onMouseOut={handleHoverEnd}
+                                        className={classes.icon}
+                                        color="white"
+                                        size="3.5em"
                                         onClick={() => window.location = "https://www.facebook.com/"}/>
                         </Col>
                         <Col className="col-auto">
-                            <FaInstagram onMouseOver={handleHover} onMouseOut={handleHoverEnd} color="white"
+                            <FaInstagram onMouseOver={handleHover}
+                                         onMouseOut={handleHoverEnd}
+                                         className={classes.icon}
+                                         color="white"
                                          size="3.5em"/>
                         </Col>
                         <Col className="col-auto">
-                            <AiFillTwitterCircle onMouseOver={handleHover} onMouseOut={handleHoverEnd} color="white"
+                            <AiFillTwitterCircle onMouseOver={handleHover}
+                                                 onMouseOut={handleHoverEnd}
+                                                 className={classes.icon}
+                                                 color="white"
                                                  size="3.5em"/>
                         </Col>
                     </Row>
                 </Col>
                 <Col>
                     <hr
-                        className="me-7"
-                        style={{
-                            maxWidth: "100%",
-                            marginTop: "5%",
-                            border: "1px solid white",
-                            opacity: "1",
-                        }}
+                        className={`${classes.hrCustom} me-7`}
                     />
                 </Col>
             </Row>
@@ -62,48 +59,30 @@ const Footer = () => {
             <Row className="mt-5">
                 <Col>
                     <h1
-                        style={{
-                            color: "white",
-                            fontWeight: 400,
-                            fontFamily: "sans-serif !important",
-                            fontSize: "3.5rem",
-                            lineHeight: "3rem",
-                            textDecoration: "bold",
-                            textAlign: "center"
-                        }}
+                        className={classes.footerTitle}
                     >
                         FINKI<br></br>Share
                     </h1>
                 </Col>
                 <Col>
                     <h1
-                        style={{
-                            color: "white",
-                            fontWeight: 400,
-                            fontFamily: "sans-serif !important",
-                            fontSize: "3.5rem",
-                            lineHeight: "3rem",
-                            textDecoration: "bold",
-                            textAlign: "center"
-                        }}
+                        className={classes.footerTitle}
                     >
                         Links
                     </h1>
                     <br></br>
-                    <Container className="mx-auto w-50" style={{color: "white"}}>
-                        <h5 className="text-center" style={{fontFamily: 'sans-serif'}}>LeetCode</h5>
-                        <h5 className="text-center" style={{fontFamily: 'sans-serif'}}>GitHub</h5>
-                        <h5 className="text-center" style={{fontFamily: 'sans-serif'}}>FINKI</h5>
-                        <h5 className="text-center" style={{fontFamily: 'sans-serif'}}>Discord</h5>
+                    <Container className={`${classes.footerLinks} mx-auto w-50`}>
+                        <h5>LeetCode</h5>
+                        <h5>GitHub</h5>
+                        <h5>FINKI</h5>
+                        <h5>Discord</h5>
                     </Container>
                 </Col>
 
                 <Col>
-                    <Container className="mx-auto w-50" style={{color: "white"}}>
-                        <h5 className="text-start" style={{textAlign: "center", fontFamily: 'sans-serif'}}>ABOUT US</h5>
-                        <h5 className="text-start" style={{textAlign: "center", fontFamily: 'sans-serif'}}>REPORT A
-                            BUG</h5>
-
+                    <Container className={`${classes.footerAbout} mx-auto w-50`}>
+                        <h5>ABOUT US</h5>
+                        <h5>REPORT A BUG</h5>
                     </Container>
                 </Col>
             </Row>

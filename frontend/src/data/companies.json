@@ -38,5 +38,13 @@
     "description": "Specializing in IT infrastructure and network solutions, Sorsix provides internships that focus on designing and implementing scalable networks. Interns gain practical experience in enhancing connectivity and operational efficiency for businesses",
     "isFlipped": false,
     "link": "https://www.sorsix.com/"
+  },
+  {
+    "id": 5,
+    "imgPath": "/images/companies/kin_carta.png",
+    "organizationName": "Kin Carta",
+    "description": "At Kit Carta, we revolutionize online shopping experiences by integrating cutting-edge technology with seamless, user-friendly interfaces. Empower your business with Kit Carta's innovative e-commerce solutions, designed to enhance customer satisfaction and drive sales growth.",
+    "isFlipped": false,
+    "link": "https://www.kinandcarta.com/en/"
   }
 ]

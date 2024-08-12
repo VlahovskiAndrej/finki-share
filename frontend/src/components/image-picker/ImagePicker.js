@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import classes from './ImagePicker.module.css'; // Import CSS module
 import Slider from "react-slick";
 import {Container} from "react-bootstrap";
-import imageList from "../data/avatars/images"
+import imageList from "../../data/avatars/images"
 
 const ImagePicker = ({setSelectedImage}) => {
     const settings = {
@@ -20,7 +20,7 @@ const ImagePicker = ({setSelectedImage}) => {
 
     const handleImageChange = (imageUrl) => {
         setSelectedImageLocal(imageUrl);
-        setSelectedImage(imageUrl); // Pass the selected image back to the parent component
+        setSelectedImage(imageUrl);
     };
 
     return (

@@ -3,8 +3,6 @@
     min-height: 100vh;
     text-align: center;
     background: linear-gradient(to right, #DBD2CB, #F0ECE9);
-    justify-content: center;
-    align-items: center;
 }
 
 .introContainer {

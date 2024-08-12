@@ -3,11 +3,11 @@ import {useNavigate} from 'react-router-dom';
 import React from 'react'
 import {Nav, Navbar} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
-import styles from './Navigation.module.css'
+import classes from './Navigation.module.css'
 import useAuthStatus from "../../hooks/useAuthStatus";
 
 
-const Navigation = ({isNavigationWhite}) =>  {
+const Navigation = ({isNavigationWhite}) => {
     const {isLoggedIn, username} = useAuthStatus();
     let navigate = useNavigate();
 
@@ -16,64 +16,66 @@ const Navigation = ({isNavigationWhite}) =>  {
         navigate(path);
     }
 
-    const MouseOver = (event) => {
+    const handleMouseOver = (event) => {
+        // event.target.classList.add(classes.customButton);
         event.target.style.color = '#FFFFFF';
         event.target.style.backgroundColor = '#814A35';
         event.target.style.borderRadius = '40em';
-    }
+    };
 
-    const MouseOut = (event) => {
+    const handleMouseOut = (event) => {
+        // event.target.classList.remove(classes.customButton);
+        // if (isNavigationWhite) {
+        //     event.target.classList.add(classes.customButtonWhite);
+        // } else {
+        //     event.target.classList.add(classes.customButton);
+        // }
         event.target.style.color = '#818181';
         event.target.style.backgroundColor = isNavigationWhite ? '#FFFFFF' : '#DBD2CB'
-    }
+    };
 
     return (
         <Navbar expand="lg">
             <Container>
-                <img alt='/' src='/images/finkilogo.png ' style={{width: '5%', height: '5%'}} onClick={routeChange}/>
-                <Navbar.Brand href="/" style={{color: 'white'}}>
+                <img alt='/' src='/images/finkilogo.png ' className={classes.logo} onClick={routeChange}/>
+                <Navbar.Brand href="/" className={classes.navbarBrand}>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav style={{marginInlineStart: 'auto'}}>
+                    <Nav className={classes.navbarNav}>
                         <Nav.Link
-                            className={styles.custombutton}
-                            href="/select"
-                            onMouseOver={MouseOver}
-                            onMouseOut={MouseOut}
+                            className={isNavigationWhite ? classes.customButtonWhite : classes.customButton}
+                            href="/subjects"
+                            onMouseOver={handleMouseOver}
+                            onMouseOut={handleMouseOut}
                         >
                             Избери предмет
                         </Nav.Link>
-                        <Nav.Link href="/materials"
-                                  className={styles.custombutton}
-                                  onMouseOver={MouseOver}
-                                  onMouseOut={MouseOut}
+                        <Nav.Link
+                            className={isNavigationWhite ? classes.customButtonWhite : classes.customButton}
+                            href="/materials"
+                            onMouseOver={handleMouseOver}
+                            onMouseOut={handleMouseOut}
                         >
                             Материјали
                         </Nav.Link>
-                        <Nav.Link href="/register"
-                                  className={styles.custombutton}
-                                  onMouseOver={MouseOver}
-                                  onMouseOut={MouseOut}
+                        <Nav.Link
+                            className={isNavigationWhite ? classes.customButtonWhite : classes.customButton}
+                            href="/registerUI"
+                            onMouseOver={handleMouseOver}
+                            onMouseOut={handleMouseOut}
                         >
                             Регистрирај се
                         </Nav.Link>
 
-                        {/*<Nav.Link href="/login"*/}
-                        {/*          className={styles.custombutton}*/}
-                        {/*          onMouseOver={MouseOver}*/}
-                        {/*          onMouseOut={MouseOut}*/}
-                        {/*>*/}
-                        {/*    Најави се*/}
-                        {/*</Nav.Link>*/}
-
                         {isLoggedIn ?
-                            (<Nav.Link href="http://localhost:8080/logout" style={{color: 'red'}}>{username} - Logout</Nav.Link>)
+                            (<Nav.Link href="http://localhost:8080/logout" className={classes.logoutLink}>{username} -
+                                Logout</Nav.Link>)
                             :
-                            (<Nav.Link href="http://localhost:8080/login"
-                                       className={styles.custombutton}
-                                       onMouseOver={MouseOver}
-                                       onMouseOut={MouseOut}>Најави се</Nav.Link>)
+                            (<Nav.Link href="/loginUI"
+                                       className={isNavigationWhite ? classes.customButtonWhite : classes.customButton}
+                                       onMouseOver={handleMouseOver}
+                                       onMouseOut={handleMouseOut}>Најави се</Nav.Link>)
                         }
                     </Nav>
                 </Navbar.Collapse>
