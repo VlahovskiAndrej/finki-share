@@ -5,15 +5,19 @@ import classes from "./Sidebar.module.css"
 
 const SidebarMaterials = () => {
     const subjects = useTakenSubjects();
-    const redirectLink = `/materials/forum/`
+    const redirectLinkForum = `/materials/forum/`
+    const redirectLinkMaterials = `/materials/upload/`
 
-    const handleClick = (subject) => {
-        window.location.href = `${redirectLink}${subject.id}`;
+    const handleClickForum = (subject) => {
+        window.location.href = `${redirectLinkForum}${subject.id}`;
+    }
+    const handleClickMaterials = (subject) => {
+        window.location.href = `${redirectLinkMaterials}${subject.id}`;
     }
 
     const groupSubjectsByAcademicYearAndSemester = () => {
         const groupedSubjects = Object.groupBy(subjects, ({academicYearAndSemester}) => academicYearAndSemester);
-       console.log(Object.values(groupedSubjects))
+        console.log(Object.values(groupedSubjects))
         return groupedSubjects;
     }
 
@@ -27,8 +31,9 @@ const SidebarMaterials = () => {
                 {Object.values(subjects).map((subject) => {
                     return (
                         <SubMenu label={subject.name}>
-                            <MenuItem className={classes.menuItem}>Материјали</MenuItem>
-                            <MenuItem className={classes.menuItem} onClick={() => handleClick(subject)}>
+                            <MenuItem className={classes.menuItem} onClick={() => handleClickMaterials(subject)}>Материјали
+                            </MenuItem>
+                            <MenuItem className={classes.menuItem} onClick={() => handleClickForum(subject)}>
                                 Форум
                             </MenuItem>
                         </SubMenu>
