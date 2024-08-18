@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import Typography from '@mui/material/Typography';
-import {createTheme, ThemeProvider} from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Navigation from "../components/navigation/Navigation";
 
 const Copyright = (props) => {
@@ -30,8 +30,39 @@ const Copyright = (props) => {
 const defaultTheme = createTheme();
 
 const LoginPageMaterialUI = () => {
-    return (
+    const [username, setUsername] = React.useState('');
+    const [password, setPassword] = React.useState('');
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await fetch('http://localhost:8080/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    username: username,
+                    password: password
+                }),
+                credentials: 'include'
+            });
+                console.log("Invalid credentials");
+        } catch (error) {
+            const response = await fetch('http://localhost:8080/check-login', {
+                method: 'GET',
+                credentials: 'include'
+            });
+            if (response.ok) {
+                const resultObject = await response.json();
+                if (resultObject["authenticated"]) {
+                    window.location.href = '/';
+                }
+            }
+        }
+    };
+
+    return (
         <>
             <Navigation isNavigationWhite={true}/>
             <ThemeProvider theme={defaultTheme}>
@@ -105,7 +136,7 @@ const LoginPageMaterialUI = () => {
                             <Typography component="h1" variant="h5">
                                 Sign in
                             </Typography>
-                            <Box component="form" noValidate sx={{mt: 1}}>
+                            <Box component="form" noValidate sx={{mt: 1}} onSubmit={handleSubmit}>
                                 <TextField
                                     margin="normal"
                                     required
@@ -114,8 +145,8 @@ const LoginPageMaterialUI = () => {
                                     label="Username"
                                     name="username"
                                     autoComplete="username"
-                                    // value={username}
-                                    // onChange={(e) => setUsername(e.target.value)}
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
                                     autoFocus
                                 />
                                 <TextField
@@ -126,8 +157,8 @@ const LoginPageMaterialUI = () => {
                                     label="Password"
                                     type="password"
                                     id="password"
-                                    // value={password}
-                                    // onChange={(e) => setPassword(e.target.value)}
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                     autoComplete="current-password"
                                 />
                                 <FormControlLabel

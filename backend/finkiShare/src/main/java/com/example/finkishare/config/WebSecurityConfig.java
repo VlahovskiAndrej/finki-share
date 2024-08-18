@@ -40,7 +40,7 @@ public class WebSecurityConfig {
 //                        .authenticated()
                 )
                 .formLogin((form) -> form
-//                        .loginPage("/login")
+                        .loginPage("/login")
                         .permitAll()
                         .failureUrl("/login?error=BadCredentials")
                         .defaultSuccessUrl("http://localhost:3000/", true)
