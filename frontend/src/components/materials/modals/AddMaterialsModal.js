@@ -1,16 +1,15 @@
-import React, {useState} from 'react';
-import Button from 'react-bootstrap/Button';
-import MyVerticallyCenteredModal from "./CenteredModalPost";
+import React, {useState} from "react";
+import Button from "react-bootstrap/Button";
+import CenteredModal from "./CenteredModal";
 
-
-const AddPostModal = (props) => {
+const AddMaterialsModal = (props) => {
     const [modalShow, setModalShow] = useState(false);
     return (
         <>
             <Button className="mb-2" variant="link" onClick={() => setModalShow(true)}>
-                Нов пост
+                Нов материјал
             </Button>
-            <MyVerticallyCenteredModal
+            <CenteredModal
                 subjectId={props.subjectId}
                 show={modalShow}
                 onHide={() => setModalShow(false)}
@@ -19,4 +18,4 @@ const AddPostModal = (props) => {
     );
 }
 
-export default AddPostModal
+export default AddMaterialsModal;

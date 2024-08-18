@@ -12,6 +12,8 @@ import ComputerAnimation from "./components/animation/computer/ComputerAnimation
 import DeskAnimation from "./components/animation/desk/DeskAnimation"
 import ForumPage from "./pages/ForumPage";
 import LoginPageMaterialUI from "./pages/LoginPageMaterialUI";
+import UploadMaterials from "./components/materials/UploadMaterials";
+import AttachmentPage from "./pages/AttachmentPage";
 
 function App() {
 
@@ -33,6 +35,8 @@ function App() {
                     <Route path="/animationComputer" element={<ComputerAnimation/>}/>
                     <Route path="/animationDesk" element={<DeskAnimation/>}/>
                     <Route path={"/materials/forum/:id"} element={<ForumPage/>}/>
+                    <Route path={"/materials/upload/:id"} element={<AttachmentPage/>}/>
+                    <Route path={"/materials/upload"} element={<UploadMaterials/>}/>
                 </Routes>
             </Router>
         </div>
