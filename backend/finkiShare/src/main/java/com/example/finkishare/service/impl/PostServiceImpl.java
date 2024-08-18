@@ -7,6 +7,7 @@ import com.example.finkishare.repository.PostRepository;
 import com.example.finkishare.repository.SubjectDetailsRepository;
 import com.example.finkishare.service.PostService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -30,4 +31,23 @@ public class PostServiceImpl implements PostService {
         Post p = new Post(title, text, LocalDateTime.now(), subjectDetails, author);
         return postRepository.save(p);
     }
+
+    @Override
+    public Post increaseScore(Long id) {
+        Post p = postRepository.findById(id).orElse(null);
+        if (p != null){
+            return postRepository.save(p.increaseScore());
+        }
+        return null;
+    }
+
+    @Override
+    public Post decreaseScore(Long id) {
+        Post p = postRepository.findById(id).orElse(null);
+        if (p != null){
+            return postRepository.save(p.decreaseScore());
+        }
+        return null;
+    }
 }
+

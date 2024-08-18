@@ -13,4 +13,7 @@ public interface PostService {
 
     public Post createPost(String title, String text, SubjectDetails subjectDetails, User author);
 
+    public Post increaseScore(Long id);
+
+    public Post decreaseScore(Long id);
 }

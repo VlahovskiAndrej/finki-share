@@ -6,9 +6,10 @@ import React, {useEffect} from "react";
 
 const File = ({attachmentFile}) => {
     useEffect(() => {
-        console.log('od efektot', attachmentFile)
+        console.log(attachmentFile)
     })
-    const imageUrl = "https://cdn3d.iconscout.com/3d/premium/thumb/man-5692600-4743369.png?f=webp"; // Assuming imageUrl is a property of the post object
+    // const imageUrl = "https://cdn3d.iconscout.com/3d/premium/thumb/man-5692600-4743369.png?f=webp"; // Assuming imageUrl is a property of the post object
+    const imageUrl = "https://st2.depositphotos.com/2769299/7314/i/450/depositphotos_73146775-stock-photo-a-stack-of-books-on.jpg"; // Assuming imageUrl is a property of the post object
 
     return (
         <div className="card mb-3" style={{backgroundColor: '#CDC1B6', position: 'relative'}}>
@@ -32,7 +33,7 @@ const File = ({attachmentFile}) => {
                                 }}
                             />
                             {/* Add name below the picture */}
-                            <p className="card-text">@andrejvlahovski</p>
+                            {/*<p className="card-text">{attachmentFile.name}</p>*/}
                         </div>
                     ) : (
                         // If no imageUrl, render a red circle
@@ -75,54 +76,54 @@ const File = ({attachmentFile}) => {
                                     <p style={{margin: 0}}>Download</p>
                                 </div>
                             </Button>
-                            <Button
-                                variant="primary"
-                                style={{
-                                    backgroundColor: "transparent",  // White background
-                                    color: "black",            // Black icon
-                                    border: "none",            // No border
-                                    display: "flex",           // Flex display to center the icon
-                                    justifyContent: "center", // Center the icon horizontally
-                                    alignItems: "center",    // Center the icon vertically
-                                    outline: "none",                // No outline
-                                    boxShadow: "5px 5px 15px rgba(0, 0, 0, 0.2)", // Add shadow effect
-                                    padding: "10px",                // Optional: add padding for better appearance
-                                    borderRadius: "30px"               // Optional: add border radius for rounded corners
-                                }}>
-                                <BiUpvote style={{fontSize: "20px"}}/>
-                                <div style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    height: "100%",
-                                    marginLeft: "5px"
-                                }}>
-                                    <p style={{margin: 0}}>0 Votes</p>
-                                </div>
-                            </Button>
-                            <Button
-                                variant="primary"
-                                style={{
-                                    backgroundColor: "transparent",  // White background
-                                    color: "black",            // Black icon
-                                    border: "none",            // No border
-                                    display: "flex",           // Flex display to center the icon
-                                    justifyContent: "center", // Center the icon horizontally
-                                    alignItems: "center",    // Center the icon vertically
-                                    outline: "none",                // No outline
-                                    boxShadow: "5px 5px 15px rgba(0, 0, 0, 0.2)", // Add shadow effect
-                                    padding: "10px",                // Optional: add padding for better appearance
-                                    borderRadius: "30px"                // Optional: add border radius for rounded corners
-                                }}>
-                                <BiDownvote style={{fontSize: "20px"}}/>
-                                <div style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    height: "100%",
-                                    marginLeft: "5px"
-                                }}>
-                                    <p style={{margin: 0}}>0 Votes</p>
-                                </div>
-                            </Button>
+                            {/*<Button*/}
+                            {/*    variant="primary"*/}
+                            {/*    style={{*/}
+                            {/*        backgroundColor: "transparent",  // White background*/}
+                            {/*        color: "black",            // Black icon*/}
+                            {/*        border: "none",            // No border*/}
+                            {/*        display: "flex",           // Flex display to center the icon*/}
+                            {/*        justifyContent: "center", // Center the icon horizontally*/}
+                            {/*        alignItems: "center",    // Center the icon vertically*/}
+                            {/*        outline: "none",                // No outline*/}
+                            {/*        boxShadow: "5px 5px 15px rgba(0, 0, 0, 0.2)", // Add shadow effect*/}
+                            {/*        padding: "10px",                // Optional: add padding for better appearance*/}
+                            {/*        borderRadius: "30px"               // Optional: add border radius for rounded corners*/}
+                            {/*    }}>*/}
+                            {/*    /!*<BiUpvote style={{fontSize: "20px"}}/>*!/*/}
+                            {/*    <div style={{*/}
+                            {/*        display: "flex",*/}
+                            {/*        flexDirection: "column",*/}
+                            {/*        height: "100%",*/}
+                            {/*        marginLeft: "5px"*/}
+                            {/*    }}>*/}
+                            {/*        <p style={{margin: 0}}>0 Votes</p>*/}
+                            {/*    </div>*/}
+                            {/*</Button>*/}
+                            {/*<Button*/}
+                            {/*    variant="primary"*/}
+                            {/*    style={{*/}
+                            {/*        backgroundColor: "transparent",  // White background*/}
+                            {/*        color: "black",            // Black icon*/}
+                            {/*        border: "none",            // No border*/}
+                            {/*        display: "flex",           // Flex display to center the icon*/}
+                            {/*        justifyContent: "center", // Center the icon horizontally*/}
+                            {/*        alignItems: "center",    // Center the icon vertically*/}
+                            {/*        outline: "none",                // No outline*/}
+                            {/*        boxShadow: "5px 5px 15px rgba(0, 0, 0, 0.2)", // Add shadow effect*/}
+                            {/*        padding: "10px",                // Optional: add padding for better appearance*/}
+                            {/*        borderRadius: "30px"                // Optional: add border radius for rounded corners*/}
+                            {/*    }}>*/}
+                            {/*    <BiDownvote style={{fontSize: "20px"}}/>*/}
+                            {/*    <div style={{*/}
+                            {/*        display: "flex",*/}
+                            {/*        flexDirection: "column",*/}
+                            {/*        height: "100%",*/}
+                            {/*        marginLeft: "5px"*/}
+                            {/*    }}>*/}
+                            {/*        <p style={{margin: 0}}>0 Votes</p>*/}
+                            {/*    </div>*/}
+                            {/*</Button>*/}
                         </div>
                     </div>
                 </div>

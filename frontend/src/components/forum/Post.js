@@ -21,7 +21,7 @@ const Post = ({post}) => {
                             marginRight: "30px"
                         }}>
                             <img
-                                src={imageUrl}
+                                src={post.author.avatarUrl ? post.author.avatarUrl  : imageUrl}
                                 alt="Profile"
                                 style={{
                                     width: "100px",
@@ -31,7 +31,7 @@ const Post = ({post}) => {
                                 }}
                             />
                             {/* Add name below the picture */}
-                            <p className="card-text">@andrejvlahovski</p>
+                            <p className="card-text">{post.author.username}</p>
                         </div>
                     ) : (
                         // If no imageUrl, render a red circle
@@ -64,14 +64,16 @@ const Post = ({post}) => {
                                     padding: "10px",                // Optional: add padding for better appearance
                                     borderRadius: "30px"               // Optional: add border radius for rounded corners
                                 }}>
-                                <BiUpvote style={{fontSize: "20px"}}/>
+                                <BiUpvote
+                                    style={{fontSize: "20px"}}
+                                />
                                 <div style={{
                                     display: "flex",
                                     flexDirection: "column",
                                     height: "100%",
                                     marginLeft: "5px"
                                 }}>
-                                    <p style={{margin: 0}}>0 Votes</p>
+                                    <p style={{margin: 0}}>{post.score} Votes</p>
                                 </div>
                             </Button>
                             <Button
@@ -88,7 +90,9 @@ const Post = ({post}) => {
                                     padding: "10px",                // Optional: add padding for better appearance
                                     borderRadius: "30px"                // Optional: add border radius for rounded corners
                                 }}>
-                                <BiDownvote style={{fontSize: "20px"}}/>
+                                <BiDownvote
+                                    style={{fontSize: "20px"}}
+                                />
                                 <div style={{
                                     display: "flex",
                                     flexDirection: "column",
@@ -108,7 +112,10 @@ const Post = ({post}) => {
                     margin: 0,
                     fontSize: '0.9em'
                 }}>
-                    <small className="text-muted">Posted: {post.timeStamp}</small>
+                    <small className="text-muted">Posted: {
+                        post.timeStamp.toString().split('T')[0] + " --  " +
+                        post.timeStamp.toString().split('T')[1].split('.')[0]
+                    }</small>
                 </p>
             </div>
         </div>

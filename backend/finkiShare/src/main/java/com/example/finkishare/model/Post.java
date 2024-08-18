@@ -17,6 +17,7 @@ public class Post {
     private String title;
     private String description;
     private LocalDateTime timeStamp;
+    private Long score;
 
     @ManyToOne
     private SubjectDetails subjectDetails;
@@ -33,5 +34,16 @@ public class Post {
         this.timeStamp = timeStamp;
         this.subjectDetails = subjectDetails;
         this.author = author;
+        this.score = 0L;
+    }
+
+    public Post increaseScore(){
+        this.score += 1;
+        return this;
+    }
+
+    public Post decreaseScore(){
+        this.score -= 1;
+        return this;
     }
 }

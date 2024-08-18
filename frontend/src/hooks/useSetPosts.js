@@ -20,7 +20,6 @@ const useSetPosts = () => {
                 })
             });
 
-            console.log(response.text())
             if (response.ok){
                 console.log('Created post successfully');
                 props.onHide()

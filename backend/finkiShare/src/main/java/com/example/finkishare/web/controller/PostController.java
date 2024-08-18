@@ -34,4 +34,15 @@ public class PostController {
         );
     }
 
+    @PostMapping("/posts/{id}/increase_score")
+    Post increaseScore(@PathVariable String id){
+        return postService.increaseScore(Long.parseLong(id));
+    }
+
+    @PostMapping("/posts/{id}/decrease_score")
+    Post decreaseScore(@PathVariable String id){
+        return postService.decreaseScore(Long.parseLong(id));
+    }
+
+
 }
