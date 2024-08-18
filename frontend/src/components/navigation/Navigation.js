@@ -8,7 +8,8 @@ import useAuthStatus from "../../hooks/useAuthStatus";
 
 
 const Navigation = ({isNavigationWhite}) => {
-    const {isLoggedIn, username} = useAuthStatus();
+    const {isLoggedIn, username, user} = useAuthStatus();
+    console.log(user)
     let navigate = useNavigate();
 
     const routeChange = () => {
@@ -69,8 +70,10 @@ const Navigation = ({isNavigationWhite}) => {
                         </Nav.Link>
 
                         {isLoggedIn ?
-                            (<Nav.Link href="http://localhost:8080/logout" className={classes.logoutLink}>{username} -
-                                Logout</Nav.Link>)
+                            (<Nav.Link href="http://localhost:8080/logout" className={classes.logoutLink}>
+                                {username}
+                                <img style={{borderRadius: "15px", marginLeft: "10px" }} width="30px" src={user.avatarUrl} alt="slika.jpg"/>
+                            </Nav.Link>)
                             :
                             (<Nav.Link href="/loginUI"
                                        className={isNavigationWhite ? classes.customButtonWhite : classes.customButton}

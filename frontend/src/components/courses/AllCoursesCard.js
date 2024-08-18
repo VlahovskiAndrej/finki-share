@@ -2,6 +2,7 @@ import CardComponent from "./CardComponent"
 import React from "react";
 import {Col, Row} from "react-bootstrap";
 import useSubjects from "../../hooks/useSubjects";
+import useTakenSubjects from "../../hooks/useTakenSubjects";
 
 const filterByAcademicYearAndSemester = (subject, semester, academicYear) => {
     if (semester != null && academicYear != null) {
@@ -19,6 +20,12 @@ const filterByAcademicYearAndSemester = (subject, semester, academicYear) => {
 
 const AllCoursesCard = ({semester, academicYear, activeSubject}) => {
     const subjects = useSubjects();
+    const activeSubjects = useTakenSubjects();
+
+    console.log("active s: ")
+    console.log(activeSubjects)
+
+    const isSubjectActive = (subject) => activeSubjects.some(activeSubject => activeSubject.id === subject.id);
 
     return (
         <Row>
@@ -27,6 +34,7 @@ const AllCoursesCard = ({semester, academicYear, activeSubject}) => {
                 .map(subject => (
                     <Col key={subject.url} xs={12} sm={6} md={4} lg={3}>
                         <CardComponent
+                            active = {isSubjectActive(subject)}
                             subject={subject}
                         />
                     </Col>

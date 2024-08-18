@@ -1,10 +1,11 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import CardDetails from "./CardDetails";
 import useSetSubject from "../../hooks/useSetSubject";
 import Swal from "sweetalert2"
 import classes from "./CardComponent.module.css"
+import useAuthStatus from "../../hooks/useAuthStatus";
 
 
 const replaceProgramNames = (str) => {
@@ -31,10 +32,16 @@ const replaceProgramNames = (str) => {
     return Array.from(uniqueCharacters).join(', ');
 }
 
+
 const CardComponent = (props) => {
-    const [clicked, setClicked] = useState(props.subject['isTaken']);
+
+    const {isLoggedIn, username} = useAuthStatus();
+    const [clicked, setClicked] = useState(props.active);
     const [hover, setHover] = useState(false);
-    const formData = props.subject.name;
+    const formData = {
+        name: props.subject.name,
+        username: username
+    };
 
     const handleClick = () => {
         const nextClicked = !clicked;
@@ -49,6 +56,13 @@ const CardComponent = (props) => {
     };
 
     const handleSubmit = useSetSubject();
+    console.log(props.subject.name + "ACTIVE: " + props.active)
+
+    useEffect(() => {
+        if (props.active){
+            setClicked(true)
+        }
+    }, [props.active]);
 
     return (
         <Card

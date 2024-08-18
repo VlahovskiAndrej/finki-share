@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 const useAuthStatus = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [username, setUsername] = useState("");
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
         const checkLoginStatus = async () => {
@@ -16,6 +17,7 @@ const useAuthStatus = () => {
                     if (resultObject["authenticated"]) {
                         setUsername(resultObject["user"]["username"]);
                         setIsLoggedIn(resultObject["authenticated"]);
+                        setUser(resultObject["user"]);
                     } else {
                         setIsLoggedIn(resultObject["authenticated"]);
                     }
@@ -27,7 +29,7 @@ const useAuthStatus = () => {
         checkLoginStatus();
     }, []);
 
-    return { isLoggedIn, username };
+    return { isLoggedIn, username, user };
 }
 
 export default useAuthStatus;

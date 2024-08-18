@@ -6,8 +6,10 @@ import SidebarMaterials from "../components/sidebar/SidebarMaterials";
 import {FaBookOpen} from 'react-icons/fa';
 import classes from './MaterialsPage.module.css';
 import Spinner from "react-bootstrap/Spinner";
+import useAuthStatus from "../hooks/useAuthStatus";
 
 const MaterialsPage = () => {
+    // const [isLoggedIn, username] = useAuthStatus()
     const subjects = useTakenSubjects();
     const hasSubjects = Object.values(subjects).length > 0;
 

@@ -1,11 +1,14 @@
 package com.example.finkishare.web.controller;
 
 import com.example.finkishare.model.SubjectDetails;
+import com.example.finkishare.model.dto.TakeSubjectDto;
 import com.example.finkishare.service.CommentService;
 import com.example.finkishare.service.PostService;
 import com.example.finkishare.service.SubjectDetailsService;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,13 +29,13 @@ public class SubjectController {
     }
 
     @PostMapping("/subjects")
-    void saveSubject(@RequestBody String body){
-        subjectDetailsService.takeSubject(body);
+    void saveSubject(@RequestBody TakeSubjectDto body){
+        subjectDetailsService.takeSubject(body.getName(), body.getUsername());
     }
 
     @GetMapping("/subjects/taken")
-    List<SubjectDetails> findTakenSubjects(){
-        return subjectDetailsService.findAllTakenSubjects();
+    List<SubjectDetails> findTakenSubjects(@RequestParam String username){
+        return subjectDetailsService.findAllTakenSubjects(username);
     }
 
     @GetMapping("/subject/get/{id}")

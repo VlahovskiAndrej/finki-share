@@ -10,8 +10,8 @@ public interface SubjectDetailsService {
 
     SubjectDetails takeSubject(String name);
 
-    SubjectDetails takeSubject(String name, User user);
+    SubjectDetails takeSubject(String name, String username);
 
-    List<SubjectDetails> findAllTakenSubjects();
+    List<SubjectDetails> findAllTakenSubjects(String username);
     SubjectDetails getSubject(Long subjectId);
 }

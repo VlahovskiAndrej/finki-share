@@ -30,16 +30,19 @@ public class SubjectDetailsServiceImpl implements SubjectDetailsService {
     }
 
     @Override
-    public SubjectDetails takeSubject(String name, User user) {
+    public SubjectDetails takeSubject(String name, String username) {
         SubjectDetails subject =  subjectDetailsRepository.findByName(name.replace("\"", ""));
-        user.takeSubject(subject);
-        userRepository.save(user);
+        User user = userRepository.findByUsername(username).orElse(null);
+        if (user != null){
+            user.takeSubject(subject);
+            userRepository.save(user);
+        }
         return subject;
     }
 
     @Override
-    public List<SubjectDetails> findAllTakenSubjects() {
-        return subjectDetailsRepository.findAllByIsTakenTrue();
+    public List<SubjectDetails> findAllTakenSubjects(String username) {
+        return subjectDetailsRepository.findTakenSubjectsByUsername(username);
     }
 
     @Override
