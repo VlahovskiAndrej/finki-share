@@ -4,7 +4,7 @@ import AddPostModal from "./modals/post/AddPostModal";
 import useGetSubject from "../../hooks/useGetSubject";
 import Spinner from 'react-bootstrap/Spinner';
 import {FaRegFrown} from 'react-icons/fa';
-import classes from "./Forum.module.css"
+import classes from "../../materials-styling/materialsstyling.module.css"
 import spinner_classes from "../Spinner.module.css"
 
 const Forum = ({posts, subjectId, subjectUrl, updateVote, decreaseVote}) => {
