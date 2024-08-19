@@ -20,10 +20,6 @@ const ForumPage = () => {
         fetchData(subjectId)
     }, [])
 
-    useEffect(() => {
-        setPosts(posts)
-    }, [posts])
-
     const handleUpdateVote = (id) => {
         updateVote(id, (updatedPost) => {
             setPosts((prevPosts) =>
