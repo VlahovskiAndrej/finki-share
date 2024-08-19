@@ -56,7 +56,7 @@ const CenteredModal = (props) => {
                             }}
                         />
                     </div>
-                    <button
+                    <Button
                         type="submit"
                         style={{
                             padding: '0.75rem',
@@ -72,7 +72,7 @@ const CenteredModal = (props) => {
                         onMouseOut={(e) => (e.target.style.backgroundColor = '#814A35')}
                     >
                         Постави материјал!
-                    </button>
+                    </Button>
                 </form>
             </Modal.Body>
 
