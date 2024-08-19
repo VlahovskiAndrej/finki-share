@@ -26,7 +26,7 @@ const CenteredModal = (props) => {
             </Modal.Header>
 
             <Modal.Body>
-                <form onSubmit={(event) => handleSubmit(event, props)} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <form onSubmit={(event) => handleSubmit(event, props, username)} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                     <div>
                         <label htmlFor="description" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>Опис</label>
                         <textarea

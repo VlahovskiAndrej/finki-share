@@ -22,12 +22,15 @@ public class Attachment {
     private String description;
     @ManyToOne
     private SubjectDetails subjectDetails;
+    @ManyToOne
+    private User author;
 
-    public Attachment(String fileName, String fileType, byte[] data, String description, SubjectDetails subjectDetails) {
+    public Attachment(String fileName, String fileType, byte[] data, String description, SubjectDetails subjectDetails, User author) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.data = data;
         this.description = description;
         this.subjectDetails = subjectDetails;
+        this.author = author;
     }
 }

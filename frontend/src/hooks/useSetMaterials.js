@@ -19,7 +19,7 @@ const useSetMaterials = () => {
         setSubjectId(id);
     }
 
-    const handleSubmit = async (event, props) => {
+    const handleSubmit = async (event, props, username) => {
         event.preventDefault();
         console.log('ova e vo submit', props.subjectId)
         setSubjectId(props.subjectId);
@@ -33,6 +33,7 @@ const useSetMaterials = () => {
         formData.append("file", file);
         formData.append("description", description);
         formData.append("subjectId", props.subjectId);
+        formData.append("username", username)
         console.log('proverka dali se dodava id', props.subjectId);
 
         try {
