@@ -5,7 +5,7 @@ import { BiDownvote } from "react-icons/bi";
 import Button from "react-bootstrap/Button";
 
 // TODO: REFACTORING
-const Post = ({post}) => {
+const Post = ({post, updateVote, decreaseVote}) => {
     // Define a variable to hold the image URL
     const imageUrl = "https://cdn3d.iconscout.com/3d/premium/thumb/man-5692600-4743369.png?f=webp"; // Assuming imageUrl is a property of the post object
 
@@ -51,6 +51,7 @@ const Post = ({post}) => {
                         <div style={{display: 'flex', gap: '20px'}}>
                             <CommentsModal postId={post.id}></CommentsModal>
                             <Button
+                                onClick={() => updateVote(post.id)}
                                 variant="primary"
                                 style={{
                                     backgroundColor: "transparent",  // White background
@@ -73,10 +74,11 @@ const Post = ({post}) => {
                                     height: "100%",
                                     marginLeft: "5px"
                                 }}>
-                                    <p style={{margin: 0}}>{post.score} Votes</p>
+                                    <p style={{margin: 0}}>{post.upScore} Votes</p>
                                 </div>
                             </Button>
                             <Button
+                                onClick={() => decreaseVote(post.id)}
                                 variant="primary"
                                 style={{
                                     backgroundColor: "transparent",  // White background
@@ -99,7 +101,7 @@ const Post = ({post}) => {
                                     height: "100%",
                                     marginLeft: "5px"
                                 }}>
-                                    <p style={{margin: 0}}>0 Votes</p>
+                                    <p style={{margin: 0}}>{post.downScore} Votes</p>
                                 </div>
                             </Button>
                         </div>

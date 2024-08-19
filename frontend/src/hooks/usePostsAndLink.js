@@ -24,7 +24,7 @@ const usePostsAndLink = () => {
         setActiveLink(id); // Update active link
     };
 
-    return {activeLink, posts, fetchData};
+    return {activeLink, posts, setPosts, fetchData};
 }
 
 export default usePostsAndLink;
