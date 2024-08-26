@@ -4,10 +4,10 @@ import AddPostModal from "./modals/post/AddPostModal";
 import useGetSubject from "../../hooks/useGetSubject";
 import Spinner from 'react-bootstrap/Spinner';
 import {FaRegFrown} from 'react-icons/fa';
-import classes from "./Forum.module.css"
+import classes from "../../materials-styling/materialsstyling.module.css"
 import spinner_classes from "../Spinner.module.css"
 
-const Forum = ({posts, subjectId, subjectUrl}) => {
+const Forum = ({posts, subjectId, subjectUrl, updateVote, decreaseVote}) => {
 
     const {subject, fetchSubject} = useGetSubject();
     const [isLoading, setIsLoading] = useState(true);
@@ -35,7 +35,10 @@ const Forum = ({posts, subjectId, subjectUrl}) => {
                 <AddPostModal subjectId={subjectId}></AddPostModal>
             </div>
             {Object.entries(posts).length !== 0 ? Object.entries(posts).map(([postId, post]) => (
-                <Post key={postId} post={post}></Post>
+                <Post
+                    updateVote = {updateVote}
+                    decreaseVote = {decreaseVote}
+                    key={postId} post={post}/>
             )) : <div className={classes.noPostsWrapper}>
                 <FaRegFrown className={classes.noPostsIcon}/>
                 <h1 className={classes.noPostsMessage}>Nothing has been posted</h1>

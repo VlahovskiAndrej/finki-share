@@ -26,7 +26,7 @@ const CenteredModal = (props) => {
             </Modal.Header>
 
             <Modal.Body>
-                <form onSubmit={(event) => handleSubmit(event, props)} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <form onSubmit={(event) => handleSubmit(event, props, username)} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                     <div>
                         <label htmlFor="description" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>Опис</label>
                         <textarea
@@ -56,7 +56,7 @@ const CenteredModal = (props) => {
                             }}
                         />
                     </div>
-                    <button
+                    <Button
                         type="submit"
                         style={{
                             padding: '0.75rem',
@@ -72,7 +72,7 @@ const CenteredModal = (props) => {
                         onMouseOut={(e) => (e.target.style.backgroundColor = '#814A35')}
                     >
                         Постави материјал!
-                    </button>
+                    </Button>
                 </form>
             </Modal.Body>
 

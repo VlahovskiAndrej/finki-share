@@ -1,7 +1,5 @@
-import CommentsModal from "../forum/modals/comments/CommentsModal";
 import Button from "react-bootstrap/Button";
-import {BiDownvote, BiUpvote} from "react-icons/bi";
-import { MdOutlineFileDownload } from "react-icons/md";
+import {MdOutlineFileDownload} from "react-icons/md";
 import React, {useEffect} from "react";
 
 const File = ({attachmentFile}) => {
@@ -23,7 +21,7 @@ const File = ({attachmentFile}) => {
                             marginRight: "30px"
                         }}>
                             <img
-                                src={imageUrl}
+                                src={attachmentFile.author.avatarUrl ? attachmentFile.author.avatarUrl  : imageUrl}
                                 alt="Profile"
                                 style={{
                                     width: "100px",
@@ -32,6 +30,7 @@ const File = ({attachmentFile}) => {
                                     border: "1px solid lightgray"
                                 }}
                             />
+                            <p className="card-text">{attachmentFile.author.username}</p>
                             {/* Add name below the picture */}
                             {/*<p className="card-text">{attachmentFile.name}</p>*/}
                         </div>

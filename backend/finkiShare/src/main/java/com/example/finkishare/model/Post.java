@@ -3,9 +3,7 @@ package com.example.finkishare.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Data
@@ -17,7 +15,8 @@ public class Post {
     private String title;
     private String description;
     private LocalDateTime timeStamp;
-    private Long score;
+    private Long upScore;
+    private Long downScore;
 
     @ManyToOne
     private SubjectDetails subjectDetails;
@@ -34,16 +33,17 @@ public class Post {
         this.timeStamp = timeStamp;
         this.subjectDetails = subjectDetails;
         this.author = author;
-        this.score = 0L;
+        this.downScore = 0L;
+        this.upScore = 0L;
     }
 
     public Post increaseScore(){
-        this.score += 1;
+        this.upScore += 1;
         return this;
     }
 
     public Post decreaseScore(){
-        this.score -= 1;
+        this.downScore -= 1;
         return this;
     }
 }

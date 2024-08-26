@@ -6,7 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 public interface AttachmentService {
-    Attachment saveAttachment(MultipartFile file, String description,  Long subjectId) throws Exception;
+    Attachment saveAttachment(MultipartFile file, String description,  Long subjectId, String username) throws Exception;
 
     Attachment getAttachment(String fileId) throws Exception;
 

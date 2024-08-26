@@ -5,8 +5,6 @@ import Modal from "react-bootstrap/Modal";
 import classes from "../../../courses/CommentsModal.module.css";
 import Button from "react-bootstrap/Button";
 import React from "react";
-import CommentsModal from "./CommentsModal";
-import {BiDownvote, BiUpvote} from "react-icons/bi";
 
 const MyVerticallyCenteredModal = (props) => {
     const {username} = useAuthStatus();
@@ -25,13 +23,14 @@ const MyVerticallyCenteredModal = (props) => {
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            className="font"
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Comments
+                    Коментари
                 </Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 {Object.entries(props.comments).map(([commentId, comment]) => (
 
                     <div key={commentId} className={`card mb-3 ${classes.cardCustom}`}>
@@ -104,13 +103,42 @@ const MyVerticallyCenteredModal = (props) => {
                 <textarea
                     onChange={(e) => setComment(e.target.value)}
                     className={classes.textareaCustom}/>
-                <div className={classes.flexEnd}>
-                    <Button variant="secondary" size="sm"
-                            onClick={(event) => handleSubmit(event, username, props, subjectId)}>Add </Button>
+                <div className={classes.flexStart}>
+                    <Button
+                        onClick={(event) => handleSubmit(event, username, props, subjectId)}
+                        type="submit"
+                        style={{
+                            padding: '0.75rem',
+                            backgroundColor: '#814A35',
+                            color: '#FFFADA',
+                            border: 'none',
+                            borderRadius: '4px',
+                            cursor: 'pointer',
+                            fontWeight: 'bold',
+                            transition: 'background-color 0.3s',
+                        }}
+                        onMouseOver={(e) => (e.target.style.backgroundColor = '#682A1E')}
+                        onMouseOut={(e) => (e.target.style.backgroundColor = '#814A35')}
+                    >
+                        Додади коментар!
+                    </Button>
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide}>Close</Button>
+                <Button onClick={props.onHide} style={{
+                    backgroundColor: '#814A35',
+                    color: '#FFFADA',
+                    border: 'none',
+                    padding: '0.5rem 1rem',
+                    borderRadius: '4px',
+                    fontWeight: 'bold',
+                    transition: 'background-color 0.3s',
+                }}
+                        onMouseOver={(e) => (e.target.style.backgroundColor = '#682A1E')}
+                        onMouseOut={(e) => (e.target.style.backgroundColor = '#814A35')}
+                >
+                    Затвори
+                </Button>
             </Modal.Footer>
         </Modal>
     );

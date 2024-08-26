@@ -2,7 +2,7 @@ import useGetSubject from "../../hooks/useGetSubject";
 import React, {useEffect, useState} from "react";
 import spinner_classes from "../Spinner.module.css";
 import Spinner from "react-bootstrap/Spinner";
-import classes from "./AttachmentFile.module.css"
+import classes from "../../materials-styling/materialsstyling.module.css"
 import AddMaterialsModal from "./modals/AddMaterialsModal";
 import {FaRegFrown} from "react-icons/fa";
 import File from "./File";

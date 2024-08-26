@@ -9,7 +9,7 @@ const DescriptionCard = ({description, redirectLink}) => {
         >
             <Card.Body className="text-center">
                 <Card.Title
-                >{description.slice(0,180)}...</Card.Title>
+                >{description.slice(0,160)}...</Card.Title>
             </Card.Body>
             <Card.Footer className={classes.cardFooter}>
                 <a href={redirectLink}>Click to see the full Program</a>

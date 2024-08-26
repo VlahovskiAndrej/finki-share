@@ -62,7 +62,7 @@ const Navigation = ({isNavigationWhite}) => {
                         </Nav.Link>
                         <Nav.Link
                             className={isNavigationWhite ? classes.customButtonWhite : classes.customButton}
-                            href="/registerUI"
+                            href="/register"
                             onMouseOver={handleMouseOver}
                             onMouseOut={handleMouseOut}
                         >
@@ -70,12 +70,12 @@ const Navigation = ({isNavigationWhite}) => {
                         </Nav.Link>
 
                         {isLoggedIn ?
-                            (<Nav.Link href="http://localhost:8080/logout" className={classes.logoutLink}>
-                                {username}
+                            (<Nav.Link href="http://localhost:8080/logout" className={isNavigationWhite ? classes.customButtonWhite : classes.customButton}>
+                                Одјави се
                                 <img style={{borderRadius: "15px", marginLeft: "10px" }} width="30px" src={user.avatarUrl} alt="slika.jpg"/>
                             </Nav.Link>)
                             :
-                            (<Nav.Link href="/loginUI"
+                            (<Nav.Link href="/login"
                                        className={isNavigationWhite ? classes.customButtonWhite : classes.customButton}
                                        onMouseOver={handleMouseOver}
                                        onMouseOut={handleMouseOut}>Најави се</Nav.Link>)

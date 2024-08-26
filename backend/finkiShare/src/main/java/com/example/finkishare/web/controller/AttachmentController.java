@@ -23,12 +23,12 @@ public class AttachmentController {
     private final AttachmentService attachmentService;
 
     @PostMapping("/upload")
-    public ResponseData uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("description") String description,  @RequestParam("subjectId") String subjectId) throws Exception {
+    public ResponseData uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("description") String description,  @RequestParam("subjectId") String subjectId, @RequestParam("username") String username) throws Exception {
         Attachment attachment = null;
         String downloadURl = "";
         System.out.println(description);
         System.out.println(subjectId);
-        attachment = attachmentService.saveAttachment(file, description, Long.parseLong(subjectId));
+        attachment = attachmentService.saveAttachment(file, description, Long.parseLong(subjectId), username);
         downloadURl = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/file/download/")
                 .path(attachment.getId())
