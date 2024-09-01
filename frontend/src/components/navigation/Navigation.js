@@ -38,7 +38,25 @@ const Navigation = ({isNavigationWhite}) => {
     return (
         <Navbar expand="lg">
             <Container>
-                <img alt='/' src='/images/finkilogo.png ' className={classes.logo} onClick={routeChange}/>
+                <div id="logo" className="d-flex"
+                     style={{alignItems: 'center', justifyContent: 'center', textAlign: 'center', border: '1px solid lightgray', padding: '3px 15px', borderRadius: '20px'}}>
+                    <h3 style={{marginRight: '5px', marginBottom:'0px', color:'black'}}>FINKI</h3>
+                    <img
+                        alt='/'
+                        src='/images/finkilogo.png'
+                        style={{
+                            borderRadius: '50%',
+                            border: '2px solid lightgrey',
+                            width: '40px',
+                            objectFit: 'cover',
+                            margin: '0',
+                            cursor: 'pointer'
+                        }}
+                        onClick={routeChange}
+                    />
+                    <h3 style={{marginLeft: '5px', marginBottom:'0px', color:'black'}}>SHARE</h3>
+                </div>
+
                 <Navbar.Brand href="/" className={classes.navbarBrand}>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
@@ -70,9 +88,11 @@ const Navigation = ({isNavigationWhite}) => {
                         </Nav.Link>
 
                         {isLoggedIn ?
-                            (<Nav.Link href="http://localhost:8080/logout" className={isNavigationWhite ? classes.customButtonWhite : classes.customButton}>
+                            (<Nav.Link href="http://localhost:8080/logout"
+                                       className={isNavigationWhite ? classes.customButtonWhite : classes.customButton}>
                                 Одјави се
-                                <img style={{borderRadius: "15px", marginLeft: "10px" }} width="30px" src={user.avatarUrl} alt="slika.jpg"/>
+                                <img style={{borderRadius: "15px", marginLeft: "10px"}} width="30px"
+                                     src={user.avatarUrl} alt="slika.jpg"/>
                             </Nav.Link>)
                             :
                             (<Nav.Link href="/login"

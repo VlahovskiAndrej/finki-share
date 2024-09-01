@@ -25,7 +25,7 @@ const ChooseSubject = () => {
             <div style={{backgroundColor: '#DBD2CB'}}>
                 <Container className="text-center mt-5">
                     <Row>
-                        <h1>Популарни курсеви од одредени области</h1>
+                        <h1 style={{marginTop: '50px'}}>Популарни курсеви од одредени области</h1>
                     </Row>
                 </Container>
                 <Container className="mt-5">

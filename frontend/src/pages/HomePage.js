@@ -70,14 +70,14 @@ const HomePage = () => {
                 isNavigationWhite={true}
             />
             <Container>
-                <Row className="d-flex align-items-center justify-content-center">
+                <Row className="d-flex align-items-center justify-content-center" style={{height: '100vh'}}>
                     <Col>
                         <Row className="h-25 d-inline-block py-5">
                             <h1>
                                 <b>
                                     Страница за{" "}
                                     <ReactTyped
-                                        strings={["споделување!", "коментари!", "дружба!"]}
+                                        strings={["споделување", "коментари!", "дружба!"]}
                                         typeSpeed={100}
                                         loop
                                         backSpeed={20}
@@ -112,7 +112,7 @@ const HomePage = () => {
                     </Row>
                     <Container
                         style={{textAlign: 'center', height: '250px', width: '1500px', backgroundColor: '#CDC1B6'}}>
-                        <h2>Дел од нашите услуги</h2>
+                        <h2 style={{paddingTop:'20px'}}>Дел од нашите услуги</h2>
                     </Container>
                     <Row className="justify-content-md-center">
                         {home_page_data.map((data) => {
