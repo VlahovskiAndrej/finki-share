@@ -29,7 +29,11 @@
 Ментор:
 * проф. др. Бобан Јоксимоски
 
-Презентација на проектот: [finkishare_presentation.pdf](https://github.com/user-attachments/files/16829769/finkishare_presentation.pdf)
+Презентација на проектот: 
+* [finkishare_presentation.pdf](https://github.com/user-attachments/files/16829769/finkishare_presentation.pdf)
+
+Документација:
+* https://docs.google.com/document/d/1y19uqh9Pey5rzCpEjXGY2M2CP6Qmdpc2DSnZtfYsxpU/edit?usp=sharing
 
 Демо:
 
